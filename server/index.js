@@ -1,5 +1,12 @@
 import express from 'express'
 import cors from 'cors'
+import  mongo from 'mongoose';
+import { addPostValidation } from './validations/OffersValidator.js';
+import * as OfferControllers from './controllers/OfferController.js'
+
+mongo.connect("mongodb+srv://admin:M2YZPZUns5eNcyS@cluster0.fqtchuh.mongodb.net/be?retryWrites=true&w=majority",).then(()=>{
+    console.log("db ok");
+}).catch((err)=>console.log(err))
 
 const app = express();
 
@@ -9,6 +16,8 @@ app.use(cors())
 app.get('/',(req,res) => {
     res.send("<b>fdfd</b>");
 });
+
+app.post("/create", addPostValidation , OfferControllers.create)
 
 app.listen(4444, (err) => {
     if (err){
