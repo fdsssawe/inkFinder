@@ -12,7 +12,7 @@ const PostSchema = new mongoose.Schema({
     exchange: {
         type: String,
     },
-    mail:{
+    social:{
         type : String,
         required: true,
     }
