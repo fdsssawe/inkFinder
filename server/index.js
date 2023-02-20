@@ -3,8 +3,9 @@ import cors from 'cors'
 import  mongo from 'mongoose';
 import { addPostValidation } from './validations/OffersValidator.js';
 import * as OfferControllers from './controllers/OfferController.js'
+import { url } from './mongo.js';
 
-mongo.connect("mongodb+srv://admin:M2YZPZUns5eNcyS@cluster0.fqtchuh.mongodb.net/be?retryWrites=true&w=majority",).then(()=>{
+mongo.connect(url,).then(()=>{
     console.log("db ok");
 }).catch((err)=>console.log(err))
 
