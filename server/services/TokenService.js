@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
-import Token from "../model/Token"
+import Token from "../model/Token.js"
 
 class TokenService{
     generateTokens(payload){
@@ -23,4 +23,6 @@ class TokenService{
     }
 }
 
-export default TokenService
+const tokenService = new TokenService()
+
+export default tokenService

@@ -3,9 +3,17 @@ import cors from 'cors'
 import  mongo from 'mongoose';
 import { addPostValidation } from './validations/OffersValidator.js';
 import * as OfferControllers from './controllers/OfferController.js'
-import { url } from './mongo.js';
+import dotenv from "dotenv"
+import cookieParser from 'cookie-parser';
+import { router } from './router/index.js';
 
-mongo.connect(url,).then(()=>{
+dotenv.config()
+
+mongo.connect(process.env.MONGO_URL,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology : true,
+    }).then(()=>{
     console.log("db ok");
 }).catch((err)=>console.log(err))
 
@@ -13,6 +21,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors())
+app.use(cookieParser())
+app.use('/api',router)
 
 app.get('/',(req,res) => {
     res.send("<b>fdfd</b>");

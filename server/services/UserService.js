@@ -1,11 +1,14 @@
 import User from "../model/User.js"
 import bcrypt from "bcrypt"
-import uuid from "uuid"
-import MailService from "./MailService.js"
-import TokenService from "./TokenService.js"
+import { v4 } from "uuid"
+import mailService from "./MailService.js"
+import tokenService from "./TokenService.js"
+import UserDto from "../dtos/userDTO.js"
+import * as dotenv from "dotenv"
 
-const mailService = new MailService()
-const tokenService = new TokenService()
+dotenv.config()
+
+
 
 class UserService{
     async registration (email, password){
@@ -14,11 +17,17 @@ class UserService{
             throw new Error(`There is account with such email : ${email}`)
         }
         const hashPassword = await bcrypt.hash(password,3);
-        const activationLink = uuid.v4()
+        const activationLink = v4()
         const user = await User.create({email,password : hashPassword , activationLink})
-        await mailService.sendActivisionMail(email,activationLink)
-        const tokens = tokenService.generateTokens()
+        await mailService.sendActivisionMail(email,`${process.env.API_URL}/api/activate/${activationLink}`)
+        const userDTO = new UserDto(user)
+        const tokens = tokenService.generateTokens({...userDTO})
+        await tokenService.saveToken(userDTO.id, tokens.refreshToken)
+
+        return{...tokens, user : userDTO}
     }
 }
 
-export default UserService
+const userService = new UserService()
+
+export default userService
