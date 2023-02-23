@@ -6,6 +6,7 @@ import * as OfferControllers from './controllers/OfferController.js'
 import dotenv from "dotenv"
 import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
+import { errorMiddleware } from './middlewares/errorMiddleware.js';
 
 dotenv.config()
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(cors())
 app.use(cookieParser())
 app.use('/api',router)
+app.use(errorMiddleware);
 
 app.get('/',(req,res) => {
     res.send("<b>fdfd</b>");
