@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
+import { login, registration } from '../store/index.js';
+import { useDispatch } from 'react-redux';
 
 const LoginForm = () => {
-    const [email , setEmail] = useState('')
-    const [password , setPassword] = useState('')
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+  
+    const handleLogin = (e) => {
+      e.preventDefault();
+      dispatch(login({ email, password }));
+    };
+
+    const handleRegistration = (e) => {
+        e.preventDefault();
+        dispatch(registration({ email, password }));
+      };
+
     return (
         <div>
             <input 
@@ -16,13 +30,13 @@ const LoginForm = () => {
             type="password" 
             onChange={e => setPassword(e.target.value)}
             placeholder = "Password"
-            value={email}
+            value={password}
             >
             </input>
-            <button>
+            <button onClick={()=>dispatch(login({ email, password }))}>
                 Login
             </button>
-            <button>
+            <button onClick={()=>dispatch(registration({ email, password }))}>
                 Registration
             </button>
         </div>
