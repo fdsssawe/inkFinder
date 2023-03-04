@@ -46,8 +46,10 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 });
 
 export const checkAuth = createAsyncThunk('auth/checkAuth', async () => {
+  setLoading(true)
   const response = await axios.get(`${API_URL}/refresh`, { withCredentials: true });
   localStorage.setItem('token', response.data.accessToken);
+  setLoading(false)
   return response.data.user;
 });
 

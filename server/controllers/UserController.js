@@ -2,6 +2,7 @@ import userService from "../services/UserService.js"
 import * as dotenv from "dotenv"
 import { validationResult } from "express-validator"
 import { ApiError } from "../exceptions/apiError.js"
+import User from "../model/User.js"
 
 dotenv.config()
 
@@ -64,13 +65,14 @@ class UserController {
     }
   }
 
-  async getUsers(req,res,next){
-    try{
-      res.json(['fdfd','fdfd'])
-    }catch(e){
-      console.log(e)
+  async getUsers(req, res, next) {
+    try {
+        const users = await userService.getAllUsers();
+        return res.json(users);
+    } catch (e) {
+        next(e);
     }
-  }
+}
 }
 
 const userController = new UserController()
