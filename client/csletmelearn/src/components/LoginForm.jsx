@@ -7,15 +7,6 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleLogin = (e) => {
-      e.preventDefault();
-      dispatch(login({ email, password }));
-    };
-
-    const handleRegistration = (e) => {
-        e.preventDefault();
-        dispatch(registration({ email, password }));
-      };
 
     return (
         <div>
