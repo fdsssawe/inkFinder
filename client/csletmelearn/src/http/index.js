@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const API_URL = "http://localhost:4444/api"
+export const API_URL = "https://inkfinder.onrender.com"
 
 const api = axios.create({
     withCredentials: true,
