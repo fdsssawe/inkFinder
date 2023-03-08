@@ -22,7 +22,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 5000);
 console.log("++++++++++++++++" + app.get('port'));
-app.use(express.static('./client/csletmelearn/dist'))
+app.use(express.static('./client/csletmelearn/dist'));
 app.use(express.json());
 app.use(cors({
     credentials : true,
@@ -40,7 +40,7 @@ app.get('/',(req,res) => {
 app.post("/create", addPostValidation , OfferControllers.create)
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve("./client/csletmelearn/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "csletmelearn" , "dist", "index.html"));
  });
 
 app.listen(process.env.PORT, (err) => {
