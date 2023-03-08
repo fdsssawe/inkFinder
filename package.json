@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon index.js",
-    "test": "echo \"No test specified\" "
+    "test": "echo \"No test specified\" ",
+    "start": "cd client/csletmelearn && npm && npm run build && cd ../.. && node index"
   },
   "author": "",
   "license": "ISC",
