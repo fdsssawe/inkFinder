@@ -25,7 +25,7 @@ app.use(express.static('./client/csletmelearn/dist'))
 app.use(express.json());
 app.use(cors({
     credentials : true,
-    origin : process.env.CLIENT_URL
+    origin : "http://localhost:5000"
 }))
 app.use(cookieParser())
 app.use('/api',router)
