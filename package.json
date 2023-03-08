@@ -23,5 +23,9 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.20",
     "uuid": "^9.0.0"
-  }
+  },
+  "assets" : [
+    "client/csletmelearn/dist/assets",
+    "client/csletmelearn/dist/vite.svg"
+  ]
 }

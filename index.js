@@ -22,7 +22,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 5000);
 console.log("++++++++++++++++" + app.get('port'));
-app.use(express.static('./client/csletmelearn/dist'));
+app.use(express.static('/client/csletmelearn/dist'));
 app.use(express.json());
 app.use(cors({
     credentials : true,
