@@ -27,7 +27,7 @@ console.log("++++++++++++++++" + app.get('port'));
 app.use(express.json());
 app.use(cors({
     credentials : true,
-    origin : "http://localhost:5000"
+    origin : "http://localhost:5173"
 }))
 app.use(cookieParser())
 app.use('/api',router)
