@@ -58,11 +58,6 @@ function App() {
           <Header/>
           <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 h-screen'>
           {isLoading ? [] : <UsersList users={users}/>}
-          <button 
-                onClick={()=>getUsers()}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
-                Get users
-          </button>
           </div>
         </div>
     </div>

@@ -20,6 +20,7 @@ mongo.connect(process.env.MONGO_URL,
 
 const app = express();
 
+app.use(express.static('./client/csletmelearn/dist'))
 app.use(express.json());
 app.use(cors({
     credentials : true,
@@ -29,11 +30,17 @@ app.use(cookieParser())
 app.use('/api',router)
 app.use(errorMiddleware);
 
+
 app.get('/',(req,res) => {
     res.send("<b>fdfd</b>");
 });
 
 app.post("/create", addPostValidation , OfferControllers.create)
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "csletmelearn", "dist",     
+    "index.html"));
+ });
 
 app.listen(4444, (err) => {
     if (err){
