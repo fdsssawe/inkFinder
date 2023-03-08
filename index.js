@@ -6,7 +6,7 @@ import * as OfferControllers from './controllers/OfferController.js'
 import dotenv from "dotenv"
 import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
-import { errorMiddleware } from './middlewares/errorMiddleware.js';
+import { errorMiddleware } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
 
@@ -22,7 +22,7 @@ const app = express();
 
 app.set('port', process.env.PORT || 5000);
 console.log("++++++++++++++++" + app.get('port'));
-app.use(express.static('./client/csletmelearn/dist'))
+app.use(express.static('./client/csletmelearn/dist/assets'))
 app.use(express.json());
 app.use(cors({
     credentials : true,
@@ -40,7 +40,7 @@ app.get('/',(req,res) => {
 app.post("/create", addPostValidation , OfferControllers.create)
 
 app.get("*", (req, res) => {
-    res.sendFile(path("./client/csletmelearn/dist/index.html"));
+    res.sendFile(path.resolve("/client/csletmelearn/dist/index.html"));
  });
 
 app.listen(process.env.PORT, (err) => {
