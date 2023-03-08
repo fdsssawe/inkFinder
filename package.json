@@ -7,7 +7,7 @@
   "scripts": {
     "start:dev": "nodemon index.js",
     "test": "echo \"No test specified\" ",
-    "start": "cd client/csletmelearn && npm install && npm run build && cd ../.. && npm run start:dev"
+    "start": "cd client/csletmelearn && npm install && npm run build && cd ../.. && node index.js"
   },
   "author": "",
   "license": "ISC",
