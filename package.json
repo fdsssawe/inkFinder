@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node main.js",
+    "start": "node index.js",
     "start:dev": "nodemon index.js",
     "test": "echo \"No test specified\" ",
     "build": "cd client/csletmelearn && npm install && npm run build"
