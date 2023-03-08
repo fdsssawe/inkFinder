@@ -20,6 +20,7 @@ mongo.connect(process.env.MONGO_URL,
 
 const app = express();
 
+app.set('port', process.env.PORT || 5000);
 app.use(express.static('./client/csletmelearn/dist'))
 app.use(express.json());
 app.use(cors({
@@ -42,7 +43,7 @@ app.get("*", (req, res) => {
     "index.html"));
  });
 
-app.listen(4444, (err) => {
+app.listen(5000, (err) => {
     if (err){
         return console.log(err);
     }
