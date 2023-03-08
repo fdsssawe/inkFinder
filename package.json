@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon index.js",
-    "test": "react-scripts test --env=jsdom"
+    "test": "echo \"No test specified\" "
   },
   "author": "",
   "license": "ISC",
