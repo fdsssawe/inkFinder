@@ -21,6 +21,7 @@ mongo.connect(process.env.MONGO_URL,
 const app = express();
 
 app.set('port', process.env.PORT || 5000);
+console.log("++++++++++++++++" + app.get('port'));
 app.use(express.static('./client/csletmelearn/dist'))
 app.use(express.json());
 app.use(cors({
@@ -39,11 +40,10 @@ app.get('/',(req,res) => {
 app.post("/create", addPostValidation , OfferControllers.create)
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "csletmelearn", "dist",     
-    "index.html"));
+    res.sendFile(path("./client/csletmelearn/dist/index.html"));
  });
 
-app.listen(5000, (err) => {
+app.listen(process.env.PORT, (err) => {
     if (err){
         return console.log(err);
     }
