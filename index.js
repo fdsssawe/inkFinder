@@ -21,13 +21,10 @@ mongo.connect(process.env.MONGO_URL,
 
 const app = express();
 
-app.set('port', process.env.PORT || 5000);
-console.log("++++++++++++++++" + app.get('port'));
-
 app.use(express.json());
 app.use(cors({
     credentials : true,
-    origin : "*"
+    origin : [ "http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
 }))
 app.use(cookieParser())
 app.use('/api',router)
