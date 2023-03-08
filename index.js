@@ -27,7 +27,7 @@ console.log("++++++++++++++++" + app.get('port'));
 app.use(express.json());
 app.use(cors({
     credentials : true,
-    origin : [ "http://localhost:5000" , "https://inkfinder.azurewebsites.net/" , "http://localhost:5173" ]
+    origin : "*"
 }))
 app.use(cookieParser())
 app.use('/api',router)
