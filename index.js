@@ -36,7 +36,8 @@ app.use(express.static('./client/csletmelearn/dist/'));
 
 
 app.get("/*", (req, res) => {
-    res.sendFile('index.html' , {root: __dirname + '/client/csletmelearn/dist/'});
+    res.sendFile(path.resolve(__dirname, "client", "csletmelearn" , "dist",     
+    "index.html"));
  });
 
 app.listen(process.env.PORT, (err) => {
