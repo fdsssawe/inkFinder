@@ -15,10 +15,10 @@ const LoginForm = () => {
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
             <div className="lg:w-3/6 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
             <h1 className="title-font font-medium text-3xl text-white">
-                Letmelearn Project
+                InkFinder Project
             </h1>
             <p className="leading-relaxed mt-4">
-                Create account to be able to answer to offers and learn something new
+                Create account to be able to share designs
             </p>
             </div>
             <div className="lg:w-3/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">

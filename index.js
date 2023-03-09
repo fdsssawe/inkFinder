@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
 import { errorMiddleware } from './middlewares/errorMiddleware.js'
 import bodyParser from 'body-parser';
-import path from 'path';
 
 dotenv.config()
 
@@ -25,7 +24,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
     credentials : true,
-    origin : [ "http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
+    origin : [ "https://inkfinder2.azurewebsites.net" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
 }))
 app.use(cookieParser())
 app.use('/api',router)
@@ -37,7 +36,7 @@ app.use(express.static('./client/csletmelearn/dist/'));
 
 
 app.get("/*", (req, res) => {
-    res.sendFile("./client/csletmelearn/dist/index.html");
+    res.sendFile("/home/site/wwwroot/client/csletmelearn/dist/index.html");
  });
 
 app.listen(process.env.PORT, (err) => {

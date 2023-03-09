@@ -1,6 +1,9 @@
 import axios from "axios"
+import * as dotenv from "dotenv"
 
-export const API_URL = "http://localhost:5000/api"
+dotenv.config()
+
+export const API_URL = `http://localhost:${process.env.PORT}/api`
 
 const api = axios.create({
     withCredentials: true,
