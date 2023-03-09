@@ -3,7 +3,7 @@ import axios from "axios"
 
 /*dotenv.config()*/
 
-export const API_URL = `http://localhost:${process.env.PORT}}/api`
+export const API_URL = `https://inkfinder2.azurewebsites.net/api`
 
 const api = axios.create({
     withCredentials: true,

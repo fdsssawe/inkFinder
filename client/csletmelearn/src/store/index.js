@@ -28,7 +28,6 @@ export const registration = createAsyncThunk('auth/registration', async ({ email
   try{
     const response = await AuthService.registration(email, password);
     console.log(response)
-    console.log(process.env.PORT)
     localStorage.setItem('token', response.data.accessToken);
     setAuth(true)
     setUser(response.data.user)
