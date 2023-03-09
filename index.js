@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
 import { errorMiddleware } from './middlewares/errorMiddleware.js'
 import bodyParser from 'body-parser';
+import path from 'path';
 
 dotenv.config()
 
