@@ -5,10 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "cd client/csletmelearn && npm install && npm run build && cd ../.. node index.js",
+    "start:node": "node index.js",
     "start:dev": "nodemon index.js",
-    "test": "echo \"No test specified\" ",
-    "build": "cd client/csletmelearn && npm install && npm run build"
+    "test": "echo \"No test specified\" "
   },
   "author": "",
   "license": "ISC",
