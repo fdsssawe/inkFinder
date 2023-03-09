@@ -4,10 +4,10 @@ import { v4 } from "uuid"
 import mailService from "./MailService.js"
 import tokenService from "./TokenService.js"
 import UserDto from "../dtos/userDTO.js"
-import * as dotenv from "dotenv"
+/*import * as dotenv from "dotenv"*/
 import { ApiError } from "../exceptions/apiError.js"
 
-dotenv.config()
+/*dotenv.config()*/
 
 
 
