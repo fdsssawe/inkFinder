@@ -19,3 +19,9 @@ Open client folder `cd client` and then vite project directory `cd csletmelearn`
 * CLIENT_URL = full link for your client
 ### Scripts availible
 build - to make a build of frontend from root directory
+### Progress of project development
+- [x] Project set up
+- [x] Auth system implementation
+- [x] Project deployment using Azure
+- [ ] Providing store for design uploading
+- [ ] Unique algorithm implementation
