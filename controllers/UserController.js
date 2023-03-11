@@ -1,10 +1,10 @@
 import userService from "../services/UserService.js"
-/*import * as dotenv from "dotenv"*/
+import * as dotenv from "dotenv"
 import { validationResult } from "express-validator"
 import { ApiError } from "../exceptions/apiError.js"
 import User from "../model/User.js"
 
-/*dotenv.config()*/
+dotenv.config()
 
 class UserController {
   async registration(req,res,next){

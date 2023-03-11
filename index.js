@@ -3,13 +3,13 @@ import cors from 'cors'
 import  mongo from 'mongoose';
 import { addPostValidation } from './validations/OffersValidator.js';
 import * as OfferControllers from './controllers/OfferController.js'
-/*import dotenv from "dotenv"*/
+import dotenv from "dotenv"
 import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
 import { errorMiddleware } from './middlewares/errorMiddleware.js'
 import bodyParser from 'body-parser';
 
-/*dotenv.config()*/
+dotenv.config()
 
 mongo.connect(process.env.MONGO_URL,
     {

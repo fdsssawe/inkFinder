@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
-import LoginForm from './components/LoginForm'
 import { useDispatch } from 'react-redux'
 import { checkAuth } from './store'
 import { useSelector } from 'react-redux'
 import UserService from './services/UserService'
 import UsersList from './components/UsersList'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './components/AppRouter'
 
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
   const isLoading = useSelector(state => state.prodAuth.isLoading)
 
   useEffect(()=>{
-    getUsers()
     if(localStorage.getItem('token')){
       dispatch(checkAuth())
+      getUsers()
     }
   },[])
 
@@ -27,7 +28,6 @@ function App() {
       setUsers(response.data)
     }
     catch(e){
-       console.log(e)
     }
   }
 
@@ -37,10 +37,10 @@ function App() {
 
   if(!isAuth){
     return(
-      <div>
+      <BrowserRouter>
       <Header/>
-      <LoginForm/>
-      </div>
+      <AppRouter/>
+      </BrowserRouter>
     )
   }
 

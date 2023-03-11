@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
 
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
 
 
     return (
@@ -15,12 +16,12 @@ const Header = () => {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span class="ml-3 text-xl">InkFnder</span>
+            <span class="ml-3 text-xl" onClick={()=>navigate("")}>InkFnder</span>
             </a>
             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
             <a class="mr-5 hover:text-white">Offers</a>
             <a class="mr-5 hover:text-white">Verification</a>
-            <a class="mr-5 hover:text-white">About us</a>
+            <a class="mr-5 hover:text-white" onClick={()=>navigate("/about")}>About us</a>
             <a class="mr-5 hover:text-white">Account</a>
             </nav>
             <button 
