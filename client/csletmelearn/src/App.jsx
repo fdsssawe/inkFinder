@@ -54,12 +54,10 @@ function App() {
 
   return (
     <div className="App">
-        <div>
-          <Header/>
-          <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 h-screen'>
-          {isLoading ? [] : <UsersList users={users}/>}
-          </div>
-        </div>
+      <BrowserRouter>
+      <Header/>
+      <AppRouter/>
+      </BrowserRouter>
     </div>
   )
 }

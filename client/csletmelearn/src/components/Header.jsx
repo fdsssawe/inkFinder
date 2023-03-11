@@ -2,11 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const isAuth = useSelector(state => state.prodAuth.isAuth)
 
 
     return (
@@ -23,9 +25,15 @@ const Header = () => {
             <a class="mr-5 hover:text-white">Verification</a>
             <a class="mr-5 hover:text-white" onClick={()=>navigate("/about")}>About us</a>
             <a class="mr-5 hover:text-white">Account</a>
+            {isAuth ? <a class="mr-5 hover:text-white" onClick={()=>navigate("/users")}>User List</a> : <div></div>}
             </nav>
             <button 
-            onClick={()=>dispatch(logout())}
+            onClick={()=>{
+                if(isAuth){
+                    dispatch(logout())
+                    navigate("/")
+                }
+            }}
             class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
                 Log out
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">

@@ -1,6 +1,9 @@
 import React from 'react';
 import {Route , Routes} from 'react-router-dom'
 import { pageRoutes } from '../router/router';
+import { useState , useEffect,  } from 'react';
+import UserService from '../services/UserService';
+
 
 const AppRouter = () => {
     return (
