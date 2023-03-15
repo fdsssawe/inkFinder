@@ -2,6 +2,8 @@
 ### Project for 'Web Technology' course in Lviv National University of Ivan Franko 
 The main idea of the project is providing interesting designes for new tattoos and sharing your sketches
 ## Hot to run a project on localhost 
+### Dependencies recovery
+Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
 ### To start server
 Start with `npm run start:dev` or `npm run dev`
 ### To start client
@@ -23,5 +25,7 @@ build - to make a build of frontend from root directory
 - [x] Project set up
 - [x] Auth system implementation
 - [x] Project deployment using Azure
+- [x] 'About' page
 - [ ] Providing store for design uploading
 - [ ] Unique algorithm implementation
+- [ ] Dall-e api implementation

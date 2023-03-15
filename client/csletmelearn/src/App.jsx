@@ -7,13 +7,13 @@ import UserService from './services/UserService'
 import UsersList from './components/UsersList'
 import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './components/AppRouter'
+import Footer from './components/Footer'
 
 
 function App() {
   const [users, setUsers] = useState([])
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.prodAuth.isAuth)
-  const isLoading = useSelector(state => state.prodAuth.isLoading)
 
   useEffect(()=>{
     if(localStorage.getItem('token')){
@@ -40,6 +40,7 @@ function App() {
       <BrowserRouter>
       <Header/>
       <AppRouter/>
+      <Footer></Footer>
       </BrowserRouter>
     )
   }

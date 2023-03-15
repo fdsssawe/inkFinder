@@ -7,7 +7,7 @@ const AboutUs = () => {
 <section class="text-gray-400 bg-gray-900 body-font h-screen">
   <div class="container px-5 py-24 mx-auto bg-gray-900">
     <div class="text-center mb-20">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">InkFinder Project Idea</h1>
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">InkFinder Project</h1>
       <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400 text-opacity-80">Find your ink-spiration with InkFinder</p>
       <div class="flex mt-6 justify-center">
         <div class="w-16 h-1 rounded-full bg-green-500 inline-flex"></div>
@@ -22,7 +22,7 @@ const AboutUs = () => {
         </div>
         <div class="flex-grow">
           <h2 class="text-white text-lg title-font font-medium mb-3">Freedom</h2>
-          <p class="leading-relaxed text-base">Unlike othe platforms with designs , we are not goint to provide any sort of limits for number of downloads per day or any other way of limitation.</p>
+          <p class="leading-relaxed text-base">Unlike other platforms with designs , we are not goint to provide any sort of limits for number of downloads per day or any other way of limitation.</p>
           <a class="mt-3 text-green-400 inline-flex items-center" onClick={()=>navigate("/")}>Try it out
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>

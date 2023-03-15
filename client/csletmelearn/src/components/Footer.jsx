@@ -1,57 +1,35 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { logout } from '../store';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-const Header = () => {
-
-    const dispatch = useDispatch()
+const Footer = () => {
     const navigate = useNavigate()
-    const isAuth = useSelector(state => state.prodAuth.isAuth)
-
-
     return (
-        <header class="text-gray-400 bg-gray-900 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")} class="cursor-pointer">
+<footer class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+    <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")}>
                 <circle cx="50" cy="50" r="50" fill="#22C55E"/>
                 <path d="M42.423 65.0525L42.423 69.6688L24.0798 75.5734L30.5559 56.0246L32.999 56.2651C36.206 56.5807 39.401 55.7425 42.0165 53.916L44.2566 55.6224L45.6195 57.9775L44.3428 59.5711C43.0998 61.1227 42.423 63.055 42.423 65.0525Z" stroke="white" stroke-width="2"/>
                 <path d="M79.4625 20.9297C80.7412 20.0222 82.1871 19.4627 83.6796 19.2906C83.5295 21.1301 82.8032 22.8726 81.6036 24.2067C77.9093 28.3152 70.9019 36.0474 65.5557 41.5835C61.7769 45.4965 56.8802 49.8872 52.9147 53.3097C50.9347 55.0185 49.1921 56.4816 47.9448 57.5172C47.4016 57.9681 46.9524 58.338 46.6187 58.6116L41.5576 52.8157L50.129 44.1822L60.3077 35.3358L70.953 26.9688L79.4625 20.9297Z" fill="white" stroke="white" stroke-width="2"/>
                 <path d="M24.0079 75.6704L34.0811 65.7258" stroke="white" stroke-width="2"/>
                 <path d="M37.0316 64.4509C37.0316 65.4685 36.2397 66.2508 35.3146 66.2508C34.3895 66.2508 33.5976 65.4685 33.5976 64.4509C33.5976 63.4333 34.3895 62.651 35.3146 62.651C36.2397 62.651 37.0316 63.4333 37.0316 64.4509Z" stroke="white" stroke-width="1.5"/>
                 <path d="M20.0053 74.3439C20.8192 73.1746 22.4923 73.0256 23.5 74.0327L23.5769 74.1095C24.1753 74.7076 25.0464 74.9428 25.8646 74.7272L29.102 73.8738C29.2865 73.8252 29.4772 73.8046 29.6678 73.8126L33.1109 73.9583C34.4635 74.0155 34.7481 75.8953 33.4731 76.3504V76.3504L30.611 77.5762C30.535 77.6088 30.4549 77.6305 30.3729 77.6408V77.6408C29.4758 77.7534 29.3055 78.9804 30.138 79.333L30.3417 79.4192C31.2651 79.8103 31.0224 81.1812 30.0209 81.2314L26.1347 81.4263C25.8231 81.4419 25.5206 81.5367 25.2558 81.7017L24.0869 82.4299C22.5924 83.361 20.6633 83.1974 19.347 82.028L18.7118 81.4637C18.3937 81.1812 17.9832 81.0251 17.5578 81.0251H14.1562C13.0153 81.0251 12.6974 79.4592 13.748 79.0143L14.1851 78.8291C14.873 78.5378 14.873 77.5628 14.1851 77.2714L13.3785 76.9298C12.6235 76.61 12.9144 75.4777 13.7301 75.5616V75.5616C13.8403 75.5729 13.9517 75.5584 14.0553 75.5193L15.457 74.9903C16.0266 74.7754 16.6629 74.8297 17.1879 75.138V75.138C18.095 75.6708 19.2595 75.4155 19.8605 74.552L20.0053 74.3439Z" fill="white"/>
-            </svg>
-
-            <span class="ml-3 text-xl cursor-pointer" onClick={()=>navigate("")}>InkFinder</span>
-            </a>
-            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center ">
-            <a class="mr-5 hover:text-white cursor-pointer">Offers</a>
-            <a class="mr-5 hover:text-white cursor-pointer ">Verification</a>
-            <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
-            <a class="mr-5 hover:text-white cursor-pointer ">Account</a>
-
-            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/users")}>User List</a> : <div></div>}
-            </nav>
-            <a class="mr-5 hover:text-white cursor-pointer" href="https://github.com/fdsssawe">Zhovanyk Olexander</a>
-            <button 
-            onClick={()=>{
-                if(isAuth){
-                    dispatch(logout())
-                    navigate("/")
-                }
-            }}
-            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
-                Log out
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-            </button>
-            
-        </div>
-        </header>
+    </svg>
+      <span class="ml-3 text-xl">InkFinder</span>
+    </a>
+    <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">© 2023 InkFinder —
+      <a href="https://twitter.com/knyttneve" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">Zhovanyk Olexander</a>
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="ml-3 text-gray-400">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>location.href = "https://github.com/fdsssawe/inkfinder"} class="cursor-pointer" >
+        <path d="M12 0C5.374 0 0 5.373 0 12C0 17.302 3.438 21.8 8.207 23.387C8.806 23.498 9 23.126 9 22.81V20.576C5.662 21.302 4.967 19.16 4.967 19.16C4.421 17.773 3.634 17.404 3.634 17.404C2.545 16.659 3.717 16.675 3.717 16.675C4.922 16.759 5.556 17.912 5.556 17.912C6.626 19.746 8.363 19.216 9.048 18.909C9.155 18.134 9.466 17.604 9.81 17.305C7.145 17 4.343 15.971 4.343 11.374C4.343 10.063 4.812 8.993 5.579 8.153C5.455 7.85 5.044 6.629 5.696 4.977C5.696 4.977 6.704 4.655 8.997 6.207C9.954 5.941 10.98 5.808 12 5.803C13.02 5.808 14.047 5.941 15.006 6.207C17.297 4.655 18.303 4.977 18.303 4.977C18.956 6.63 18.545 7.851 18.421 8.153C19.191 8.993 19.656 10.064 19.656 11.374C19.656 15.983 16.849 16.998 14.177 17.295C14.607 17.667 15 18.397 15 19.517V22.81C15 23.129 15.192 23.504 15.801 23.386C20.566 21.797 24 17.3 24 12C24 5.373 18.627 0 12 0Z" fill="#9CA3AF"/>
+      </svg>
+      </a>
+    </span>
+  </div>
+</footer>
     );
 };
 
-export default Header;
+export default Footer;
