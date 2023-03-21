@@ -1,0 +1,16 @@
+.mediapic{
+    background-color: #ea4c89;
+}
+
+.mediapic::selection {
+    background-color:#ea4c89;
+    color:#fff;
+    color:rgba(255,255,255,0.85)
+   }
+
+
+::selection {
+    background-color:#4c7eea9c;
+    color:#fff;
+    color:rgba(255,255,255,0.85)
+}

@@ -15,39 +15,50 @@ const Header = () => {
         <header class="text-gray-400 bg-gray-900 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")} class="cursor-pointer">
-                <circle cx="50" cy="50" r="50" fill="#22C55E"/>
-                <path d="M42.423 65.0525L42.423 69.6688L24.0798 75.5734L30.5559 56.0246L32.999 56.2651C36.206 56.5807 39.401 55.7425 42.0165 53.916L44.2566 55.6224L45.6195 57.9775L44.3428 59.5711C43.0998 61.1227 42.423 63.055 42.423 65.0525Z" stroke="white" stroke-width="2"/>
-                <path d="M79.4625 20.9297C80.7412 20.0222 82.1871 19.4627 83.6796 19.2906C83.5295 21.1301 82.8032 22.8726 81.6036 24.2067C77.9093 28.3152 70.9019 36.0474 65.5557 41.5835C61.7769 45.4965 56.8802 49.8872 52.9147 53.3097C50.9347 55.0185 49.1921 56.4816 47.9448 57.5172C47.4016 57.9681 46.9524 58.338 46.6187 58.6116L41.5576 52.8157L50.129 44.1822L60.3077 35.3358L70.953 26.9688L79.4625 20.9297Z" fill="white" stroke="white" stroke-width="2"/>
-                <path d="M24.0079 75.6704L34.0811 65.7258" stroke="white" stroke-width="2"/>
-                <path d="M37.0316 64.4509C37.0316 65.4685 36.2397 66.2508 35.3146 66.2508C34.3895 66.2508 33.5976 65.4685 33.5976 64.4509C33.5976 63.4333 34.3895 62.651 35.3146 62.651C36.2397 62.651 37.0316 63.4333 37.0316 64.4509Z" stroke="white" stroke-width="1.5"/>
-                <path d="M20.0053 74.3439C20.8192 73.1746 22.4923 73.0256 23.5 74.0327L23.5769 74.1095C24.1753 74.7076 25.0464 74.9428 25.8646 74.7272L29.102 73.8738C29.2865 73.8252 29.4772 73.8046 29.6678 73.8126L33.1109 73.9583C34.4635 74.0155 34.7481 75.8953 33.4731 76.3504V76.3504L30.611 77.5762C30.535 77.6088 30.4549 77.6305 30.3729 77.6408V77.6408C29.4758 77.7534 29.3055 78.9804 30.138 79.333L30.3417 79.4192C31.2651 79.8103 31.0224 81.1812 30.0209 81.2314L26.1347 81.4263C25.8231 81.4419 25.5206 81.5367 25.2558 81.7017L24.0869 82.4299C22.5924 83.361 20.6633 83.1974 19.347 82.028L18.7118 81.4637C18.3937 81.1812 17.9832 81.0251 17.5578 81.0251H14.1562C13.0153 81.0251 12.6974 79.4592 13.748 79.0143L14.1851 78.8291C14.873 78.5378 14.873 77.5628 14.1851 77.2714L13.3785 76.9298C12.6235 76.61 12.9144 75.4777 13.7301 75.5616V75.5616C13.8403 75.5729 13.9517 75.5584 14.0553 75.5193L15.457 74.9903C16.0266 74.7754 16.6629 74.8297 17.1879 75.138V75.138C18.095 75.6708 19.2595 75.4155 19.8605 74.552L20.0053 74.3439Z" fill="white"/>
+            <svg class="cursor-pointer" onClick={()=>navigate("/")} width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="50" fill="#22C55E"/>
+            <path d="M46.6515 66.0644L47.8115 70.5326L31.5404 80.8569L32.8967 60.3081L35.3219 59.9269C38.5052 59.4267 41.3872 57.8125 43.4598 55.3873L46.0568 56.4762L47.9677 58.4133L47.1324 60.2765C46.3191 62.0907 46.1496 64.1311 46.6515 66.0644Z" stroke="white" stroke-width="2"/>
+            <path d="M71.4159 14.0503C72.4255 12.8506 73.6845 11.9457 75.0859 11.4041C75.4027 13.2224 75.1376 15.0914 74.3117 16.6842C71.7683 21.5891 66.9285 30.834 63.1449 37.5359C60.4706 42.2728 56.8343 47.753 53.856 52.0621C52.3689 54.2137 51.0498 56.0676 50.1027 57.3834C49.6902 57.9564 49.3484 58.4272 49.0941 58.7759L42.7391 54.4377L48.8661 43.9275L56.4955 32.8073L64.6968 22.0339L71.4159 14.0503Z" fill="white" stroke="white" stroke-width="2"/>
+            <path d="M31.4952 80.9689L38.7464 68.8123" stroke="white" stroke-width="2"/>
+            <path d="M41.2819 66.8369C41.5376 67.8218 40.9677 68.778 40.0722 69.0104C39.1768 69.2429 38.2138 68.6847 37.9581 67.6997C37.7024 66.7148 38.2723 65.7586 39.1677 65.5262C40.0631 65.2937 41.0262 65.8519 41.2819 66.8369Z" stroke="white" stroke-width="1.5"/>
+            <path d="M27.2877 80.6906C27.7816 79.3544 29.3637 78.7897 30.592 79.5113L30.6858 79.5664C31.4153 79.9949 32.3176 80.0037 33.0553 79.5894L35.9744 77.95C36.1407 77.8565 36.3202 77.7886 36.5067 77.7485L39.8759 77.0244C41.1995 76.7399 41.9473 78.4878 40.8275 79.2487L38.3653 81.1544C38.3 81.205 38.2278 81.2462 38.151 81.2767C37.311 81.6111 37.4545 82.8415 38.3489 82.9736L38.5678 83.0059C39.5598 83.1524 39.6693 84.5403 38.7125 84.8406L35 86.0057C34.7023 86.0991 34.4334 86.2669 34.2185 86.4931L33.2701 87.4917C32.0575 88.7684 30.1492 89.0948 28.5813 88.2937L27.8246 87.9071C27.4458 87.7135 27.0092 87.6657 26.5975 87.7725L23.3051 88.6272C22.2008 88.9139 21.4996 87.4781 22.4046 86.7835L22.7812 86.4945C23.3739 86.0396 23.1289 85.0959 22.3898 84.9867L21.5233 84.8587C20.7121 84.7389 20.7092 83.5698 21.5198 83.446C21.6293 83.4293 21.7334 83.3873 21.824 83.3234L23.0478 82.4592C23.5451 82.108 24.1746 82.0007 24.7602 82.1672C25.7721 82.455 26.835 81.9153 27.1998 80.9285L27.2877 80.6906Z" fill="white"/>
             </svg>
 
             <span class="ml-3 text-xl cursor-pointer" onClick={()=>navigate("")}>InkFinder</span>
             </a>
-            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center ">
+            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
             <a class="mr-5 hover:text-white cursor-pointer">Offers</a>
             <a class="mr-5 hover:text-white cursor-pointer ">Verification</a>
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
             <a class="mr-5 hover:text-white cursor-pointer ">Account</a>
-
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/users")}>User List</a> : <div></div>}
             </nav>
-            <a class="mr-5 hover:text-white cursor-pointer" href="https://github.com/fdsssawe">Zhovanyk Olexander</a>
-            <button 
-            onClick={()=>{
-                if(isAuth){
-                    dispatch(logout())
-                    navigate("/")
-                }
-            }}
-            class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
-                Log out
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-            </button>
+            {isAuth ?             
+
+                <button 
+                onClick={()=>{  
+                    if(isAuth){ 
+                        dispatch(logout())
+                        navigate("/")
+                    }
+                }}
+                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+                    Log out
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button> 
+            :
+                <button 
+                onClick={()=>{  
+                    navigate("/signup")
+                }}
+                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+                    Sign Up
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>}
             
         </div>
         </header>

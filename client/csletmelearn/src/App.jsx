@@ -10,6 +10,7 @@ import AppRouter from './components/AppRouter'
 import Footer from './components/Footer'
 
 
+
 function App() {
   const [users, setUsers] = useState([])
   const dispatch = useDispatch();
@@ -35,15 +36,7 @@ function App() {
     return <div>Loading ...</div>
   }*/
 
-  if(!isAuth){
-    return(
-      <BrowserRouter>
-      <Header/>
-      <AppRouter/>
-      <Footer></Footer>
-      </BrowserRouter>
-    )
-  }
+
 
   /*<h1>{isAuth ? "User logined in" : "dsdsd"}</h1>*/
 
@@ -54,10 +47,11 @@ function App() {
   */
 
   return (
-    <div className="App">
+    <div className="App" class="dark:[color-scheme:dark]">
       <BrowserRouter>
       <Header/>
       <AppRouter/>
+      <Footer/>
       </BrowserRouter>
     </div>
   )
