@@ -1,7 +1,35 @@
 # InkFinder
 ### Project for 'Web Technology' course in Lviv National University of Ivan Franko 
-The main idea of the project is providing interesting designes for new tattoos and sharing your sketches
-## Hot to run a project on localhost 
+The main idea of the project is providing interesting designes for new tattoos and sharing your sketches.<br/>
+by Zhovanuk Oleksandr
+
+Contacts :<br/>
+<a href="mailto:zhovanukolexander@gmail.com">Email</a><br/>
+<a href="https://t.me/sashazhov" target="_blank">Telegram</a>
+
+## Stack
+
+Tech stack
+
+Node.js 18 - environment for working with serverside.<br/>
+Express.js - web-framework for creating api and web app in general.<br/>
+React.js - for UI/UX.<br/>
+MongoDB - NoSQL DataBase for saving tokens , users , designes , etc.<br/>
+Redux/Redux toolkit - state manager to hande token check and other states.<br/>
+Mongoose - ODM for comfortable work with MongoDB schemas and other data.<br/>
+Tailwind - CSS framework for comfortable work with styles.<br/>
+bcrypt - for encrypting passwords , liml , etc.<br/>
+jsonwebtoken - for creating tokens in TokenService.<br/>
+nodemailer - for sendint verification mails.<br/>
+
+Resources
+
+Azure Web App
+Azure Cosmos DB
+
+<a href="https://inkfinder2.azurewebsites.net/" target="_blank">Deployed project</a>
+
+## How to run a project on localhost 
 ### Dependencies recovery
 Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
 ### To start server
