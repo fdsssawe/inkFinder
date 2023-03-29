@@ -3,6 +3,7 @@ import LoginForm from "../components/LoginForm"
 import UsersList from "../components/UsersList"
 import AboutUs from "../pages/AboutUs"
 import Home from "../pages/Home/Home"
+import DesignGenerator from "../pages/DesignGenerator"
 
 
 export const pageRoutes = [
@@ -11,4 +12,5 @@ export const pageRoutes = [
     {path : '/login' , element : LoginForm, exact : true},
     {path : '/about' , element : AboutUs, exact : true},
     {path : '/users' , element : UsersList, exact : true},
+    {path : '/dalle' , element : DesignGenerator, exact : true},
 ]

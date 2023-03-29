@@ -7,7 +7,7 @@ Contacts :<br/>
 <a href="mailto:zhovanukolexander@gmail.com">Email</a><br/>
 <a href="https://t.me/sashazhov" target="_blank">Telegram</a>
 
-## Stack
+# Stack
 
 Tech stack
 
@@ -20,7 +20,7 @@ Mongoose - ODM for comfortable work with MongoDB schemas and other data.<br/>
 Tailwind - CSS framework for comfortable work with styles.<br/>
 bcrypt - for encrypting passwords , liml , etc.<br/>
 jsonwebtoken - for creating tokens in TokenService.<br/>
-nodemailer - for sendint verification mails.<br/>
+nodemailer - for sending verification mails.<br/>
 
 Resources
 
@@ -29,7 +29,7 @@ Azure Cosmos DB
 
 <a href="https://inkfinder2.azurewebsites.net/" target="_blank">Deployed project</a>
 
-## How to run a project on localhost 
+# How to run a project on localhost 
 ### Dependencies recovery
 Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
 ### To start server
@@ -41,19 +41,66 @@ Open client folder `cd client` and then vite project directory `cd csletmelearn`
 * MONGO_URL : url for your mongoDB cluster
 * JWT_ACCESS_SECRET : secret word for your access token
 * JWT_REFRESH_SECRET : secret word for your refresh token
-* SMTP_HOST= host for node mailer (for example its "smtp.gmail.com" if using gmail)
-* SMTP_PORT = port for node mailre (find it in imap setting in your account)
-* SMTP_USER = email that will send activation links
-* SMTP_PASSWORD = password for this email (if using gmail better turn on 2FA and use app password)
-* API_URL = full link for your server (for example http://localhost:5000)
-* CLIENT_URL = full link for your client
+* SMTP_HOST : host for node mailer (for example its "smtp.gmail.com" if using gmail)
+* SMTP_PORT : port for node mailre (find it in imap setting in your account)
+* SMTP_USER : email that will send activation links
+* SMTP_PASSWORD : password for this email (if using gmail better turn on 2FA and use app password)
+* API_URL : full link for your server (for example http://localhost:5000)
+* CLIENT_URL : full link for your client
+* OPENAI_API_KEY : you api key for dalle(openai). You can get it in official openai webpage in api->api key->new api key. Copy it (you will not be able to see it after you close the window) , and past it to your .env file.
 ### Scripts availible
 build - to make a build of frontend from root directory
-### Progress of project development
-- [x] Project set up
-- [x] Auth system implementation
-- [x] Project deployment using Azure
-- [x] 'About' page
-- [ ] Providing store for design uploading
-- [ ] Unique algorithm implementation
-- [ ] Dall-e api implementation
+# Project decomposition
+1.  ### Authorization
+    
+    - [x] Backend auth service setup
+    - Backend token service
+      - [x] Refresh token generator
+      - [x] Access token generator
+    - [x] Backend mail service setup
+    - [x] Registration , login , logout functionality in auth service
+    - [x] Activation functionality in auth service and mail services
+    - [x] Auth routes on server
+    - [x] Frontend auth handle
+    - [ ] Unactivated account handle
+    - [ ] Unactivated account limitation
+    - [ ] OAuth
+
+2.  ### API implementation
+    
+    - [x] Backend OpenAI service setup
+    - [x] Dall-e functionality usage
+    - [x] New route for Dall-e features
+    - [x] Frontend page for design generator using Dell-e
+    - [x] Cloudinary 
+    - [ ] New api implementation
+    - [ ] Support chat with chatGPT(???)
+
+3. ### Main functionality
+    
+    - [ ] Storage for images
+    - [x] Design generation
+    - [ ] Cloudinary usage
+    - [ ] Upload page/functionality
+    - [ ] Favorite post page/functionality
+    - [ ] Interests form after registration
+    - [ ] Recomendation algorithm
+    - [ ] Tags
+
+4. ### Database
+    
+    - [x] User schema
+    - [x] MongoDB Cluster for development
+    - [x] CosmosDB
+    - [ ] Cloudinary SDK implementation
+    - [ ] New schema for images
+    
+5. ### Tests
+    
+    - [x] Jest
+    - [ ] Auth service tests
+    - [ ] Database connection tests
+    - [ ] Database request tests
+    - [ ] OpenAI API tests
+    - [ ] Posts tests
+

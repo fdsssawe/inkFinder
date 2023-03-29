@@ -27,13 +27,13 @@ const Header = () => {
             <span class="ml-3 text-xl cursor-pointer" onClick={()=>navigate("")}>InkFinder</span>
             </a>
             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-white cursor-pointer">Offers</a>
-            <a class="mr-5 hover:text-white cursor-pointer ">Verification</a>
+            <a class="mr-5 hover:text-white cursor-pointer">Collection</a>
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
             <a class="mr-5 hover:text-white cursor-pointer ">Account</a>
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/users")}>User List</a> : <div></div>}
+            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/dalle")}>Design Generator</a> : <div></div>}
             </nav>
-            {isAuth ?             
+            {isAuth ?               
 
                 <button 
                 onClick={()=>{  
