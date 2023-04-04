@@ -1,23 +1,58 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import UserService from '../services/UserService';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 import FormField from '../components/FormField';
 import preview from "../media/preview.svg"
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import api from "../http/index.js"
+
 
 const DesignGenerator = () => {
 
     const [form, setForm] = useState({
-        name: '',
+        author: '',
+        name: 'test post',
         prompt: '',
         photo: '',
       });
+    
+      const user = useSelector(state => state.prodAuth.user);
+    
+      useEffect(() => {
+        if (user) {
+          setForm(prevState => ({
+            ...prevState,
+            author: user.email,
+          }));
+        }
+      }, [user]);
+
 
     const [generatingImg , setGeneratingImg] = useState(false)
+    const [loading , setLoading] = useState(false)
 
-    const handleSubmit = () => {
-        
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        if(form.prompt && form.photo){
+            setLoading(true);
+            try{    
+                console.log("fdd")
+                const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form, {
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  })
+                // navigate()
+            }catch(e){
+                console.log(e)
+            }finally{
+                setLoading(false)
+            }
+        }
+        else {
+            alert("Please enter a prompt and generate an image")
+        }
     }
 
     const handleChange = (e) => {
@@ -52,48 +87,6 @@ const DesignGenerator = () => {
 
     return (
         <div>
-            {/* <form className="mt-16 max-w-3xl" onSubmit={handleSubmit}>
-                <FormField
-                labelName="Prompt"
-                type="text"
-                name="prompt"
-                placeholder="Example of the prompt : unicorn with a burger on its horn and fries in his mouth"
-                value={form.prompt}
-                handleChange = {handleChange}
-                />
-    
-            <div className="relative bg-gray-900 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-0.5 h-64 flex justify-center items-center">
-                    { form.photo ? (
-                    <img
-                        src={form.photo}
-                        alt={form.prompt}
-                        className="w-full h-full object-contain"
-                    />
-                    ) : (
-                    <img
-                        src={preview}
-                        alt="preview"
-                        className="w-9/12 h-9/12 object-contain opacity-70"
-                    />
-                    )}
-
-                    {generatingImg && (
-                    <div className="absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg">
-                        <Loader/>
-                    </div>
-                    )}
-            </div>
-            <div className="mt-5 flex gap-5">
-                <button
-                    type="button"
-                    onClick={generateImage}
-                    className=" text-white bg-green-500 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                >
-                    {generatingImg ? 'Generating...' : 'Generate'}
-                </button>
-            </div>
-
-            </form> */}
             <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
                 <div class="container pt-24 mx-auto lg:min-h-screen">
                     <div class="lg:w-4/5 mx-auto flex flex-wrap">
@@ -140,7 +133,6 @@ const DesignGenerator = () => {
                         value={form.prompt}
                         handleChange = {handleChange}
                         />
-                        </form>
                         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <div class="flex justify-center lg:justify-start">
                         <button
@@ -150,7 +142,14 @@ const DesignGenerator = () => {
                             >
                                 {generatingImg ? 'Generating...' : 'Generate'}
                         </button>
+                        <button 
+                            type="submit"
+                            className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded ml-5"
+                        >
+                            {loading ? 'Sharing...' : 'Share with the Community'}
+                        </button>
                         </div>
+                        </form>
                     </div>
                     </div>
                 </div>

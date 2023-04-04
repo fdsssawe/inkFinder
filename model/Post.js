@@ -5,14 +5,15 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
+    photo: {
         type: String,
         required: true,
     },
-    exchange: {
-        type: String,
+    author :{
+        type : String,
+        required: true,
     },
-    social:{
+    prompt :{
         type : String,
         required: true,
     }
@@ -20,4 +21,4 @@ const PostSchema = new mongoose.Schema({
     timestamps: true,
 })
 
-export default mongoose.model("Offer",PostSchema);
+export default mongoose.model("Post",PostSchema);

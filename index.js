@@ -19,20 +19,24 @@ mongo.connect(process.env.MONGO_URL,
     console.log("db ok");
 }).catch((err)=>console.log(err))
 
+mongo.set('strictQuery', true);
+
 const app = express();
 
-app.use(express.json());
+
 app.use(cors({
     credentials : true,
-    origin : [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
+    origin : [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173/dalle" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
 }))
-app.use(cookieParser())
-app.use('/api',router)
-app.use(errorMiddleware);
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
 
+app.use(cookieParser())
+app.use(errorMiddleware);
+app.use(express.json({ limit: '50mb' }));
+app.use('/api',router)
 app.use(express.static('./client/csletmelearn/dist/'));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
 
 
 app.get("/*", (req, res) => {
