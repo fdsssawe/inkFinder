@@ -72,7 +72,16 @@ const authSlice = createSlice({
       state.isAuth = true;
       state.user = action.payload;
     },
-    [registration.fulfilled]: (state, action) => {
+    [registration.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [login.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [logout.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [registration.fulfilled]: (state , action) => {
       state.isAuth = true;
       state.user = action.payload;
     },

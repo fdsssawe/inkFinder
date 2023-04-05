@@ -63,17 +63,19 @@ const DesignGenerator = () => {
         if (form.prompt) {
           try {
             setGeneratingImg(true);
-            const response = await fetch('https://inkfinder2.azurewebsites.net/api/dalle', {
-              method: 'POST',
+            const response = await api.post('https://inkfinder2.azurewebsites.net/api/dalle',{
+              prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
+            },
+             {
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({
-                prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
-              }),
+              // body: JSON.stringify({
+              //   prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
+              // }),
             });
     
-            const data = await response.json();
+            const data = await response.data;
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
             alert(err);

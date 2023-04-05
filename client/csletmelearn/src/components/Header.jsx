@@ -15,7 +15,7 @@ const Header = () => {
         <header class="text-gray-400 bg-gray-900 body-font">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg class="cursor-pointer" onClick={()=>navigate("/")} width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg class="cursor-pointer" onClick={()=>navigate("/")} width="45" height="45" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="50" fill="#22C55E"/>
             <path d="M46.6515 66.0644L47.8115 70.5326L31.5404 80.8569L32.8967 60.3081L35.3219 59.9269C38.5052 59.4267 41.3872 57.8125 43.4598 55.3873L46.0568 56.4762L47.9677 58.4133L47.1324 60.2765C46.3191 62.0907 46.1496 64.1311 46.6515 66.0644Z" stroke="white" stroke-width="2"/>
             <path d="M71.4159 14.0503C72.4255 12.8506 73.6845 11.9457 75.0859 11.4041C75.4027 13.2224 75.1376 15.0914 74.3117 16.6842C71.7683 21.5891 66.9285 30.834 63.1449 37.5359C60.4706 42.2728 56.8343 47.753 53.856 52.0621C52.3689 54.2137 51.0498 56.0676 50.1027 57.3834C49.6902 57.9564 49.3484 58.4272 49.0941 58.7759L42.7391 54.4377L48.8661 43.9275L56.4955 32.8073L64.6968 22.0339L71.4159 14.0503Z" stroke="white" stroke-width="2"/>
@@ -37,10 +37,9 @@ const Header = () => {
             <span class="ml-3 text-xl cursor-pointer" onClick={()=>navigate("")}>InkFinder</span>
             </a>
             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
-            <a class="mr-5 hover:text-white cursor-pointer">Collection</a>
+            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/catalog")}>Collection</a> : <div></div>}
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
             <a class="mr-5 hover:text-white cursor-pointer ">Account</a>
-            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/users")}>User List</a> : <div></div>}
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/dalle")}>Design Generator</a> : <div></div>}
             </nav>
             {isAuth ?               
