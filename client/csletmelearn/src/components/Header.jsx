@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import SignUpPopUp from './SignUpPopUp';
 
 const Header = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isAuth = useSelector(state => state.prodAuth.isAuth)
+    // const [isOpen , setIsOpen] = useState(false)
 
+    const [isOpen , setIsOpen] = useState(false)
 
     return (
         <header class="text-gray-400 bg-gray-900 body-font">
@@ -39,8 +42,12 @@ const Header = () => {
             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/catalog")}>Collection</a> : <div></div>}
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
-            <a class="mr-5 hover:text-white cursor-pointer ">Account</a>
+            <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/create")}>Create</a>
+            {/* <a class="mr-5 hover:text-white cursor-pointer ">Account</a> */}
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/dalle")}>Design Generator</a> : <div></div>}
+            {/* <button onClick={()=>setIsOpen(true)}>open</button>
+            <SignUpPopUp open={isOpen} close={()=>setIsOpen(false)}/> */}
+            <SignUpPopUp open = {isOpen} setActive = {setIsOpen}/>
             </nav>
             {isAuth ?               
 
@@ -58,16 +65,14 @@ const Header = () => {
                     </svg>
                 </button> 
             :
-                <button 
-                onClick={()=>{  
-                    navigate("/signup")
-                }}
+            <button 
+                onClick={()=>setIsOpen(true)}
                 class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
                     Sign Up
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg>
-                </button>}
+            </button>}
             
         </div>
         </header>

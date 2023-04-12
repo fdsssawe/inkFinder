@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import api from "../http/index.js"
 
-
-const DesignGenerator = () => {
+const Create = () => {
 
     const [form, setForm] = useState({
         author: '',
@@ -60,33 +59,8 @@ const DesignGenerator = () => {
         setForm({...form, [e.target.name]: e.target.value})
     }
 
-    const generateImage = async () => {
-        if (form.prompt) {
-          try {
-            setGeneratingImg(true);
-            const response = await api.post('https://inkfinder2.azurewebsites.net/api/dalle',{
-              prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
-            },
-             {
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              // body: JSON.stringify({
-              //   prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
-              // }),
-            });
-    
-            const data = await response.data;
-            setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
-          } catch (err) {
-            alert(err);
-          } finally {
-            setGeneratingImg(false);
-          }
-        } else {
-          alert('Please provide proper prompt');
-        }
-      };
+    const reader = new FileReader()
+
 
     return (
         <div>
@@ -115,41 +89,58 @@ const DesignGenerator = () => {
                         )}
                     </div>
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                        <h1 class="text-white text-3xl title-font font-medium mb-1">Dall-e 2 design generator</h1>
+                        <h1 class="text-white text-3xl title-font font-medium mb-1">Upload your tattoo design</h1>
                         <div class="flex mb-4">
                         </div>
-                        <p class="leading-relaxed">
-                            Use Dall-e 2 features to create uniqe tattoo design for yourself. We took care about prompt that will provide good quality and format , so you will get sketch that
-                            you can use as reference or even make a stencil with it. 
+                        {/* <p class="leading-relaxed">
+                            Enter the name of your post. It will be visible for othe users.
                         </p>
-                        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
+                        <FormField
+                        labelName="Name"
+                        type="name"
+                        name="prompt"
+                        placeholder="Example : heart-shaped crab"
+                        value={form.name}
+                        handleChange = {handleChange}
+                        /> */}
+                        <div class="flex mt-1 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <form className=" max-w-3xl" onSubmit={handleSubmit}>
-                        <h1 class="text-white text-xl title-font font-medium mb-1">Prompts</h1>
+                        <h1 class="text-white text-xl title-font font-medium mb-1">Tags</h1>
                         <p class="leading-relaxed">
-                            Use your imagination to describe tattoo you want  , and look what dall-e will draw for you!
+                            Add tags to the design , so it will be easier for users to find your post!
                         </p>
                         <FormField
                         labelName="Prompt"
                         type="text"
                         name="prompt"
-                        placeholder="Example of the prompt : unicorn with a burger on its horn and fries in his mouth"
+                        placeholder="Example : Blackwork , Japanese , Tribal , Watercolor "
                         value={form.prompt}
                         handleChange = {handleChange}
                         />
-                        <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
+                        <div class="flex mt-1 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <div class="flex justify-center lg:justify-start">
-                        <button
-                                type="button"
-                                onClick={generateImage}
-                                className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded"
-                            >
-                                {generatingImg ? 'Generating...' : 'Generate'}
-                        </button>
+                        <label className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded ml-5">
+                            Upload
+                        <input
+                        type="file"
+                        id="file"
+                        accept=".jpg, .jpeg, .png"
+                        onChange={(e) => {
+                            reader.onloadend = () => {
+                                const base64String = btoa(reader.result);
+                                setForm({...form , photo : `data:image/jpeg;base64,${base64String}`})
+                              };
+                              
+                            reader.readAsBinaryString(e.target.files[0]);
+                        }}
+                        required
+                        />
+                        </label>
                         <button 
                             type="submit"
                             className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded ml-5"
                         >
-                            {loading ? 'Sharing...' : 'Share with the Community'}
+                            {loading ? 'Sharing...' : 'Share'}
                         </button>
                         </div>
                         </form>
@@ -161,4 +152,4 @@ const DesignGenerator = () => {
     )
 };
 
-export default DesignGenerator;
+export default Create;

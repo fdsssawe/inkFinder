@@ -8,6 +8,7 @@ import UsersList from './components/UsersList'
 import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './components/AppRouter'
 import Footer from './components/Footer'
+import SignUpPopUp from './components/SignUpPopUp'
 
 
 
@@ -31,6 +32,7 @@ function App() {
     catch(e){
     }
   }
+
 
   /*if(isLoading){
     return <div>Loading ...</div>

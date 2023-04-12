@@ -8,6 +8,7 @@ export const authMiddleware = function (req, res , next){
             return next(ApiError.UnathorizedError())   
         }
 
+        
         const accessToken = authorizationHeader.split(' ')[1]
         if(!accessToken){
             return next(ApiError.UnathorizedError()) 

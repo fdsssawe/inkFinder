@@ -48,6 +48,9 @@ Open client folder `cd client` and then vite project directory `cd csletmelearn`
 * API_URL : full link for your server (for example http://localhost:5000)
 * CLIENT_URL : full link for your client
 * OPENAI_API_KEY : you api key for dalle(openai). You can get it in official openai webpage in api->api key->new api key. Copy it (you will not be able to see it after you close the window) , and past it to your .env file.
+* CLOUDINARY_API_KEY : key that you can find in cloudinary dashboard
+* CLOUDINARY_API_SECRET : secret string that you can find in cloudinary dashboard
+* CLOUDINARY_CLOUD_NAME : name of your cloudinary account
 ### Scripts availible
 build - to make a build of frontend from root directory
 # Project decomposition
@@ -73,29 +76,40 @@ build - to make a build of frontend from root directory
     - [x] New route for Dall-e features
     - [x] Frontend page for design generator using Dell-e
     - [x] Cloudinary 
+    - [x] FileReader API
     - [ ] New api implementation
     - [ ] Support chat with chatGPT(???)
 
 3. ### Main functionality
     
-    - [ ] Storage for images
+    - [x] Storage for images
     - [x] Design generation
-    - [ ] Cloudinary usage
-    - [ ] Upload page/functionality
+    - [x] Cloudinary usage
+    - [x] Upload page/functionality
     - [ ] Favorite post page/functionality
     - [ ] Interests form after registration
     - [ ] Recomendation algorithm
-    - [ ] Tags
+    - [x] Tags
+    - [ ] Account page
 
-4. ### Database
+4. ### Frontend
+    
+    - [x] Temporary design for pages
+    - [ ] Home page design
+    - [ ] Collection page design
+    - [ ] Account page design
+    - [ ] Upload and Generator pages design
+    - [ ] Parallax for home page
+
+5. ### Database
     
     - [x] User schema
     - [x] MongoDB Cluster for development
     - [x] CosmosDB
-    - [ ] Cloudinary SDK implementation
-    - [ ] New schema for images
+    - [x] Cloudinary SDK implementation
+    - [x] New schema for images 
     
-5. ### Tests
+6. ### Tests
     
     - [x] Jest
     - [ ] Auth service tests
