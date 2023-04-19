@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home"
 import DesignGenerator from "../pages/DesignGenerator"
 import Catalog from "../pages/Catalog"
 import Create from "../pages/Create"
+import Account from "../pages/Account"
 
 
 export const pageRoutes = [
@@ -17,4 +18,5 @@ export const pageRoutes = [
     {path : '/dalle' , element : DesignGenerator, exact : true},
     {path : '/catalog' , element : Catalog, exact : true},
     {path : '/create' , element : Create, exact : true},
+    {path : '/account' , element : Account, exact : true},
 ]

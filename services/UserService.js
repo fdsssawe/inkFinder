@@ -6,6 +6,7 @@ import tokenService from "./TokenService.js"
 import UserDto from "../dtos/userDTO.js"
 import * as dotenv from "dotenv"
 import { ApiError } from "../exceptions/apiError.js"
+import Post from "../model/Post.js"
 
 dotenv.config()
 
@@ -74,6 +75,11 @@ class UserService{
         await tokenService.saveToken(userDTO.id, tokens.refreshToken)
 
         return{...tokens, user : userDTO}
+    }
+
+    async getUsersPosts(user){
+        const posts = await Post.find({author : user})
+        return posts;
     }
 
     async getAllUsers() {

@@ -90,7 +90,7 @@ build - to make a build of frontend from root directory
     - [ ] Interests form after registration
     - [ ] Recomendation algorithm
     - [x] Tags
-    - [ ] Account page
+    - [x] Account page
 
 4. ### Frontend
     

@@ -73,6 +73,17 @@ class UserController {
         next(e);
     }
 }
+
+async getUsersPosts(req, res, next) {
+  try {
+      const {user} = req.body
+      const posts = await userService.getUsersPosts(user);
+      return res.json(posts);
+  } catch (e) {
+      next(e);
+  }
+}
+
 }
 
 const userController = new UserController()
