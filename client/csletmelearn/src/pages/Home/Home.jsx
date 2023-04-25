@@ -1,10 +1,12 @@
 import React from 'react';
 import homepicture2 from "../../media/homepicture2.svg"
 import cl from "../Home/home.module.css"
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Home = () => {
+    const navigate = useNavigate()
     return(
         <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen">
             <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -16,7 +18,7 @@ const Home = () => {
                     Use power of modern technology provided by OpenAI to create unique desing or pick one made by other users
                 </p>
                 <div class="flex justify-center">
-                <button 
+                <button onClick={()=>navigate("/dalle")}
                 className="text-white bg-green-500 border-0 py-2 lg:px-4 md:px-2 sm:px-1 focus:outline-none hover:bg-green-600 rounded text-lg lg:h-2/5 flex items-center">
                     Get started
                 </button>

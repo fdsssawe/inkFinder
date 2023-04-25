@@ -5,6 +5,8 @@ import preview from "../media/preview.svg"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import api from "../http/index.js"
+import TagSellector from '../components/TagSellector';
+
 
 const Create = () => {
 
@@ -21,34 +23,58 @@ const Create = () => {
         if (user) {
           setForm(prevState => ({
             ...prevState,
-            author: user.email,
+            author: user.id,
             name: user.email,
           }));
         }
       }, [user]);
-
-
+    
     const [generatingImg , setGeneratingImg] = useState(false)
     const [loading , setLoading] = useState(false)
+    const [selected, setSelected] = useState("None")
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         if(form.prompt && form.photo){
             setLoading(true);
-            try{    
-                console.log("fdd")
-                const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form, {
-                    headers: {
-                      'Content-Type': 'application/json'
-                    }
-                  })
-                // navigate()
-            }catch(e){
-                console.log(e)
-            }finally{
-                setLoading(false)
+            if(selected){
+                // setForm({...form , prompt : `${form.prompt} , ${selected}`})
+                const confirmedForm = {
+                    author : form.author,
+                    name : form.name,
+                    prompt : `${form.prompt} , ${selected}`,
+                    photo : form.photo,
+                }
+
+                try{  
+                    const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', confirmedForm , {
+                        headers: {
+                          'Content-Type': 'application/json'
+                        }
+                      })
+                    // navigate()
+                }catch(e){
+                    console.log(e)
+                }finally{
+                    setLoading(false)
+                }
             }
+            else{
+                try{  
+                    console.log("fdd")
+                    const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form , {
+                        headers: {
+                        'Content-Type': 'application/json'
+                        }
+                    })
+                    // navigate()
+                }catch(e){
+                    console.log(e)
+                }finally{
+                    setLoading(false)
+                }
+            } 
         }
         else {
             alert("Please enter a prompt and generate an image")
@@ -65,7 +91,7 @@ const Create = () => {
     return (
         <div>
             <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
-                <div class="container pt-24 mx-auto lg:min-h-screen">
+                <div class="container pt-24 mx-auto min-h-screen">
                     <div class="lg:w-4/5 mx-auto flex flex-wrap">
                     <div className="relative bg-gray-900 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[500px] p-0.5 h-[500px] flex justify-center items-center">
                         { form.photo ? (
@@ -106,17 +132,20 @@ const Create = () => {
                         <div class="flex mt-1 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <form className=" max-w-3xl" onSubmit={handleSubmit}>
                         <h1 class="text-white text-xl title-font font-medium mb-1">Tags</h1>
-                        <p class="leading-relaxed">
+                        <p class="leading-relaxed mb-2">
                             Add tags to the design , so it will be easier for users to find your post!
                         </p>
-                        <FormField
-                        labelName="Prompt"
+                        <FormField 
                         type="text"
                         name="prompt"
                         placeholder="Example : Blackwork , Japanese , Tribal , Watercolor "
                         value={form.prompt}
                         handleChange = {handleChange}
                         />
+                        <p class="leading-relaxed mt-4">
+                            Add one tag from our list.
+                        </p>
+                        <TagSellector selected={selected} setSelected={setSelected} />
                         <div class="flex mt-1 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <div class="flex justify-center lg:justify-start">
                         <label className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded ml-5">

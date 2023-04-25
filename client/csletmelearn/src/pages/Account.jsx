@@ -1,49 +1,35 @@
 import React from 'react';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
-import { useSelector } from 'react-redux';
 import api from "../http/index.js"
 import { useEffect , useState} from 'react';
-import { Tab , Menu } from '@headlessui/react'
-import { Fragment } from 'react';
-
-const RenderCards = ({ data, title }) => {
-    if (data?.length > 0) {
-      return (
-        data.map((post) => <Card key={post._id} {...post} />)
-      );
-    }
-    
-
-    return (
-      
-      <div className='flex justify-center text-white text-xl lg:pt-20 md:pt-10 sm:pt-10 font-bold '>No posts yet</div>
-
-    );
-  };
+import { Tab} from '@headlessui/react'
+import {useParams} from 'react-router-dom'
+import RenderCards from '../components/RenderCards';
+import { useSelector } from 'react-redux';
 
 const Account = () => {
 
-  const links = [
-    { href: '/account-settings', label: 'Account settings' },
-    { href: '/support', label: 'Support' },
-    { href: '/license', label: 'License' },
-    { href: '/sign-out', label: 'Sign out' },
-  ]
+    const {id} = useParams()
     const [loading, setLoading] = useState(false);
     const [allPosts, setAllPosts] = useState(null);
-    const user = useSelector(state => state.prodAuth.user);
+    const [savedPosts, setSavedPosts] = useState(null);
+    const [user , setUser] = useState(null)
 
     const fetchPosts = async () => {
         setLoading(true);
     
         try {
-            const response = await api.post('https://inkfinder2.azurewebsites.net/api/usersposts',{user : user.email})
-    
+           // https://inkfinder2.azurewebsites.net/
+            const response = await api.get(`https://inkfinder2.azurewebsites.net/api/user/${id}`)
+            const fetchedSavedPosts = await api.get(`https://inkfinder2.azurewebsites.net/api/user/${id}/saved`)
           if (response) {
-            console.log(response)
             const result = await response;
-            setAllPosts(result.data.reverse());
+            setAllPosts(result.data.posts.reverse());
+            setUser(result.data.profileOwner)
+          }
+          if(fetchedSavedPosts){
+            setSavedPosts(fetchedSavedPosts.data)
           }
         } catch (err) {
           alert(err);
@@ -54,8 +40,9 @@ const Account = () => {
 
       useEffect(() => {
         fetchPosts();
-    }, [user]);
+    },[]);
     
+    console.log(savedPosts)
 
     return (
         <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen'>
@@ -68,7 +55,7 @@ const Account = () => {
           </div>
         </div>
           <div>
-            <h1 className=" text-white text-[32px] flex justify-center">{user.email}</h1>
+            <h1 className=" text-white text-[32px] flex justify-center">{user?.email}</h1>
             <Tab.Group>
               <Tab.List className="flex justify-center item-center gap-5 pt-6">
                 <Tab className="text-white"> Created </Tab>
@@ -86,7 +73,14 @@ const Account = () => {
                 }
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className='flex justify-center text-white text-xl lg:pt-10 md:pt-10 sm:pt-10 font-bold'>No saved posts yet</div>
+                  {user?.postsSaved?.length > 0 ? 
+                  <div className="mt-10">
+                  <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+                        <RenderCards data={savedPosts}/>
+                    </div>
+                  </div>
+                  : <div className='flex justify-center text-white text-xl lg:pt-10 md:pt-10 sm:pt-10 font-bold'>No saved posts yet</div>
+                  }
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>

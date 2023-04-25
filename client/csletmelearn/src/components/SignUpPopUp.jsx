@@ -12,7 +12,7 @@ const SignUpPopUp = ({open , setActive}) => {
     const [password, setPassword] = useState('');
 
     return (
-        <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center'>
+        <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center z-10'>
             <div className='p-[4px] rounded-[12px]' onClick={e => e.stopPropagation()}>
             <div className="lg:w-full md:w-1/2 bg-gray-800  rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
             <div className='flex justify-between'>

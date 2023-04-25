@@ -5,7 +5,7 @@ import preview from "../media/preview.svg"
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import api from "../http/index.js"
-
+import TagSellector from '../components/TagSellector';
 
 const DesignGenerator = () => {
 
@@ -22,7 +22,7 @@ const DesignGenerator = () => {
         if (user) {
           setForm(prevState => ({
             ...prevState,
-            author: user.email,
+            author: user.id,
             name: user.email,
           }));
         }
@@ -31,30 +31,54 @@ const DesignGenerator = () => {
 
     const [generatingImg , setGeneratingImg] = useState(false)
     const [loading , setLoading] = useState(false)
+    const [selected, setSelected] = useState("None")
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+      e.preventDefault()
+      if(form.prompt && form.photo){
+          setLoading(true);
+          if(selected){
+              // setForm({...form , prompt : `${form.prompt} , ${selected}`})
+              const confirmedForm = {
+                  author : form.author,
+                  name : form.name,
+                  prompt : `${form.prompt} , ${selected}`,
+                  photo : form.photo,
+              }
 
-        if(form.prompt && form.photo){
-            setLoading(true);
-            try{    
-                console.log("fdd")
-                const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form, {
-                    headers: {
+              try{  
+                  const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', confirmedForm , {
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }
+                    })
+                  // navigate()
+              }catch(e){
+                  console.log(e)
+              }finally{
+                  setLoading(false)
+              }
+          }
+          else{
+              try{  
+                  console.log("fdd")
+                  const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form , {
+                      headers: {
                       'Content-Type': 'application/json'
-                    }
+                      }
                   })
-                // navigate()
-            }catch(e){
-                console.log(e)
-            }finally{
-                setLoading(false)
-            }
-        }
-        else {
-            alert("Please enter a prompt and generate an image")
-        }
-    }
+                  // navigate()
+              }catch(e){
+                  console.log(e)
+              }finally{
+                  setLoading(false)
+              }
+          } 
+      }
+      else {
+          alert("Please enter a prompt and generate an image")
+      }
+  }
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -136,6 +160,10 @@ const DesignGenerator = () => {
                         value={form.prompt}
                         handleChange = {handleChange}
                         />
+                        <p class="leading-relaxed mt-4">
+                            Add one tag from our list.
+                        </p>
+                        <TagSellector selected={selected} setSelected={setSelected} />
                         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-800 mb-5"></div>
                         <div class="flex justify-center lg:justify-start">
                         <button

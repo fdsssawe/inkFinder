@@ -7,6 +7,7 @@ import UserDto from "../dtos/userDTO.js"
 import * as dotenv from "dotenv"
 import { ApiError } from "../exceptions/apiError.js"
 import Post from "../model/Post.js"
+import mongoose from "mongoose"
 
 dotenv.config()
 
@@ -79,7 +80,12 @@ class UserService{
 
     async getUsersPosts(user){
         const posts = await Post.find({author : user})
-        return posts;
+        const profileOwner = await User.findById(user)
+        const profileData = {
+            posts,
+            profileOwner,
+        }
+        return profileData;
     }
 
     async getAllUsers() {
