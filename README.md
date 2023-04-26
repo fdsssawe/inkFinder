@@ -86,7 +86,7 @@ build - to make a build of frontend from root directory
     - [x] Design generation
     - [x] Cloudinary usage
     - [x] Upload page/functionality
-    - [ ] Favorite post page/functionality
+    - [x] Favorite post page/functionality
     - [ ] Interests form after registration
     - [ ] Recomendation algorithm
     - [x] Tags
