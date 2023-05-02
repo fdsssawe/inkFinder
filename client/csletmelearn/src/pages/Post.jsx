@@ -3,11 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import api from '../http';
 import Loader from '../components/Loader';
 import RenderCards from "../components/RenderCards"
+import { useSelector } from 'react-redux';
 
 
 
 const Post = () => {
-
+    const user = useSelector(state => state.prodAuth.user);
     const {id} = useParams()
     const [postInfo , setPostInfo] = useState('')
     const [userPosts , setUserPosts] = useState('')
@@ -37,12 +38,13 @@ const Post = () => {
     }
 
     // /post/:id/save
+    
 
     const savePost = async () =>{
         setSaving(true)
         try{
            // https://inkfinder2.azurewebsites.net/
-           const response = await api.get(`https://inkfinder2.azurewebsites.net/api/post/${id}/save`)
+           const response = await api.post(`https://inkfinder2.azurewebsites.net/api/post/${id}/save`,{user : user.id})
            console.log(response)
         }
         catch(e){
@@ -52,6 +54,8 @@ const Post = () => {
             setSaving(false)         
         }
     }
+    
+
 
     useEffect(()=>{
         fetchPostInfo() 
@@ -59,7 +63,7 @@ const Post = () => {
 
     useEffect(()=>{
         if(userPosts)
-        if(userPosts.data.profileOwner.postsSaved.includes(postInfo._id)){
+        if(user.postsSaved.includes(postInfo._id)){
             setIsSaved(true)
         }
         else{

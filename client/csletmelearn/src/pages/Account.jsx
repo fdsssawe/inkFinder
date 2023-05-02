@@ -42,7 +42,7 @@ const Account = () => {
         fetchPosts();
     },[]);
     
-    console.log(savedPosts)
+
 
     return (
         <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen'>

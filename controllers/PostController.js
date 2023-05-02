@@ -19,8 +19,9 @@ class PostController {
 
     async savePost(req, res, next) {
         try {
+            const {user} = req.body
             const id = req.params.id
-            const result = await postService.savePost(id);
+            const result = await postService.savePost(id , user);
             return res.json(result);
         } catch (e) {
             next(e);

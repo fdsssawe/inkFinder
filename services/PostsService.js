@@ -56,10 +56,9 @@ class PostService{
         }
     }
 
-    async savePost(postId){
+    async savePost(postId , userId){
         try{
             const post = await Post.findById(postId)
-            const userId = post.author
             const user = await User.findById(userId)
             if(user?.postsSaved.includes(post._id)){
                 const index = user?.postsSaved.indexOf(post._id);

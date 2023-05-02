@@ -7,6 +7,7 @@ export default class UserDto{
     constructor(model){
         this.email = model.email
         this.id = model._id
+        this.postsSaved = model.postsSaved
         this.isActicated = model.isActicated
     }
 }
