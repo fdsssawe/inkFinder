@@ -8,13 +8,13 @@ dotenv.config()
 class PostController {
 
     async getPostById(req, res, next) {
-    try {
-        const id = req.params.id
-        const posts = await postService.getPostById(id);
-        return res.json(posts);
-    } catch (e) {
-        next(e);
-    }
+        try {
+            const id = req.params.id
+            const posts = await postService.getPostById(id);
+            return res.json(posts);
+        } catch (e) {
+            next(e);
+        }
     }
 
     async savePost(req, res, next) {
@@ -32,7 +32,7 @@ class PostController {
         try {
             const id = req.params.id
             const user = await User.findById(id)
-            if(user.postsSaved){
+            if (user.postsSaved) {
                 const result = await postService.getSavedPosts(user.postsSaved);
                 return res.json(result);
             }

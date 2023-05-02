@@ -86,7 +86,7 @@ build - to make a build of frontend from root directory
     - [x] Design generation
     - [x] Cloudinary usage
     - [x] Upload page/functionality
-    - [ ] Favorite post page/functionality
+    - [x] Favorite post page/functionality
     - [ ] Interests form after registration
     - [ ] Recomendation algorithm
     - [x] Tags
@@ -118,3 +118,8 @@ build - to make a build of frontend from root directory
     - [ ] OpenAI API tests
     - [ ] Posts tests
 
+# Lab 3
+1. 1)"Save post" functions fixed
+2. Voievoda Vladislav
+3. <a href="https://github.com/Vladislav43/WEB" target="_blank">My project</a>
+4. <a href="" target="_blank">Pull request</a>
