@@ -119,7 +119,7 @@ build - to make a build of frontend from root directory
     - [ ] Posts tests
 
 # Lab 3
-1. 1)Validation added to registration(includes error window)
+1. 1)"Save post" functions fixed
    2)Hashing password
 2. Voievoda Vladislav
 3. <a href="https://github.com/Vladislav43/WEB" target="_blank">My project</a>
