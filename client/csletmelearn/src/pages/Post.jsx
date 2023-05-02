@@ -4,7 +4,7 @@ import api from '../http';
 import Loader from '../components/Loader';
 import RenderCards from "../components/RenderCards"
 import { useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
+
 
 
 
