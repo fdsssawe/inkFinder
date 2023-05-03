@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 
 
 const Post = () => {
+    
     const user = useSelector(state => state.prodAuth.user);
     const {id} = useParams()
     const [postInfo , setPostInfo] = useState('')
@@ -22,11 +23,11 @@ const Post = () => {
     const fetchPostInfo = async () => {
         setLoading(true)
         try {
-            // https://inkfinder2.azurewebsites.net/
-            const response = await api.get(`https://inkfinder2.azurewebsites.net/api/post/${id}`)
+            
+            const response = await api.get(`/post/${id}`)
             setPostInfo(response.data)
             if (response) {
-                const responseUserPosts = await api.get(`https://inkfinder2.azurewebsites.net/api/user/${response.data.author}`)
+                const responseUserPosts = await api.get(`/user/${response.data.author}`)
                 setUserPosts(responseUserPosts)
             }
         }
@@ -44,7 +45,7 @@ const Post = () => {
         setSaving(true)
         try{
            // https://inkfinder2.azurewebsites.net/
-           const response = await api.post(`https://inkfinder2.azurewebsites.net/api/post/${id}/save`,{user : user.id})
+           const response = await api.post(`/post/${id}/save`,{user : user.id})
            console.log(response)
         }
         catch (e) {

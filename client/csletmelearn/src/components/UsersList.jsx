@@ -6,7 +6,6 @@ const UsersList = () => {
     const [users, setUsers] = useState([])
     useEffect(()=>{
         if(localStorage.getItem('token')){
-          getUsers()
         }
       },[])
     

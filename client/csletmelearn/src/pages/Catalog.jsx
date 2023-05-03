@@ -19,7 +19,7 @@ const Catalog = () => {
     setLoading(true);
 
     try {
-        const response = await api.get('https://inkfinder2.azurewebsites.net/api/posts', {
+        const response = await api.get('/posts', {
             headers: {
               'Content-Type': 'application/json'
             }   

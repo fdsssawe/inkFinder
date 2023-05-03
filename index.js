@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import  mongo from 'mongoose';
+import  mongo, { version } from 'mongoose';
 import { addPostValidation } from './validations/OffersValidator.js';
 import * as OfferControllers from './controllers/OfferController.js'
 import dotenv from "dotenv"
@@ -8,8 +8,48 @@ import cookieParser from 'cookie-parser';
 import { router } from './router/index.js';
 import { errorMiddleware } from './middlewares/errorMiddleware.js'
 import bodyParser from 'body-parser';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerui from "swagger-ui-express"
 
 dotenv.config()
+
+
+const options = {
+    withCredentials: true, // enable cookies
+    definition : {
+        openapi : '3.0.0',
+        info : {
+            title : "InkFinder",
+            version : "1.0.0",
+        },
+        components: {
+            securitySchemas: {
+              bearerAuth: {
+                type: "http",
+                scheme: "bearer",
+                bearerFormat: "JWT",
+              },
+            },
+          },
+        servers : [
+            {
+                url : "https://inkfinder2.azurewebsites.net/api/"
+            }
+        ]
+    },
+    apis: ["./router/index.js"],
+    requestInterceptor: (req) => {
+        console.log("fdfd")
+        const cookies = document.cookie
+        req.headers = {
+          ...req.headers,
+          'Cookie': cookies
+        };
+        return req;
+    },
+}
+
+const swaggerSpec = swaggerJSDoc(options)
 
 mongo.connect(process.env.MONGO_URL,
     {
@@ -36,6 +76,7 @@ app.use('/api',router)
 app.use(express.static('./client/csletmelearn/dist/'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use('/api-docs', swaggerui.serve , swaggerui.setup(swaggerSpec))
 
 
 

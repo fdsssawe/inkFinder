@@ -13,7 +13,7 @@ const initialState = {
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try{
   const response = await AuthService.login(email, password);
-  console.log(response)
+
   localStorage.setItem('token', response.data.accessToken);
   setAuth(true)
   setUser(response.data.user)
@@ -29,7 +29,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
 export const registration = createAsyncThunk('auth/registration', async ({ email, password }) => {
   try{
     const response = await AuthService.registration(email, password);
-    console.log(response)
+
     localStorage.setItem('token', response.data.accessToken);
     setAuth(true)
     setUser(response.data.user)

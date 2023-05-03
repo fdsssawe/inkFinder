@@ -84,7 +84,6 @@ class PostService {
                 const post = await Post.findById(id);
                 return post;
             }));
-            console.log(posts);
             return posts;
         } catch (error) {
             console.log(error);
