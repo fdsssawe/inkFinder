@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 const Post = () => {
     
     const user = useSelector(state => state.prodAuth.user);
+    const isAuth = useSelector(state => state.prodAuth.isAuth);
     const {id} = useParams()
     const [postInfo , setPostInfo] = useState('')
     const [userPosts , setUserPosts] = useState('')
@@ -62,11 +63,13 @@ const Post = () => {
 
     useEffect(()=>{
         if(userPosts)
+        if(user.postsSaved){
         if(user.postsSaved.includes(postInfo._id)){
             setIsSaved(true)
         }
         else{
             setIsSaved(false)
+        }
         }
 
     }, [userPosts, id, saving])
@@ -99,9 +102,11 @@ const Post = () => {
                                         </button>
 
                                         : <button
-                                            onClick={() => savePost()}
+                                            onClick={isAuth ? () => savePost() : () => 0}
                                             type="submit"
-                                            className="flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded-[2rem] ml-auto"
+                                            className={
+                                                isAuth ? "flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded-[2rem] ml-auto" : "flex text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded-[2rem] ml-auto"
+                                            }
                                         >
                                             {saving ? "Saving..." : "Save"}
                                         </button>}
