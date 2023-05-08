@@ -92,6 +92,16 @@ class UserService{
         const users = await User.find();
         return users;
     }
+
+    async isUser(email) {
+        const user = await User.find({email : email});
+        if(user.length>0){
+            return true
+        }
+        else{
+            return false
+        }
+    }
 }
 
 const userService = new UserService()

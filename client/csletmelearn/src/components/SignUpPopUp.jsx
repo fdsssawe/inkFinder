@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { login, registration } from '../store/index.js';
+import { googleAuthHandle, login, registration } from '../store/index.js';
+import { GoogleLogin , useGoogleLogin} from '@react-oauth/google';
+import axios from 'axios';
+import AuthSercive from '../services/AuthService.js';
 
 const SignUpPopUp = ({open , setActive}) => {
 
@@ -11,6 +14,26 @@ const SignUpPopUp = ({open , setActive}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const loginGoogle = useGoogleLogin({
+        onSuccess: (user) => {
+            console.log(user)
+            axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+                headers: {
+                    Authorization: `Bearer ${user.access_token}`,
+                    Accept: 'application/json'
+                }
+            })
+            .then((res) => {
+                const data = {
+                    email : res.data.email,
+                    password : res.data.id,
+                }
+                dispatch(googleAuthHandle(data))
+            })
+            .catch((err) => console.log(err))
+        },
+        onError: (error) => console.log('Login Failed:', error)
+    })
     return (
         <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center z-10'>
             <div className='p-[4px] rounded-[12px]' onClick={e => e.stopPropagation()}>
@@ -48,8 +71,13 @@ const SignUpPopUp = ({open , setActive}) => {
             </button>
             <button 
                 onClick={()=>dispatch(login({ email, password }))}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mb-4">
                 Login
+            </button>
+            <button 
+                onClick={()=>loginGoogle()}
+                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
+                Google auth
             </button>
             <p className="text-xs mt-3">We will send activation letter to email you provide</p>
             </div>

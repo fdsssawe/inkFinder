@@ -41,6 +41,31 @@ export const registration = createAsyncThunk('auth/registration', async ({ email
   }
 });
 
+export const googleAuthHandle = createAsyncThunk('auth/googleAuthHandle', async ({ email, password }) => {
+  try{
+    const response = await AuthService.googleAuthHandle(email, password);
+
+    if(response.job == "registration"){
+      localStorage.setItem('token', response.response.data.accessToken);
+      setAuth(true)
+      setUser(response.response.data.user)
+      window.location = 'https://inkfinder2.azurewebsites.net/'
+      return response.response.data.user;
+    }
+    else{
+        localStorage.setItem('token', response.response.data.accessToken);
+        setAuth(true)
+        setUser(response.response.data.user)
+        // https://inkfinder2.azurewebsites.net/
+        window.location = 'https://inkfinder2.azurewebsites.net/' 
+        return response.response.data.user;
+    }
+  }
+  catch(e){
+    throw new Error(e.response?.data?.message);
+  }
+});
+
 export const logout = createAsyncThunk('auth/logout', async () => {
   await AuthService.logout();
   localStorage.removeItem('token');

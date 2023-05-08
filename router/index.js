@@ -5,6 +5,7 @@ import { authMiddleware } from "../middlewares/authMiddleware.js";
 import dalleService from "../services/DalleService.js";
 import postService from "../services/PostsService.js";
 import postController from "../controllers/PostController.js";
+import userService from "../services/UserService.js";
 export const router = new Router();
 
 
@@ -87,3 +88,4 @@ router.post("/post/:id/save"  , postController.savePost)
  */
 
 router.get("/user/:id/saved"  , postController.getSavedPosts)
+router.post("/isuser"  , userController.getUser)
