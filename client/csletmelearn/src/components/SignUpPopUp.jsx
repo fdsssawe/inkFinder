@@ -5,6 +5,7 @@ import { googleAuthHandle, login, registration } from '../store/index.js';
 import { GoogleLogin , useGoogleLogin} from '@react-oauth/google';
 import axios from 'axios';
 import AuthSercive from '../services/AuthService.js';
+import google from "../media/google.svg"
 
 const SignUpPopUp = ({open , setActive}) => {
 
@@ -76,8 +77,9 @@ const SignUpPopUp = ({open , setActive}) => {
             </button>
             <button 
                 onClick={()=>loginGoogle()}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">
-                Google auth
+                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg flex">
+                <img src={google} className='mr-3'></img>
+                Continue with Google
             </button>
             <p className="text-xs mt-3">We will send activation letter to email you provide</p>
             </div>
