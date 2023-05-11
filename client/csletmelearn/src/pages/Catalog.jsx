@@ -66,10 +66,16 @@ const Catalog = () => {
   };
   
   useEffect(() => {
-    if (user && isAuth) {
-      fetchPosts();
-    }
-  }, [user, isAuth]);
+
+    fetchPosts();
+
+  }, []);
+
+  useEffect(() => {
+
+    fetchPosts();
+
+  }, [user , isAuth]);
 
 
   const handleSearchChange = (e) => {
@@ -123,7 +129,7 @@ const Catalog = () => {
                 />
               ) : (
                 <RenderCards
-                  data={isAuth ? sortedPosts : allPosts}
+                  data={isAuth==true ? sortedPosts : allPosts}
                   title="No Posts Yet"
                 />
               )}

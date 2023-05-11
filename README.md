@@ -67,7 +67,7 @@ build - to make a build of frontend from root directory
     - [x] Frontend auth handle
     - [ ] Unactivated account handle
     - [ ] Unactivated account limitation
-    - [ ] OAuth
+    - [x] OAuth
 
 2.  ### API implementation
     
@@ -77,8 +77,7 @@ build - to make a build of frontend from root directory
     - [x] Frontend page for design generator using Dell-e
     - [x] Cloudinary 
     - [x] FileReader API
-    - [ ] New api implementation
-    - [ ] Support chat with chatGPT(???)
+    - [x] New api implementation
 
 3. ### Main functionality
     
@@ -88,7 +87,7 @@ build - to make a build of frontend from root directory
     - [x] Upload page/functionality
     - [x] Favorite post page/functionality
     - [ ] Interests form after registration
-    - [ ] Recomendation algorithm
+    - [x] Recomendation algorithm
     - [x] Tags
     - [x] Account page
 
@@ -112,11 +111,11 @@ build - to make a build of frontend from root directory
 6. ### Tests
     
     - [x] Jest
-    - [ ] Auth service tests
+    - [x] Auth service tests
     - [ ] Database connection tests
     - [ ] Database request tests
     - [ ] OpenAI API tests
-    - [ ] Posts tests
+    - [x] Posts tests
 
 # Lab 3
 1. 1)"Save post" functions fixed
