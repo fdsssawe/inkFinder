@@ -36,14 +36,28 @@ class PostService {
 
     }
 
-    async getPosts(req, res) {
+    async getPosts(preferences) {
         try {
             const posts = await Post.find({})
-
-            res.status(200).json({ success: true, data: posts })
+            const sortedPosts = posts.sort((a, b) => {
+                if (a.prompt.includes(preferences) && !b.prompt.includes(preferences)) {
+                  return -1; 
+                } else if (!a.prompt.includes(preferences) && b.prompt.includes(preferences)) {
+                  return 1; 
+                } else if (posts.length % 2 === 1 && !a.prompt.includes(preferences) && !b.prompt.includes(preferences)) {
+                  return -1; 
+                } else {
+                  return 0; 
+                }
+              })
+            if (preferences || preferences!="None"){
+                return { success: true, data: sortedPosts }
+            } 
+            return { success: true, data: posts }
         }
         catch (error) {
-            res.status(500).json({ success: false, message: error })
+            console.log(error)
+            return { success: false, message: error }
         }
     }
 

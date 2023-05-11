@@ -21,14 +21,14 @@ router.post("/dalle", authMiddleware, dalleService.getGeneratedImage)
 /**
  * @swagger
  * /posts:
- *  get:
+ *  post:
  *      summary: This api is used to get all posts
  *      description : This api is used to get all posts
  *      responses:
  *          200: 
  *             description: You will get posts
  */
-router.get("/posts", postService.getPosts)
+router.post("/posts", postController.getPosts)
 router.post("/newposts" , authMiddleware ,postService.createPost)
 
 /**

@@ -5,29 +5,58 @@ import Card from '../components/Card';
 import Loader from '../components/Loader';
 import api from '../http';
 import RenderCards from "../components/RenderCards"
+import { useSelector } from 'react-redux';
 
 
 const Catalog = () => {
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
-
+  const [sortedPosts, setSortedPosts] = useState(null);
   const [searchText, setSearchText] = useState('');
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState(null);
+  const isAuth = useSelector(state => state.prodAuth.isAuth);
+  const user = useSelector(state => state.prodAuth.user);
 
   const fetchPosts = async () => {
     setLoading(true);
-
+  
     try {
-        const response = await api.get('/posts', {
+      if (isAuth && user) {
+        if (user.postsSaved && user.postsSaved.length > 0) {
+          const lastSavedPost = await api.get(`/post/${user.postsSaved[user.postsSaved.length-1]}`);
+          const preference = lastSavedPost.data.prompt.split(',')[lastSavedPost.data.prompt.split(',').length - 1]?.trim();
+          const response = await api.post('/posts', {preference}, {
             headers: {
               'Content-Type': 'application/json'
-            }   
-          })
-
-      if (response) {
-        const result = await response.data;
-        setAllPosts(result.data.reverse());
+            }
+          });
+          if (response) {
+            const result = await response.data;
+            setSortedPosts(result.data);
+          }
+        }
+        else{
+          const response = await api.post('/posts', { preference: '' }, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          if (response) {
+            const result = await response.data;
+            setSortedPosts(result.data.reverse());
+          }
+        }
+      } else {
+        const response = await api.post('/posts', { preference: '' }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        if (response) {
+          const result = await response.data;
+          setAllPosts(result.data.reverse());
+        }
       }
     } catch (err) {
       alert(err);
@@ -35,10 +64,13 @@ const Catalog = () => {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (user && isAuth) {
+      fetchPosts();
+    }
+  }, [user, isAuth]);
+
 
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
@@ -85,12 +117,13 @@ const Catalog = () => {
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
                 <RenderCards
+                  
                   data={searchedResults}
                   title="No Search Results Found"
                 />
               ) : (
                 <RenderCards
-                  data={allPosts}
+                  data={isAuth ? sortedPosts : allPosts}
                   title="No Posts Yet"
                 />
               )}

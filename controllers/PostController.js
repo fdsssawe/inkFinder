@@ -7,6 +7,17 @@ dotenv.config()
 
 class PostController {
 
+
+    async getPosts(req, res, next) {
+        try {
+            const {preference} = req.body
+            const posts = await postService.getPosts(preference);
+            return res.json(posts);
+        } catch (e) {
+            next(e);
+        }
+    }
+
     async getPostById(req, res, next) {
         try {
             const id = req.params.id
