@@ -121,5 +121,5 @@ build - to make a build of frontend from root directory
 # Lab 3
 1. 1)"Save post" functions fixed
 2. Voievoda Vladislav
-3. <a href="https://github.com/Vladislav43/WEB" target="_blank">My project</a>
+3. <a href="https://github.com/fdsssawe/inkfinder/pull/1" target="_blank">My project</a>
 4. <a href="" target="_blank">Pull request</a>
