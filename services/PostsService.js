@@ -3,6 +3,7 @@ import { v2 as cloudinary } from "cloudinary"
 import User from "../model/User.js"
 import Post from "../model/Post.js"
 import api from "../client/csletmelearn/src/http/index.js"
+import axios from "axios"
 
 dotenv.config()
 
@@ -16,15 +17,16 @@ class PostService {
         })
     }
 
-    static fetchPosts = async (setLoading, setAllPosts, setSortedPosts, isAuth, user) => {
+    async fetchPosts(setLoading, setAllPosts, setSortedPosts, isAuth, user){
         setLoading(true);
       
         try {
           if (isAuth && user) {
             if (user.postsSaved && user.postsSaved.length > 0) {
-              const lastSavedPost = await api.get(`/post/${user.postsSaved[user.postsSaved.length-1]}`);
+              console.log(user)
+              const lastSavedPost = await axios.get(`https://inkfinder2.azurewebsites.net/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
               const preference = lastSavedPost.data.prompt.split(',')[lastSavedPost.data.prompt.split(',').length - 1]?.trim();
-              const response = await api.post('/posts', {preference}, {
+              const response = await axios.post('https://inkfinder2.azurewebsites.net/api/posts', {preference}, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
@@ -35,7 +37,7 @@ class PostService {
               }
             }
             else{
-              const response = await api.post('/posts', { preference: '' }, {
+              const response = await axios.post('https://inkfinder2.azurewebsites.net/api/posts', { preference: '' }, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
@@ -46,7 +48,7 @@ class PostService {
               }
             }
           } else {
-            const response = await api.post('/posts', { preference: '' }, {
+            const response = await axios.post('/posts', { preference: '' }, {
               headers: {
                 'Content-Type': 'application/json'
               }
