@@ -19,11 +19,9 @@ class PostService {
 
     async fetchPosts(setLoading, setAllPosts, setSortedPosts, isAuth, user){
         setLoading(true);
-      
         try {
           if (isAuth && user) {
             if (user.postsSaved && user.postsSaved.length > 0) {
-              console.log(user)
               const lastSavedPost = await axios.get(`https://inkfinder2.azurewebsites.net/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
               const preference = lastSavedPost.data.prompt.split(',')[lastSavedPost.data.prompt.split(',').length - 1]?.trim();
               const response = await axios.post('https://inkfinder2.azurewebsites.net/api/posts', {preference}, {
@@ -34,6 +32,7 @@ class PostService {
               if (response) {
                 const result = await response.data;
                 setSortedPosts(result.data);
+                // console.log(setSortedPosts.mock.calls[0][0]);
               }
             }
             else{
@@ -63,7 +62,7 @@ class PostService {
         } finally {
           setLoading(false);
         }
-      };
+    };
 
     async createPost(req, res) {
         try {
