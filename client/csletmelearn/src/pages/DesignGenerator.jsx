@@ -103,6 +103,7 @@ const DesignGenerator = () => {
             const data = await response.data;
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
+            console.log(err);
             alert(err);
           } finally {
             setGeneratingImg(false);
