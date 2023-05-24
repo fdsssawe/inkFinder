@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react'
 import Header from './components/Header'
-import LoginForm from './components/LoginForm'
 import { useDispatch } from 'react-redux'
 import { checkAuth } from './store'
 import { useSelector } from 'react-redux'
 import UserService from './services/UserService'
 import UsersList from './components/UsersList'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './components/AppRouter'
+import Footer from './components/Footer'
+import SignUpPopUp from './components/SignUpPopUp'
+
 
 
 function App() {
   const [users, setUsers] = useState([])
   const dispatch = useDispatch();
   const isAuth = useSelector(state => state.prodAuth.isAuth)
-  const isLoading = useSelector(state => state.prodAuth.isLoading)
 
   useEffect(()=>{
-    getUsers()
     if(localStorage.getItem('token')){
       dispatch(checkAuth())
     }
@@ -27,22 +29,15 @@ function App() {
       setUsers(response.data)
     }
     catch(e){
-       console.log(e)
     }
   }
+
 
   /*if(isLoading){
     return <div>Loading ...</div>
   }*/
 
-  if(!isAuth){
-    return(
-      <div>
-      <Header/>
-      <LoginForm/>
-      </div>
-    )
-  }
+
 
   /*<h1>{isAuth ? "User logined in" : "dsdsd"}</h1>*/
 
@@ -53,13 +48,12 @@ function App() {
   */
 
   return (
-    <div className="App">
-        <div>
-          <Header/>
-          <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 h-screen'>
-          {isLoading ? [] : <UsersList users={users}/>}
-          </div>
-        </div>
+    <div className="App" class="dark:[color-scheme:dark]">
+      <BrowserRouter>
+      <Header/>
+      <AppRouter/>
+      <Footer/>
+      </BrowserRouter>
     </div>
   )
 }

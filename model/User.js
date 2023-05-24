@@ -1,4 +1,5 @@
 import  mongoose from 'mongoose';
+import Post from "./Post.js"
 
 const UserSchema = new mongoose.Schema({
     email:{
@@ -18,7 +19,11 @@ const UserSchema = new mongoose.Schema({
     },
     activationLink: {
         type: String,
-    }
+    },
+    postsSaved: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+      }]
 } , {
     timestamps: true,
 })

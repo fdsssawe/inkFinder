@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken"
-/*import * as dotenv from "dotenv"*/
+import * as dotenv from "dotenv"
 import Token from "../model/Token.js"
+import { createContainer , asValue } from "awilix"
 
-/*dotenv.config()*/
+dotenv.config()
 
 class TokenService{
     generateTokens(payload){
@@ -57,4 +58,9 @@ class TokenService{
 
 const tokenService = new TokenService()
 
-export default tokenService
+const tokenServiceContainer = createContainer()
+
+
+tokenServiceContainer.register({tokenService: asValue(tokenService)});
+
+export default tokenServiceContainer

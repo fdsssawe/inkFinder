@@ -1,6 +1,22 @@
 import React from 'react';
+import { useEffect , useState } from 'react';
+import UserService from '../services/UserService';
 
-const UsersList = ({users}) => {
+const UsersList = () => {
+    const [users, setUsers] = useState([])
+    useEffect(()=>{
+        if(localStorage.getItem('token')){
+        }
+      },[])
+    
+    async function getUsers(){
+        try{
+          const response = await UserService.fetchUsers()
+          setUsers(response.data)
+        }
+        catch(e){
+        }
+      }
     return (
         <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 h-screen'>
             <section class="text-gray-400 bg-gray-900 body-font">

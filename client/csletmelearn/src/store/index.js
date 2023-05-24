@@ -13,10 +13,12 @@ const initialState = {
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try{
   const response = await AuthService.login(email, password);
-  console.log(response)
+
   localStorage.setItem('token', response.data.accessToken);
   setAuth(true)
   setUser(response.data.user)
+  // https://inkfinder2.azurewebsites.net/
+  window.location = 'https://inkfinder2.azurewebsites.net/' 
   return response.data.user;
   }
   catch(e){
@@ -27,11 +29,37 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
 export const registration = createAsyncThunk('auth/registration', async ({ email, password }) => {
   try{
     const response = await AuthService.registration(email, password);
-    console.log(response)
+
     localStorage.setItem('token', response.data.accessToken);
     setAuth(true)
     setUser(response.data.user)
+    window.location = 'https://inkfinder2.azurewebsites.net/'
     return response.data.user;
+  }
+  catch(e){
+    throw new Error(e.response?.data?.message);
+  }
+});
+
+export const googleAuthHandle = createAsyncThunk('auth/googleAuthHandle', async ({ email, password }) => {
+  try{
+    const response = await AuthService.googleAuthHandle(email, password);
+
+    if(response.job == "registration"){
+      localStorage.setItem('token', response.response.data.accessToken);
+      setAuth(true)
+      setUser(response.response.data.user)
+      window.location = 'https://inkfinder2.azurewebsites.net/'
+      return response.response.data.user;
+    }
+    else{
+        localStorage.setItem('token', response.response.data.accessToken);
+        setAuth(true)
+        setUser(response.response.data.user)
+        // https://inkfinder2.azurewebsites.net/
+        window.location = 'https://inkfinder2.azurewebsites.net/' 
+        return response.response.data.user;
+    }
   }
   catch(e){
     throw new Error(e.response?.data?.message);
@@ -72,7 +100,16 @@ const authSlice = createSlice({
       state.isAuth = true;
       state.user = action.payload;
     },
-    [registration.fulfilled]: (state, action) => {
+    [registration.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [login.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [logout.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [registration.fulfilled]: (state , action) => {
       state.isAuth = true;
       state.user = action.payload;
     },
