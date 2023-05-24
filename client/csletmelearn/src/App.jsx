@@ -1,32 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import Header from './components/Header'
+import { useDispatch } from 'react-redux'
+import { checkAuth } from './store'
+import { useSelector } from 'react-redux'
+import UserService from './services/UserService'
+import UsersList from './components/UsersList'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './components/AppRouter'
+import Footer from './components/Footer'
+import SignUpPopUp from './components/SignUpPopUp'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [users, setUsers] = useState([])
+  const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.prodAuth.isAuth)
+
+  useEffect(()=>{
+    if(localStorage.getItem('token')){
+      dispatch(checkAuth())
+    }
+  },[])
+
+  async function getUsers(){
+    try{
+      const response = await UserService.fetchUsers()
+      setUsers(response.data)
+    }
+    catch(e){
+    }
+  }
+
+
+  /*if(isLoading){
+    return <div>Loading ...</div>
+  }*/
+
+
+
+  /*<h1>{isAuth ? "User logined in" : "dsdsd"}</h1>*/
+
+  /*
+            <button onClick={getUsers}>
+            Show users
+          </button>
+  */
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="App" class="dark:[color-scheme:dark]">
+      <BrowserRouter>
+      <Header/>
+      <AppRouter/>
+      <Footer/>
+      </BrowserRouter>
     </div>
   )
 }
