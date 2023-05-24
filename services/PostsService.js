@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import { v2 as cloudinary } from "cloudinary"
 import User from "../model/User.js"
 import Post from "../model/Post.js"
-import api from "../client/csletmelearn/src/http/index.js"
+import { createContainer , asValue } from "awilix"
 import axios from "axios"
 
 dotenv.config()
@@ -153,9 +153,18 @@ class PostService {
         }
     }
 
+    getLog(){
+      console.log("I am here")
+    }
 
 }
 
+const postServiceContainer = createContainer()
+
 const postService = new PostService()
 
-export default postService
+postServiceContainer.register({postService: asValue(postService)});
+
+
+
+export default postServiceContainer

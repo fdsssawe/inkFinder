@@ -1,5 +1,5 @@
 import { ApiError } from "../exceptions/apiError.js"
-import tokenService from '../services/TokenService.js'
+import tokenServiceContainer from "../services/TokenService.js";
 
 export const authMiddleware = function (req, res , next){
     try{
@@ -14,7 +14,7 @@ export const authMiddleware = function (req, res , next){
             return next(ApiError.UnathorizedError()) 
         }
 
-        const userData = tokenService.validateAccessToken(accessToken)
+        const userData = tokenServiceContainer.resolve("tokenService").validateAccessToken(accessToken)
         if(!userData){
             return next(ApiError.UnathorizedError()) 
         }

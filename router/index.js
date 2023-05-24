@@ -3,12 +3,11 @@ import userController from "../controllers/UserController.js";
 import { body } from "express-validator";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import dalleService from "../services/DalleService.js";
-import postService from "../services/PostsService.js";
+import postServiceContainer from "../services/PostsService.js";
 import postController from "../controllers/PostController.js";
-import userService from "../services/UserService.js";
 export const router = new Router();
 
-
+const postService = postServiceContainer.resolve("postService")
 
 router.post("/registration", body('email').isEmail(), body('password').isLength({ min: 4, max: 30 }), userController.registration)
 router.post("/login", userController.login)

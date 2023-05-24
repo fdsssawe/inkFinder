@@ -1,7 +1,7 @@
 import axios from "axios"
 
 test('Should return posts from collectiom', async () => {
-    const response = await axios.post("https://inkfinder2.azurewebsites.net/api/posts",{performance : ''})
+    const response = await axios.post("https://inkfinder2.azurewebsites.net/api/posts",{preference : ''})
     expect(response.status).toBe(200)
     expect(response.data.success).toBe(true)
     expect(response.data.data.length).toBeTruthy()

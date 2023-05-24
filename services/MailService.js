@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer"
 import * as dotenv from "dotenv"
+import { createContainer , asValue } from "awilix"
 
 dotenv.config()
 
@@ -35,6 +36,11 @@ class MailService{
     }
 }
 
+const mailServiceContainer = createContainer()
+
 const mailService = new MailService()
 
-export default mailService
+mailServiceContainer.register({mailService: asValue(mailService)});
+
+
+export default mailServiceContainer

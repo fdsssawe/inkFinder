@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 const Account = () => {
 
     const {id} = useParams()
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setLoading] = useState(false);
     const [allPosts, setAllPosts] = useState(null);
     const [savedPosts, setSavedPosts] = useState(null);
     const [user , setUser] = useState(null)
@@ -63,23 +63,23 @@ const Account = () => {
               </Tab.List>
               <Tab.Panels>
                 <Tab.Panel>
-                {allPosts?.length > 0 ? <div className="mt-10">
-                <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-                      <RenderCards data={allPosts}/>
+                {!isLoading ? <div className="mt-10">
+                  <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+                      <RenderCards data={allPosts} title={"No saved created yet"}/>
                   </div>
                 </div>
                 :
-                <div className='flex justify-center text-white text-xl lg:pt-10 md:pt-10 sm:pt-10 font-bold '>No posts created yet</div>
+                  <div className='w-full h-full flex justify-center mt-20'><Loader></Loader></div>
                 }
                 </Tab.Panel>
                 <Tab.Panel>
-                  {user?.postsSaved?.length > 0 ? 
+                  {!isLoading ? 
                   <div className="mt-10">
                   <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
-                        <RenderCards data={savedPosts}/>
+                        <RenderCards data={savedPosts} title={"No saved posts yet"}/>
                     </div>
                   </div>
-                  : <div className='flex justify-center text-white text-xl lg:pt-10 md:pt-10 sm:pt-10 font-bold'>No saved posts yet</div>
+                  : <Loader></Loader>
                   }
                 </Tab.Panel>
               </Tab.Panels>

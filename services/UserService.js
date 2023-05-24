@@ -1,13 +1,14 @@
 import User from "../model/User.js"
 import bcrypt from "bcrypt"
 import { v4 } from "uuid"
-import mailService from "./MailService.js"
-import tokenService from "./TokenService.js"
+import tokenServiceContainer from "./TokenService.js"
 import UserDto from "../dtos/userDTO.js"
 import * as dotenv from "dotenv"
 import { ApiError } from "../exceptions/apiError.js"
 import Post from "../model/Post.js"
 import mongoose from "mongoose"
+import mailServiceContainer from "./MailService.js"
+import { createContainer , asValue } from "awilix"
 
 dotenv.config()
 
@@ -22,10 +23,10 @@ class UserService{
         const hashPassword = await bcrypt.hash(password,3);
         const activationLink = v4()
         const user = await User.create({email,password : hashPassword , activationLink})
-        // await mailService.sendActivisionMail(email,`${process.env.API_URL}/api/activate/${activationLink}`)
+        // await mailServiceContainer.resolve("mailService").sendActivisionMail(email,`${process.env.API_URL}/api/activate/${activationLink}`)
         const userDTO = new UserDto(user)
-        const tokens = tokenService.generateTokens({...userDTO})
-        await tokenService.saveToken(userDTO.id, tokens.refreshToken)
+        const tokens = tokenServiceContainer.resolve("tokenService").generateTokens({...userDTO})
+        await tokenServiceContainer.resolve("tokenService").saveToken(userDTO.id, tokens.refreshToken)
 
         return{...tokens, user : userDTO}
     }
@@ -49,14 +50,14 @@ class UserService{
             throw ApiError.BadRequests('Wrong password or email')
         }
         const userDTO = new UserDto(user);
-        const tokens = tokenService.generateTokens({...userDTO})
-        await tokenService.saveToken(userDTO.id, tokens.refreshToken)
+        const tokens = tokenServiceContainer.resolve("tokenService").generateTokens({...userDTO})
+        await tokenServiceContainer.resolve("tokenService").saveToken(userDTO.id, tokens.refreshToken)
 
         return{...tokens, user : userDTO}
     }
 
     async logout(refreshToken){
-        const token = await tokenService.removeToken(refreshToken)
+        const token = await tokenServiceContainer.resolve("tokenService").removeToken(refreshToken)
         return token
     }
 
@@ -64,16 +65,16 @@ class UserService{
         if (!refreshToken){
             throw ApiError.UnathorizedError()
         }
-        const userData = tokenService.validateRefreshToken(refreshToken)
-        const tokeFromDb = await tokenService.findToken(refreshToken)
+        const userData = tokenServiceContainer.resolve("tokenService").validateRefreshToken(refreshToken)
+        const tokeFromDb = await tokenServiceContainer.resolve("tokenService").findToken(refreshToken)
         if (!userData || !tokeFromDb){
             throw ApiError.UnathorizedError()
         }
 
         const user = await User.findById(userData.id)
         const userDTO = new UserDto(user);
-        const tokens = tokenService.generateTokens({...userDTO})
-        await tokenService.saveToken(userDTO.id, tokens.refreshToken)
+        const tokens = tokenServiceContainer.resolve("tokenService").generateTokens({...userDTO})
+        await tokenServiceContainer.resolve("tokenService").saveToken(userDTO.id, tokens.refreshToken)
 
         return{...tokens, user : userDTO}
     }
@@ -106,4 +107,9 @@ class UserService{
 
 const userService = new UserService()
 
-export default userService
+
+const userServiceContainer = createContainer()
+
+userServiceContainer.register({userService: asValue(userService)});
+
+export default userServiceContainer
