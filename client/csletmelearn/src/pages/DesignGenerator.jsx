@@ -89,7 +89,7 @@ const DesignGenerator = () => {
           try {
             setGeneratingImg(true);
             const response = await api.post('https://inkfinder2.azurewebsites.net/api/dalle',{
-              prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
+              prompt: `Generate a unique , colorful and visually appealing tattoo design incorporating ${form.prompt} , 4k , 1080p`,
             },
              {
               headers: {
