@@ -111,7 +111,7 @@ const Post = () => {
                                             {saving ? "Saving..." : "Save"}
                                         </button>}
                                 </div>
-                                <div className='w-full px-6 flex items-center text-center text-xl h-10 text-white '>
+                                <div className='w-full mt-6 px-6 flex items-center text-center text-xl h-10 text-white '>
                                     {postInfo.prompt}
                                 </div>
                                 <div className='w-full flex items-center justify-center text-center text-xl h-full text-gray-400 '>

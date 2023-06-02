@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import SignUpPopUp from './SignUpPopUp';
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react';
+import { setIsOpen } from '../store';
 
 
 const Header = () => {
@@ -13,8 +14,8 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const isAuth = useSelector(state => state.prodAuth.isAuth)
+    const isOpen = useSelector(state => state.prodAuth.isOpen)
     // const [isOpen , setIsOpen] = useState(false)
-    const [isOpen , setIsOpen] = useState(false)
     const userId = useSelector(state => state.prodAuth.user.id);
 
     return (
@@ -84,7 +85,7 @@ const Header = () => {
             </Menu>
             :
             <button 
-                onClick={()=>setIsOpen(true)}
+                onClick={()=>dispatch(setIsOpen(true))}
                 class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
                     Sign Up
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">

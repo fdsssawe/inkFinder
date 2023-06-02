@@ -8,6 +8,7 @@ const initialState = {
   user: {},
   isAuth: false,
   isLoading: false,
+  isOpen : false
 };
 
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
@@ -85,6 +86,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setIsOpen(state , action) {
+      state.isOpen = action.payload
+    },
     setAuth(newAuth) {
       state.isAuth = newAuth
     },
@@ -136,5 +140,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuth, setUser, setLoading } = authSlice.actions;
+export const { setAuth, setUser, setLoading , setIsOpen} = authSlice.actions;
 export default authSlice.reducer;
