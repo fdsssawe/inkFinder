@@ -32,7 +32,7 @@ const Home = () => {
     });
 
     return(
-        <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px]">
+        <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px] max-w-full overflow-hidden">
             <div class="container mx-auto flex px-5 pt-32 lg:flex-row flex-col items-end lg:mb-[18rem] mb-12">
                 <div class="h-[384px] lg:w-[55%] lg:pr-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8">
                 <div class=" lg:text-[5rem] leading-[5.313rem] font-bold  text-white lg:h-[12.75rem] lg:w-[37.5rem] text-3xl">
