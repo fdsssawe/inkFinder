@@ -1,4 +1,4 @@
-# InkFinder
+# <a href="https://inkfinder2.azurewebsites.net/" target="_blank">InkFinder</a>
 ### Project for 'Web Technology' course in Lviv National University of Ivan Franko 
 The main idea of the project is providing interesting designes for new tattoos and sharing your sketches.<br/>
 by Zhovanuk Oleksandr
@@ -20,14 +20,16 @@ Mongoose - ODM for comfortable work with MongoDB schemas and other data.<br/>
 Tailwind - CSS framework for comfortable work with styles.<br/>
 bcrypt - for encrypting passwords , liml , etc.<br/>
 jsonwebtoken - for creating tokens in TokenService.<br/>
-nodemailer - for sending verification mails.<br/>
+openai and cloudinary - libraries to work with openai and cloudinary APIs
 
 Resources
 
 Azure Web App
 Azure Cosmos DB
 
-<a href="https://inkfinder2.azurewebsites.net/" target="_blank">Deployed project</a>
+### Architecture diagram
+
+![Architecture diagram](https://github.com/fdsssawe/inkfinder/assets/92380415/ea666f2e-2d67-4f59-9702-9587e21cbdda)
 
 # How to run a project on localhost 
 ### Dependencies recovery
