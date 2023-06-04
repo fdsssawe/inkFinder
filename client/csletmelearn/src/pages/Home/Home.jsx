@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import homepicture2 from "../../media/homepicture2.svg"
 import homepicture1 from "../../media/homepicture1.svg"
 import homepicture3 from "../../media/homepicture3.svg"
@@ -10,6 +10,8 @@ import { useInView } from 'react-intersection-observer';
 import { useSelector } from 'react-redux';
 import { setIsOpen } from '../../store';
 import { useDispatch } from 'react-redux';
+import Deck from '../../components/Deck/Deck';
+
 
 
 
@@ -30,6 +32,8 @@ const Home = () => {
         triggerOnce: true, 
         threshold: 0.1, 
     });
+
+      
 
     return(
         <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px] max-w-full overflow-hidden">
@@ -86,8 +90,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div class="flex lg:justify-start md:justify-center w-full items-end lg:h-1/2 h-0 lg:scale-100 scale-0">
-               <img  className='max-h-[433.61px] max-w-[600px]' alt="hero" src={homepicture4}></img>
+            <div class="flex lg:justify-center md:justify-center w-full items-center lg:h-1/2 h-0 lg:scale-100 scale-0">
+               {/* <img  className='max-h-[433.61px] max-w-[600px]' alt="hero" src={homepicture4}></img> */}
+               <Deck/>
             </div>
             </div>
             <div className='h-full w-full'>

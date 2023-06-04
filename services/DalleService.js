@@ -20,17 +20,14 @@ class DalleService{
 
             const {prompt} = req.body
             // const prompt = "tattoo , tattoo style , unicorn , uniqe unicorn tattoo"
-
             const imgResponse = await openai.createImage({
                 prompt,
                 n: 1,
                 size: "1024x1024",
                 response_format: "b64_json",
             })
-
-            console.log(imgResponse)
             const image = imgResponse.data.data[0].b64_json;
-
+            console.log(imgResponse)
             res.status(200).json({photo : image});
         }
         catch(e){

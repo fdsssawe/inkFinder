@@ -61,7 +61,6 @@ const DesignGenerator = () => {
           }
           else{
               try{  
-                  console.log("fdd")
                   const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form , {
                       headers: {
                       'Content-Type': 'application/json'
@@ -89,7 +88,7 @@ const DesignGenerator = () => {
           try {
             setGeneratingImg(true);
             const response = await api.post('https://inkfinder2.azurewebsites.net/api/dalle',{
-              prompt: `Generate a unique , colorful and visually appealing tattoo design incorporating ${form.prompt} , 4k , 1080p`,
+              prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} , 4k , 1080p , tatoo , `,
             },
              {
               headers: {
@@ -99,7 +98,6 @@ const DesignGenerator = () => {
               //   prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
               // }),
             });
-    
             const data = await response.data;
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
