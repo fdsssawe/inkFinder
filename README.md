@@ -96,7 +96,7 @@ build - to make a build of frontend from root directory
 4. ### Frontend
     
     - [x] Temporary design for pages
-    - [ ] Home page design
+    - [x] Home page design
     - [ ] Collection page design
     - [ ] Account page design
     - [ ] Upload and Generator pages design
@@ -114,9 +114,9 @@ build - to make a build of frontend from root directory
     
     - [x] Jest
     - [x] Auth service tests
-    - [ ] Database connection tests
-    - [ ] Database request tests
-    - [ ] OpenAI API tests
+    - [x] Database connection tests
+    - [x] Database request tests
+    - [x] OpenAI API tests
     - [x] Posts tests
 
 # Lab 3

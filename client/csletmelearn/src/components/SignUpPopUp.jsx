@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { googleAuthHandle, login, registration } from '../store/index.js';
 import { GoogleLogin , useGoogleLogin} from '@react-oauth/google';
 import axios from 'axios';
@@ -15,6 +15,42 @@ const SignUpPopUp = ({open , setActive}) => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [emailDirty, setEmailDirty] = useState(false);
+    const [passwordDirty, setPasswordDirty] = useState(false);
+    const [emailError, setEmailError] = useState('Email must be between 4 and 24 characters ');
+    const [passwordError, setPasswordError] = useState('Password must be atleast 8 characters');
+    const [formValid, setFormValid] = useState(false);
+
+    const emailHandler = (e) => {
+        setEmail(e.target.value)
+        if(!String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+            setEmailError("Incorrect email")
+        }
+        else{
+            setEmailError("")
+        }
+    }
+
+    const passwordHandler = (e) => {
+        setPassword(e.target.value)
+        if(password.length < 8){
+            setPasswordError("Password must be atleast 8 characters")
+        }
+        else{
+            setPasswordError("")
+        }
+    }
+
+    const blurHandler = (e) => {
+        switch (e.target.name){
+            case 'email':
+                setEmailDirty(true)
+                break
+            case 'password':
+                setPasswordDirty(true)
+                break
+        }
+    }
 
     const loginGoogle = useGoogleLogin({
         onSuccess: (user) => {
@@ -36,10 +72,20 @@ const SignUpPopUp = ({open , setActive}) => {
         },
         onError: (error) => console.log('Login Failed:', error)
     })
+
+    useEffect(()=>{
+        if(emailError || passwordError){
+            setFormValid(false)
+        }
+        else{
+            setFormValid(true)
+        }
+    },[emailError , passwordError])
+
     return (
         <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center z-10'>
             <div className='p-[4px] rounded-[12px]' onClick={e => e.stopPropagation()}>
-            <div className="lg:w-full md:w-1/2 bg-gray-800  rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+            <div className="lg:w-full  bg-gray-800  rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
             <div className='flex justify-between'>
             <h2 className="text-white text-lg font-medium title-font mb-5">Sign Up </h2>
             <svg width="12" height="12" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>{dispatch(setIsOpen(false))}} className="cursor-pointer">
@@ -48,37 +94,43 @@ const SignUpPopUp = ({open , setActive}) => {
             </div>
             <div className="relative mb-4">
                 <label htmlFor="full-name" className="leading-7 text-sm text-gray-400">Email</label>
-            <input 
+            {(emailDirty || emailError) && <div className='text-sm text-red-500'>{emailError}</div>}
+            <input
+                onBlur={e => blurHandler(e)}
                 type="text" 
                 id="full-name" 
                 name="email"             
-                onChange={e => setEmail(e.target.value)}
+                onChange={e => emailHandler(e)}
                 value={email}
                 className="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </input>  
             </div>
             <div className="relative mb-4">
                 <label htmlFor="email" className="leading-7 text-sm text-gray-400">Password</label>
-            <input 
+                {(passwordDirty || passwordError) && <div className='text-sm text-red-500'>{passwordError}</div>}
+            <input
+                onBlur={e => blurHandler(e)}
                 type="password" 
-                onChange={e => setPassword(e.target.value)}
+                onChange={e => passwordHandler(e)}
                 value={password}
                 className="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-green-900 rounded border border-gray-600 focus:border-green-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
             </input>
             </div>
-            <button 
+            <button
+                disabled={!formValid}  
                 onClick={()=>dispatch(registration({ email, password }))}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mb-4">
+                className={`text-white  border-0 py-2 px-8 focus:outline-none rounded text-lg mb-4 ${!formValid ? "bg-gray-400 hover:bg-gray-600" : "bg-green-500 hover:bg-green-600"}`}>
                 Create account
             </button>
-            <button 
+            <button
+                disabled={!formValid} 
                 onClick={()=>dispatch(login({ email, password }))}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mb-4">
+                className={`text-white  border-0 py-2 px-8 focus:outline-none rounded text-lg mb-4 ${!formValid ? "bg-gray-400 hover:bg-gray-600" : "bg-green-500 hover:bg-green-600"}`}>
                 Login
             </button>
             <button 
                 onClick={()=>loginGoogle()}
-                className="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg flex">
+                className={`text-white border-0 bg-green-500 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg flex `}>
                 <img src={google} className='mr-3'></img>
                 Continue with Google
             </button>
