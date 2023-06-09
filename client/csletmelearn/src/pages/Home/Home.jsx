@@ -67,7 +67,7 @@ const Home = () => {
                 Design generator powered by AI
                 </div>
                 <p class="mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal text-gray-900">
-                We are currently offering tool to create tattoo designs that will include anything you type in prompt field so you only limited by you imaginations. <a className='text-green-500 cursor-pointer ' onClick={()=>{ if(isAuth){navigate("/catalog")}else{dispatch(setIsOpen(true))} }} >Go and try it !</a>
+                We are currently offering tool to create tattoo designs that will include anything you type in prompt field so you only limited by you imaginations. <a className='text-green-500 cursor-pointer ' onClick={()=>{ if(isAuth){navigate("/dalle")}else{dispatch(setIsOpen(true))} }} >Go and try it !</a>
                 </p>
                 <div class="flex justify-center">
                 </div>

@@ -6,10 +6,10 @@ import styles from './styles.module.css'
 const cards = [
     'https://res.cloudinary.com/drfyxnas2/image/upload/v1685902558/abyw5dcdwyrkcvmwcyei.png',
     'https://res.cloudinary.com/drfyxnas2/image/upload/v1685901441/axqnkb8vlcjmoyhgwgmw.png',
-    'https://res.cloudinary.com/drfyxnas2/image/upload/v1685901762/wf2j9p6uu9asm3j8jkoo.png',
     'https://res.cloudinary.com/drfyxnas2/image/upload/v1685901170/hryzyyhkvfu8u5hinmrv.png',
     'https://res.cloudinary.com/drfyxnas2/image/upload/v1685901534/vka8gyf9d6k7uc2e4dkw.png',
     'https://res.cloudinary.com/drfyxnas2/image/upload/v1685116790/vxekuk1nao36v5czcdik.png',
+    'https://res.cloudinary.com/drfyxnas2/image/upload/v1685901762/wf2j9p6uu9asm3j8jkoo.png',
 ]
 
 const to = (i) => ({
