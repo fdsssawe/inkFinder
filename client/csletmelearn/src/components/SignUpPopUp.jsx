@@ -17,8 +17,8 @@ const SignUpPopUp = ({open , setActive}) => {
     const [password, setPassword] = useState('');
     const [emailDirty, setEmailDirty] = useState(false);
     const [passwordDirty, setPasswordDirty] = useState(false);
-    const [emailError, setEmailError] = useState('Email must be between 4 and 24 characters ');
-    const [passwordError, setPasswordError] = useState('Password must be atleast 8 characters');
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
     const [formValid, setFormValid] = useState(false);
 
     const emailHandler = (e) => {
@@ -75,6 +75,7 @@ const SignUpPopUp = ({open , setActive}) => {
 
     useEffect(()=>{
         if(emailError || passwordError){
+            console.log("lox")
             setFormValid(false)
         }
         else{

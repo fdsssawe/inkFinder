@@ -41,6 +41,7 @@ const Header = () => {
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/create")}>Create</a> : <div></div>}
             {/* <a class="mr-5 hover:text-white cursor-pointer ">Account</a> */}
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/dalle")}>Design Generator</a> : <div></div>}
+            <a class="mr-5 hover:text-white cursor-pointer" href="https://github.com/fdsssawe" target="_blank">Zhovanyk Olexander</a>
             {/* <button onClick={()=>setIsOpen(true)}>open</button>
             <SignUpPopUp open={isOpen} close={()=>setIsOpen(false)}/> */}
             <SignUpPopUp open = {isOpen} setActive = {setIsOpen}/>

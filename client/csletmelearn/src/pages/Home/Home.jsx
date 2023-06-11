@@ -47,13 +47,13 @@ const Home = () => {
                 </p>
                 <div class="flex justify-center">
                 <button onClick={()=>navigate("/catalog")}
-                className="text-white lg:text-[1.438rem] leading-relaxed bg-green-500 border-0 py-2 px-4 md:px-1 sm:px-1 focus:outline-none hover:bg-green-600 rounded text-[1.05rem] lg:w-[11.2rem] lg:h-[3.063rem] flex items-center">
+                className="text-white lg:text-[1.438rem] leading-relaxed bg-green-500 border-0 py-2 px-4  focus:outline-none hover:bg-green-600 rounded text-[1.05rem] lg:w-[11.2rem] lg:h-[3.063rem] flex items-center">
                 Start Browsing
                 </button>
                 </div>
                 </div>
                 <div class="flex lg:justify-end md:justify-center w-full ">
-                        <img class="object-cover object-center rounded" alt="hero" src={homepicture2}></img>
+                        <img class="object-cover object-center " alt="hero" src={homepicture2}></img>
                 </div>
             </div>
             {/* white section */}
