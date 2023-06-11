@@ -1,5 +1,5 @@
 # <a href="https://inkfinder2.azurewebsites.net/" target="_blank">InkFinder</a>
-### Project for 'Web Technology' course in Lviv National University of Ivan Franko 
+### Project for 'Web Technology' course in Ivan Franko National University of Lviv
 The main idea of the project is providing interesting designes for new tattoos and sharing your sketches.<br/>
 by Zhovanuk Oleksandr
 
@@ -30,6 +30,10 @@ Azure Cosmos DB
 ### Architecture diagram
 
 ![Architecture diagram](https://github.com/fdsssawe/inkfinder/assets/92380415/ea666f2e-2d67-4f59-9702-9587e21cbdda)
+
+### Infrastracture diagram
+
+![infrastracture](https://github.com/fdsssawe/inkfinder/assets/92380415/e0537730-7e18-458b-bd88-3121cab18f2f)
 
 # How to run a project on localhost 
 ### Dependencies recovery
