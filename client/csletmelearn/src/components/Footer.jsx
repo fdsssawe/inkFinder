@@ -5,7 +5,7 @@ const Footer = () => {
     const navigate = useNavigate()
     return (
 <footer class="text-gray-400 bg-gray-900 body-font absolute left-0 right-0 bottom-0">
-  <div class="container py-8 mx-auto flex items-center sm:flex-row flex-col">
+  <div class="container py-8 mx-auto flex items-center sm:flex-row flex-col ">
     <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
       <span class="ml-3 text-xl">InkFinder</span>
     </a>

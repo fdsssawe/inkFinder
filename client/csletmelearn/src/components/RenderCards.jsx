@@ -19,7 +19,7 @@ const RenderCards = ({ data, title , exception}) => {
     }
   
     return (
-      <div className='w-full h-full flex justify-center mt-20'>
+      <div className='w-full h-full flex justify-center mt-2 lg:ml-[157%]'>
       <h2 className="mt-5 font-bold text-[#ffffff] text-xl uppercase">{title}</h2>
       </div>
     );

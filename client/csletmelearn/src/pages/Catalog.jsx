@@ -47,7 +47,7 @@ const Catalog = () => {
   };
 
   return (
-    <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen'>
+    <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[150px]'>
     <section className="max-w-7xl mx-auto">
       <div>
         <h1 className="font-extrabold text-white text-[32px]">Community Showcase</h1>
