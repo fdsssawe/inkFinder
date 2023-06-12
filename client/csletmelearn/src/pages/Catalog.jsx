@@ -35,16 +35,23 @@ const Catalog = () => {
 
 
   const handleSearchChange = (e) => {
+    const searchTextValue = e.target.value;
+    setSearchText(searchTextValue);
+  
     clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
-
+  
     setSearchTimeout(
       setTimeout(() => {
-        const searchResult = allPosts.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()) || item.prompt.toLowerCase().includes(searchText.toLowerCase()));
+        const searchResult = sortedPosts.filter(
+          (item) =>
+            item.name.toLowerCase().includes(searchTextValue.toLowerCase()) ||
+            item.prompt.toLowerCase().includes(searchTextValue.toLowerCase())
+        );
         setSearchedResults(searchResult);
-      }, 500),
+      }, 500)
     );
   };
+  
 
   return (
     <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[150px]'>

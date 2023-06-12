@@ -9,6 +9,8 @@ import TagSellector from '../components/TagSellector';
 
 const DesignGenerator = () => {
 
+    const navigate = useNavigate()
+
     const [form, setForm] = useState({
         author: '',
         name: '',
@@ -52,7 +54,7 @@ const DesignGenerator = () => {
                         'Content-Type': 'application/json'
                       }
                     })
-                  // navigate()
+                  navigate(`/post/${response.data.data._id}`)
               }catch(e){
                   console.log(e)
               }finally{
@@ -66,7 +68,7 @@ const DesignGenerator = () => {
                       'Content-Type': 'application/json'
                       }
                   })
-                  // navigate()
+                  navigate(`/post/${response.data.data._id}`)
               }catch(e){
                   console.log(e)
               }finally{

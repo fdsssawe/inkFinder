@@ -141,20 +141,37 @@ class PostService {
         }
     }
 
-    async getSavedPosts(ids) {
+    async getSavedPosts(user) {
         try {
-            const posts = await Promise.all(ids.map(async (id) => {
-                const post = await Post.findById(id);
+          const posts = await Promise.all(user.postsSaved.map(async (id) => {
+            try {
+              const post = await Post.findById(id);
+              if (post) {
                 return post;
-            }));
-            return posts;
+              } else {
+                const index = user.postsSaved.indexOf(id);
+                if (index !== -1) {
+                  user.postsSaved.splice(index, 1);
+                }
+                await user.save()
+                console.log(`Post with ID ${id} does not exist.`);
+                return null;
+              }
+            } catch (error) {
+              console.error(`Error finding post with ID ${id}:`, error);
+              return null;
+            }
+          }));
+          console.log(posts)
+          const validPosts = posts.filter((post) => post !== null);;
+          return validPosts
         } catch (error) {
             console.log(error);
         }
     }
 
     getLog(){
-      console.log("I am here")
+      console.log("Fetch finished")
     }
 
 }

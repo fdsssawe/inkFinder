@@ -76,7 +76,7 @@ const Post = () => {
 
 
     return (
-        <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen">
+        <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[150px]">
             <div className='flex w-full justify-center pt-24'>
                 <div className='grid  h-[32rem] w-[62.438rem] rounded-[2.5rem] mb-4 grid-rows-1 grid-cols-2'>
                     {loading ? <div className='flex items-center justify-center'><Loader /></div> :

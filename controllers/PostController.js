@@ -44,7 +44,7 @@ class PostController {
       const id = req.params.id;
       const user = await User.findById(id);
       if (user.postsSaved) {
-        const result = await postServiceContainer.resolve("postService").getSavedPosts(user.postsSaved);
+        const result = await postServiceContainer.resolve("postService").getSavedPosts(user);
         return res.json(result);
       }
       return res.json([]);
