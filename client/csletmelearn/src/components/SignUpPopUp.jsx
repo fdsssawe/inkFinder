@@ -5,7 +5,7 @@ import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import google from "../media/google.svg";
 import { setIsOpen } from '../store/index.js';
-import { login, registration } from '../store/index.js';
+import { login, registration , googleAuthHandle } from '../store/index.js';
 
 const SignUpPopUp = ({ open, setActive }) => {
   if (!open) return null;
@@ -19,8 +19,6 @@ const SignUpPopUp = ({ open, setActive }) => {
     },
   });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
 
   const onSubmit = (data) => {
@@ -30,9 +28,7 @@ const SignUpPopUp = ({ open, setActive }) => {
   const handleLogin = (data) => {
     console.log(data)
     dispatch(login({ email: data.email, password: data.password }))
-      .then((response) => {s
-        setEmail('');
-        setPassword('');
+      .then((response) => {
         setLoginError('');
         if(response?.error){
             setLoginError('Login failed. Please check your credentials.')
