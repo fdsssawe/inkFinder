@@ -42,12 +42,22 @@ const Catalog = () => {
   
     setSearchTimeout(
       setTimeout(() => {
+        if(isAuth){
         const searchResult = sortedPosts.filter(
           (item) =>
             item.name.toLowerCase().includes(searchTextValue.toLowerCase()) ||
             item.prompt.toLowerCase().includes(searchTextValue.toLowerCase())
         );
         setSearchedResults(searchResult);
+        }
+        else{
+          const searchResult = allPosts.filter(
+            (item) =>
+              item.name.toLowerCase().includes(searchTextValue.toLowerCase()) ||
+              item.prompt.toLowerCase().includes(searchTextValue.toLowerCase())
+          );
+          setSearchedResults(searchResult);
+        }
       }, 500)
     );
   };
@@ -79,8 +89,8 @@ const Catalog = () => {
         ) : (
           <>
             {searchText && (
-              <h2 className="font-medium text-[#666e75] text-xl mb-3">
-                Showing Resuls for <span className="text-[#222328]">{searchText}</span>:
+              <h2 className="font-medium text-[#ffffff] text-xl mb-3">
+                Showing Resuls for <span className="text-green-400 font-bolds">{searchText}</span>:
               </h2>
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
