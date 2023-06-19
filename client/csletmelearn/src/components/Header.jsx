@@ -7,6 +7,8 @@ import SignUpPopUp from './SignUpPopUp';
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react';
 import { setIsOpen } from '../store';
+import {ArrowRightOnRectangleIcon , PhotoIcon , InformationCircleIcon , DocumentArrowUpIcon , CpuChipIcon} from "@heroicons/react/24/outline"
+
 
 
 const Header = () => {
@@ -17,12 +19,12 @@ const Header = () => {
     const isOpen = useSelector(state => state.prodAuth.isOpen)
     // const [isOpen , setIsOpen] = useState(false)
     const userId = useSelector(state => state.prodAuth.user.id);
-
+    // md:w-fit md:scale-100 w-0 scale-0
     return (
-        <header class="text-gray-400 bg-gray-900 body-font">
-        <div class="container mx-auto flex flex-wrap p-5 flex-row  items-center">
-            <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg width="45" height="45" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")} className='cursor-pointer'>
+        <header class="text-gray-400 bg-gray-900 body-font flex justify-center">
+        <div class="container flex flex-wrap p-5 pb-0 sm:pb-5 flex-row  items-center">
+            <a class="flex title-font font-medium items-center text-white mb-4 sm:mb-0">
+            <svg width="45" height="45" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")} className='cursor-pointer '>
             <circle cx="300" cy="300" r="300" fill="#22C55E"/>
             <path d="M300.12 334.438C280.991 334.438 265.427 318.875 265.427 299.745C265.427 280.615 280.991 265.052 300.12 265.052C319.25 265.052 334.814 280.615 334.814 299.745C334.814 318.876 319.251 334.438 300.12 334.438ZM300.12 287.794C293.531 287.794 288.169 293.156 288.169 299.745C288.169 306.335 293.531 311.696 300.12 311.696C306.71 311.696 312.072 306.335 312.072 299.745C312.072 293.156 306.71 287.794 300.12 287.794Z" fill="white"/>
             <path d="M227.722 446.512C221.442 446.512 216.35 441.421 216.35 435.141V420.677C216.35 381.539 184.51 349.698 145.372 349.698C139.093 349.698 134.001 344.608 134.001 338.327C134.001 332.047 139.093 326.956 145.372 326.956C197.049 326.956 239.093 369 239.093 420.677V435.141C239.093 441.421 234.001 446.512 227.722 446.512Z" fill="white"/>
@@ -33,21 +35,21 @@ const Header = () => {
             <path d="M402.995 497.262H300.018C293.738 497.262 288.647 492.171 288.647 485.891C288.647 479.61 293.738 474.519 300.018 474.519H402.995C409.274 474.519 414.366 479.61 414.366 485.891C414.366 492.171 409.275 497.262 402.995 497.262Z" fill="white"/>
             <path d="M300.12 287.794C293.841 287.794 288.749 282.703 288.749 276.423V47.3753C288.749 41.095 293.841 36.0042 300.12 36.0042C306.401 36.0042 311.492 41.095 311.492 47.3753V276.424C311.492 282.703 306.401 287.794 300.12 287.794Z" fill="white"/>
             </svg>
-            <span class="ml-3 text-xl cursor-pointer sm:ml-2 md:scale-100 scale-0" onClick={()=>navigate("")}>InkFinder</span>
+            <span class="ml-3 text-xl cursor-pointer sm:ml-2" onClick={()=>navigate("")}>InkFinder</span>
             </a>
-            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 flex flex-wrap items-center text-base justify-center">
+            <nav class="mr-auto py-1 pl-4 border-l border-gray-700 flex-wrap items-center text-base justify-center ml-4 hidden sm:flex">
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/catalog")}>Collection</a>
             <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/about")}>About us</a>
-            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/create")}>Create</a> : <div></div>}
+            {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/create")}>Post</a> : <div></div>}
             {/* <a class="mr-5 hover:text-white cursor-pointer ">Account</a> */}
             {isAuth ? <a class="mr-5 hover:text-white cursor-pointer" onClick={()=>navigate("/dalle")}>Design Generator</a> : <div></div>}
-            <a class="mr-5 hover:text-white cursor-pointer" href="https://github.com/fdsssawe" target="_blank">Zhovanyk Olexander</a>
             {/* <button onClick={()=>setIsOpen(true)}>open</button>
             <SignUpPopUp open={isOpen} close={()=>setIsOpen(false)}/> */}
-            <SignUpPopUp open = {isOpen} setActive = {setIsOpen}/>
             </nav>
-            {isAuth ?               
-            <Menu as="div" className="relative">
+            <SignUpPopUp open = {isOpen} setActive = {setIsOpen}/>
+            {isAuth ?         
+      
+            <Menu as="div" className="ml-[35%] mb-3 sm:ml-0 sm:mb-0 relative ">
             <div className='flex gap-2'>
             <div className="w-[35px] h-[35px] rounded-full object-cover bg-green-500 flex justify-center items-center text-white text-5xl font-bold" onClick={()=>navigate(`/account/${userId}`)}>
             <svg width="15" height="19" viewBox="0 0 50 56" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -62,10 +64,21 @@ const Header = () => {
             </div>
             </Menu.Button>
             </div>
-            <Menu.Items as="div" className="fixed">
-            <div className='mt-4 flex-col flex gap-2'>
-            <Menu.Item key={1} as={Fragment}>
+            <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+            <Menu.Items as="div" className="absolute right-0 bg-gray-800 rounded mt-2 sm:mt-4 px-1 pb-2">
+            <div className='mt-2 flex-col flex sm:gap-2 gap-2'>
+            <Menu.Item key={1} as={Fragment} className="hover:bg-gray-700">
                         {({ active }) => (
+                    <div className='flex items-center w-full rounded'>
+                    <ArrowRightOnRectangleIcon className='h-[1.3rem] mt-1 ml-2 text-green-400'/>
                     <button 
                     onClick={()=>{  
                         if(isAuth){ 
@@ -73,29 +86,77 @@ const Header = () => {
                             navigate("/")
                         }
                     }}
-                    class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-gray-400">
-                        Log out
+                    class="w-[6rem] inline-flex items-center border-0 py-1 px-2 focus:outline-none text-base md:mt-0 text-gray-400">
+                        Log out 
                     </button> 
+                    </div>
                         )}
             </Menu.Item>
-            <Menu.Item key={2} as={Fragment}>
+            <Menu.Item key={2} as={Fragment} className="hover:bg-gray-700 flex sm:hidden">
                         {({ active }) => (
+                    <div className='flex items-center w-full rounded'>
+                    <PhotoIcon className='h-[1.3rem] mt-1 ml-2 text-green-400'/>
                     <button 
                     onClick={()=>{  
-                        navigate("/api-docs/")
+                            navigate("/catalog")
                     }}
-                    class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0 text-gray-400">
-                        Swagger
+                    class="w-[6rem] inline-flex items-center border-0 py-1 px-2 focus:outline-none text-base md:mt-0 text-gray-400">
+                        Collection
                     </button> 
+                    </div>
+                        )}
+            </Menu.Item>
+            <Menu.Item key={3} as={Fragment} className="hover:bg-gray-700 flex sm:hidden">
+                        {({ active }) => (
+                    <div className='flex items-center w-full rounded'>
+                    <InformationCircleIcon className='h-[1.4rem] mt-1 ml-2 text-green-400'/>
+                    <button 
+                    onClick={()=>{  
+                            navigate("/about")
+                    }}
+                    class="w-[6rem] inline-flex items-center border-0 py-1 px-2 focus:outline-none text-base md:mt-0 text-gray-400">
+                        About Us
+                    </button> 
+                    </div>
+                        )}
+            </Menu.Item>
+            <Menu.Item key={4} as={Fragment} className="hover:bg-gray-700 flex sm:hidden">
+                        {({ active }) => (
+                    <div className='flex items-center w-full rounded'>
+                    <DocumentArrowUpIcon className='h-[1.3rem] ml-2 text-green-400'/>
+                    <button 
+                    onClick={()=>{  
+                            navigate("/create")
+                    }}
+                    class="w-[6rem] inline-flex items-center border-0 py-1 px-2 focus:outline-none text-base md:mt-0 text-gray-400">
+                        Post
+                    </button> 
+                    </div>
+                        )}
+            </Menu.Item>
+            <Menu.Item key={4} as={Fragment} className="hover:bg-gray-700 flex sm:hidden">
+                        {({ active }) => (
+                    <div className='flex items-center w-full rounded'>
+                    <CpuChipIcon className='h-[1.3rem] ml-2 text-green-400'/>
+                    <button 
+                    onClick={()=>{  
+                            navigate("/dalle")
+                    }}
+                    class="w-[6rem] inline-flex items-center border-0 py-1 px-2 focus:outline-none text-base md:mt-0 text-gray-400">
+                        Generator
+                    </button> 
+                    </div>
                         )}
             </Menu.Item>
             </div>
             </Menu.Items>
+            </Transition>
             </Menu>
+
             :
             <button 
                 onClick={()=>dispatch(setIsOpen(true))}
-                class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0">
+                class="flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-1 mb-[1rem] sm:mb-0 ml-auto sm:ml-0">
                     Sign Up
                     <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7"></path>

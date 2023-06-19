@@ -63,7 +63,7 @@ const SignUpPopUp = ({ open, setActive }) => {
 
   return (
     <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center z-10'>
-      <div className='p-[4px] rounded-[12px] lg:w-[19%]' onClick={(e) => e.stopPropagation()}>
+      <div className='p-[4px] rounded-[12px]  lg:w-[19%]' onClick={(e) => e.stopPropagation()}>
         <div className="lg:w-full  bg-gray-800  rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <div className='flex justify-between'>
             <h2 className="text-white text-lg font-medium title-font mb-5">Sign Up</h2>

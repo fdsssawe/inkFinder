@@ -39,10 +39,10 @@ const Home = () => {
         <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px] max-w-full overflow-hidden">
             <div class="container mx-auto flex px-5 lg:pt-32 pt-10 lg:flex-row flex-col items-end lg:mb-[18rem] mb-12">
                 <div class="h-[384px] lg:w-[55%] lg:pr-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8">
-                <div class=" lg:text-[5rem] leading-[5.313rem] font-bold  text-white lg:h-[12.75rem] lg:w-[37.5rem] text-3xl">
+                <div class="mb-4 sm:mb-0 lg:text-[5rem] sm:leading-[5.313rem] font-bold  text-white lg:h-[12.75rem] lg:w-[37.5rem] text-3xl">
                 Find best tattoo designs
                 </div>
-                <p class="mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal">
+                <p class="mb-8 sm:mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal">
                 Imagine a place where you can find any tattoo you can think of. A place where you can create most creative tattoo with out any design knowledge ...
                 </p>
                 <div class="flex justify-center">
