@@ -23,7 +23,7 @@ const AboutUs = () => {
         <div class="flex-grow">
           <h2 class="text-white text-lg title-font font-medium mb-3">Freedom</h2>
           <p class="leading-relaxed text-base">Unlike other platforms with designs , we are not goint to provide any sort of limits for number of downloads per day or any other way of limitation.</p>
-          <a class="mt-3 text-green-400 inline-flex items-center" onClick={()=>navigate("/")}>Try it out
+          <a class="mt-3 text-green-400 inline-flex items-center" onClick={()=>navigate("/catalog")}>Try it out
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
@@ -68,7 +68,7 @@ const AboutUs = () => {
         <div class="flex-grow ">
           <h2 class="text-white text-lg title-font font-medium mb-3">Events</h2>
           <p class="leading-relaxed text-base">We are planning to host an event where you can use your skills , imagination and bravery to win a prize. We would appriciate to use our user`s ideas for such events , so If you have one - contact us!</p>
-          <a class="mt-3 text-green-400 inline-flex items-center">Contact Us
+          <a class="mt-3 text-green-400 inline-flex items-center" href='https://t.me/sashazhov' target={'_blank'}>Contact Us
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>

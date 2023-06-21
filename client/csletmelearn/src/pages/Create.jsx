@@ -92,21 +92,21 @@ const Create = () => {
 
     return (
         <div>
-            <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
+            <section class="text-gray-400 bg-gray-900 body-font overflow-hidden pb-[200px] lg:pb-0">
                 <div class="container pt-24 mx-auto min-h-screen">
-                    <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                    <div className="relative bg-gray-900 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-[500px] p-0.5 h-[500px] flex justify-center items-center">
+                    <div class="lg:w-4/5 mx-auto flex flex-wrap md:justify-start justify-center">
+                    <div className="relative bg-gray-900 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 lg:w-[500px] p-0.5 lg:h-[500px] h-[320px] w-[320px] flex justify-center items-center">
                         { form.photo ? (
                         <img
                             src={form.photo}
                             alt={form.prompt}
-                            className="w-full h-full object-contain"
+                            className="lg:w-full lg:h-full h-[250px] w-[250px] object-contain"
                         />
                         ) : (
                         <img
                             src={preview}   
                             alt="preview"
-                            className="w-9/12 h-9/12 object-contain opacity-70"
+                            className="lg:w-9/12 lg:h-9/12 h-[250px] w-[250px] object-contain opacity-70"
                         />
                         )}
 
