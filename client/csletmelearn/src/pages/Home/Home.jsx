@@ -37,29 +37,31 @@ const Home = () => {
 
     return(
         <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px] max-w-full overflow-hidden">
-            <div class="container mx-auto flex px-5 lg:pt-32 pt-10 lg:flex-row flex-col items-end lg:mb-[18rem] mb-12">
-                <div class="h-[384px] lg:w-[55%] lg:pr-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8">
-                <div class="mb-4 sm:mb-0 lg:text-[5rem] sm:leading-[5.313rem] font-bold  text-white lg:h-[12.75rem] lg:w-[37.5rem] text-3xl">
-                Find best tattoo designs
+            <div class="container mx-auto flex px-5 lg:flex-row flex-col lg:h-[41.688rem] mb-12">
+                <div class="lg:w-[55%] lg:pl-20 flex items-center md:text-left text-center h-full lg:mb-0 mb-8">
+                <div className='flex flex-col pt-20'>
+                <div class="lg:mb-0 mb-4 lg:text-[5rem] md:text-[3rem] lg:leading-[5.313rem] md:leading-[3.313rem] font-bold  text-white lg:h-[11rem] lg:w-[37.5rem] text-3xl">
+                Find best <br></br>tattoo designs
                 </div>
                 <p class="mb-8 sm:mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal">
                 Imagine a place where you can find any tattoo you can think of. A place where you can create most creative tattoo with out any design knowledge ...
                 </p>
-                <div class="flex justify-center">
+                <div class="flex justify-center md:w-fit w-full">
                 <button onClick={()=>navigate("/catalog")}
                 className="text-white lg:text-[1.438rem] leading-relaxed bg-green-500 border-0 py-2 px-4  focus:outline-none hover:bg-green-600 rounded text-[1.05rem] lg:w-[11.2rem] lg:h-[3.063rem] flex items-center">
                 Start Browsing
                 </button>
                 </div>
                 </div>
-                <div class="flex lg:justify-end md:justify-center w-full ">
-                        <img class="object-cover object-center " alt="hero" src={homepicture2}></img>
+                </div>   
+                <div class="flex lg:justify-end justify-center w-full items-center md:mt-10 mt-0">
+                        <img class="md:max-h-[70vh] md:max-w-[50.08vw] max-h-[273px] max-w-[350px]" alt="hero" src={homepicture2}></img>
                 </div>
             </div>
             {/* white section */}
             <div class='flex justify-center w-full bg-white lg:h-[41.688rem] px-5'>
             <div class={`container mx-auto flex px-5 lg:flex-row flex-col items-center ${cl.hidden} ${inView ? cl.showed : ""}`} ref={ref}>
-                <div class="flex justify-start w-full items-center h-full">
+                <div class="flex lg:justify-start justify-center w-full items-center h-full">
                         <img  className='lg:max-h-[467.99px] lg:max-w-[600px] max-h-[273px] max-w-[350px]' alt="hero" src={homepicture1}></img>
                 </div>
                 <div class="h-[384px] lg:w-[55%] lg:pl-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8 ">
@@ -75,22 +77,22 @@ const Home = () => {
             </div>
             </div>
             {/* dark section 2*/}
-            <div className="w-full lg:h-[60.5rem] bg-gray-900" ref={ref2}>
+            <div className="w-full lg:h-[55rem] bg-gray-900 lg:pl-12" ref={ref2}>
             <div className={`w-full h-full flex flex-col lg:flex-row lg:justify-start justify-center lg:pt-0 pt-12 ${cl.hidden2} ${inView2 ? cl.showed : ""}`}>
-            <div className='lg:h-full lg:w-10/12 flex flex-col justify-center lg:mb-0 mb-8'>
+            <div className='lg:h-full lg:w-10/12 flex flex-col justify-center'>
             <div class="flex lg:justify-end justify-center w-full items-end lg:h-1/2 ">
                 <div class="lg:h-[18.063rem] lg:w-[43.625rem] w-full lg:pr-24 flex flex-col lg:items-start md:text-left  items-center text-center lg:mb-8" >
-                    <div class=" lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-4 lg:mb-0 font-bold  text-white lg:h-[12.75rem] lg:w-[43.625rem] text-3xl">
+                    <div class=" lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-5 lg:mb-0 font-bold  text-white lg:h-[12.75rem] lg:w-[43.625rem] text-3xl">
                     Check out designs from other users 
                     </div>
-                    <p class="mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal lg:px-0 px-10">
+                    <p class="mb-4 leading-relaxed lg:text-[1.238rem] text-[1.12rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal lg:px-0 px-10">
                     Not interested in creating designs? Then choose something made by our creative users in <a className='text-green-500 cursor-pointer ' onClick={()=>navigate("/catalog")} >collection !</a>
                     </p>
                     <div class="flex justify-center">
                     </div>
                 </div>
             </div>
-            <div class="flex lg:justify-center md:justify-center w-full items-center lg:h-1/2 h-0 lg:scale-100 scale-0">
+            <div class="flex lg:justify-center md:justify-center w-full items-center lg:h-1/2 h-0 lg:scale-100 scale-0 pb-20">
                {/* <img  className='max-h-[433.61px] max-w-[600px]' alt="hero" src={homepicture4}></img> */}
                <Deck/>
             </div>

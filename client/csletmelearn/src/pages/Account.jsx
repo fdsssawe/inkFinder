@@ -45,7 +45,7 @@ const Account = () => {
 
 
     return (
-        <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen'>
+        <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[100px]'>
         <section className="max-w-7xl mx-auto">
         <div className='flex justify-center mb-6'>
           <div className="w-[120px] h-[120px] rounded-full object-cover bg-green-500 flex justify-center items-center text-white text-5xl font-bold">
