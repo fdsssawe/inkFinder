@@ -49,7 +49,7 @@ const DesignGenerator = () => {
               }
 
               try{  
-                  const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', confirmedForm , {
+                  const response = await api.post('/newposts', confirmedForm , {
                       headers: {
                         'Content-Type': 'application/json'
                       }
@@ -63,7 +63,7 @@ const DesignGenerator = () => {
           }
           else{
               try{  
-                  const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form , {
+                  const response = await api.post('/newposts', form , {
                       headers: {
                       'Content-Type': 'application/json'
                       }
@@ -89,7 +89,7 @@ const DesignGenerator = () => {
         if (form.prompt) {
           try {
             setGeneratingImg(true);
-            const response = await api.post('https://inkfinder2.azurewebsites.net/api/dalle',{
+            const response = await api.post('/dalle',{
               prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} , 4k , 1080p , tatoo , `,
             },
              {
@@ -115,7 +115,7 @@ const DesignGenerator = () => {
 
     return (
         <div>
-            <section class="text-gray-400 bg-gray-900 body-font overflow-hidden min-h-screen pb-[150px] lg:pb-0">
+            <section class="text-gray-400 bg-gray-900 body-font overflow-hidden min-h-screen pb-[150px]">
                 <div class="container pt-24 mx-auto">
                     <div class="lg:w-4/5 mx-auto flex flex-wrap md:justify-start justify-center">
                     <div className="relative bg-gray-900 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 lg:w-[500px] p-0.5 lg:h-[500px] h-[320px] w-[320px] flex justify-center items-center">

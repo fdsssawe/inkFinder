@@ -20,9 +20,8 @@ const Account = () => {
         setLoading(true);
     
         try {
-           // https://inkfinder2.azurewebsites.net/
-            const response = await api.get(`https://inkfinder2.azurewebsites.net/api/user/${id}`)
-            const fetchedSavedPosts = await api.get(`https://inkfinder2.azurewebsites.net/api/user/${id}/saved`)
+            const response = await api.get(`/user/${id}`)
+            const fetchedSavedPosts = await api.get(`/user/${id}/saved`)
           if (response) {
             const result = await response;
             setAllPosts(result.data.posts.reverse());

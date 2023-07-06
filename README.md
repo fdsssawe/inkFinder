@@ -15,16 +15,13 @@ Node.js 18 - environment for working with serverside.<br/>
 Express.js - web-framework for creating api and web app in general.<br/>
 React.js - for UI/UX.<br/>
 MongoDB - NoSQL DataBase for saving tokens , users , designes , etc.<br/>
-Redux/Redux toolkit - state manager to hande token check and other states.<br/>
-Mongoose - ODM for comfortable work with MongoDB schemas and other data.<br/>
+Redux toolkit - state manager to hande token check and other states.<br/>
 Tailwind - CSS framework for comfortable work with styles.<br/>
-bcrypt - for encrypting passwords , liml , etc.<br/>
-jsonwebtoken - for creating tokens in TokenService.<br/>
-openai and cloudinary - libraries to work with openai and cloudinary APIs
+Jest - Testing Framework.<br/>
 
 Resources
 
-Azure Web App
+Azure App Service
 Azure Cosmos DB
 
 ### Architecture diagram
@@ -39,7 +36,7 @@ Azure Cosmos DB
 ### Dependencies recovery
 Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
 ### To start server
-Start with `npm run start:dev` or `npm run dev`
+Start with `npm run start:dev`
 ### To start client
 Open client folder `cd client` and then vite project directory `cd csletmelearn`. Start it using vite or use `npm run dev`
 ### Environment variable that you have to provide
@@ -123,20 +120,4 @@ build - to make a build of frontend from root directory
     - [x] OpenAI API tests
     - [x] Posts tests
 
-# Lab 3
-1. 1)"Save post" functions fixed
-2. Voievoda Vladislav
-3. <a href="https://github.com/Vladislav43/WEB" target="_blank">My project</a>
-4. <a href="https://github.com/fdsssawe/inkfinder/pull/1" target="_blank">Pull request</a>
-
-# Lab 4
-1. Gerii Oleg
-2. <a href="https://github.com/gr-oleg/LvivTrans.git" target="_blank">My project</a>
-3. <a href="https://github.com/gr-oleg/inkfinder/pull/1" target="_blank">Pull request</a>
-
-
-# Lab 4
-1. Vitaliy Havrona
-2. <a href="[https://github.com/Xavtso/mono_lite_backen]" target="_blank">My project</a>
-3. <a href="[https://github.com/fdsssawe/inkfinder/pull/2]" target="_blank">Pull request</a>
 

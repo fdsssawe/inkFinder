@@ -50,7 +50,7 @@ const Create = () => {
                 }
 
                 try{  
-                    const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', confirmedForm , {
+                    const response = await api.post('/newposts', confirmedForm , {
                         headers: {
                           'Content-Type': 'application/json'
                         }
@@ -65,7 +65,7 @@ const Create = () => {
             else{
                 try{  
                     console.log("fdd")
-                    const response = await api.post('https://inkfinder2.azurewebsites.net/api/newposts', form , {
+                    const response = await api.post('/newposts', form , {
                         headers: {
                         'Content-Type': 'application/json'
                         }

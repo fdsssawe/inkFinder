@@ -45,7 +45,6 @@ const Post = () => {
     const savePost = async () =>{
         setSaving(true)
         try{
-           // https://inkfinder2.azurewebsites.net/
            const response = await api.post(`/post/${id}/save`,{user : user.id})
            console.log(response)
         }

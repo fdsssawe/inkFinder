@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const AboutUs = () => {
     const navigate = useNavigate()
     return (
-<section class="text-gray-400 bg-gray-900 body-font min-h-screen pb-[150px]">
+<section class="text-gray-400 bg-gray-900 body-font min-h-screen pb-[200px]">
   <div class="container px-5 py-24 mx-auto bg-gray-900">
     <div class="text-center mb-20">
       <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">InkFinder Project</h1>
