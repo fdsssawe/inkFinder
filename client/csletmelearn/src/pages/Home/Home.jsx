@@ -1,8 +1,7 @@
-import React, { useEffect , useState } from 'react';
+import React from 'react';
 import homepicture2 from "../../media/homepicture2.svg"
 import homepicture1 from "../../media/homepicture1.svg"
 import homepicture3 from "../../media/homepicture3.svg"
-import homepicture4 from "../../media/homepicture4.svg"
 import homepicture5 from "../../media/homepicture5.svg"
 import cl from "../Home/home.module.css"
 import { useNavigate } from 'react-router-dom';
@@ -93,7 +92,6 @@ const Home = () => {
                 </div>
             </div>
             <div class="flex lg:justify-center md:justify-center w-full items-center lg:h-1/2 h-0 lg:scale-100 scale-0 pb-20">
-               {/* <img  className='max-h-[433.61px] max-w-[600px]' alt="hero" src={homepicture4}></img> */}
                <Deck/>
             </div>
             </div>

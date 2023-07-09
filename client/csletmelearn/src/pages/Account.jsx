@@ -1,12 +1,11 @@
 import React from 'react';
-import Card from '../components/Card';
 import Loader from '../components/Loader';
 import api from "../http/index.js"
 import { useEffect , useState} from 'react';
 import { Tab} from '@headlessui/react'
 import {useParams} from 'react-router-dom'
 import RenderCards from '../components/RenderCards';
-import { useSelector } from 'react-redux';
+
 
 const Account = () => {
 

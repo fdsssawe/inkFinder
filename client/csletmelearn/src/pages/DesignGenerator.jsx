@@ -104,7 +104,7 @@ const DesignGenerator = () => {
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
             console.log(err);
-            alert(err);
+            alert("Author runed out of DALL-E credits");
           } finally {
             setGeneratingImg(false);
           }

@@ -11,7 +11,6 @@ class DalleService{
 
     async getGeneratedImage(req,res){
         try{
-
             const configuration = new Configuration({
                 apiKey : process.env.OPENAI_API_KEY
             })
@@ -19,7 +18,6 @@ class DalleService{
             const openai = new OpenAIApi(configuration)
 
             const {prompt} = req.body
-            // const prompt = "tattoo , tattoo style , unicorn , uniqe unicorn tattoo"
             const imgResponse = await openai.createImage({
                 prompt,
                 n: 1,
@@ -31,8 +29,8 @@ class DalleService{
             res.status(200).json({photo : image});
         }
         catch(e){
-            console.log(e)
-            res.status(500).send(e?.message)
+            console.log(e.message)
+            res.status(500).send("Author runed out of DALL-E credits")
         }
     }
 }
