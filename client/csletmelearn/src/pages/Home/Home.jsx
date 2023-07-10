@@ -59,11 +59,11 @@ const Home = () => {
             </div>
             {/* white section */}
             <div class='flex justify-center w-full bg-white lg:h-[41.688rem] px-5'>
-            <div class={`container mx-auto flex px-5 lg:flex-row flex-col items-center ${cl.hidden} ${inView ? cl.showed : ""}`} ref={ref}>
+            <div class={`container mx-auto flex px-5 lg:flex-row flex-col items-center`} >
                 <div class="flex lg:justify-start justify-center w-full items-center h-full">
                         <img  className='lg:max-h-[467.99px] lg:max-w-[600px] max-h-[273px] max-w-[350px]' alt="hero" src={homepicture1}></img>
                 </div>
-                <div class="h-[384px] lg:w-[55%] lg:pl-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8 ">
+                <div class={`lg:pt-8 h-[384px] lg:w-[55%] lg:pl-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8 ${cl.hidden2} ${inView ? cl.showed : ""}`} ref={ref}>
                 <div class="lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-4 lg:mb-0 font-bold lg:h-[12.375rem] lg:w-[43.625rem] text-3xl text-gray-900">
                 Design generator powered by AI
                 </div>
@@ -76,26 +76,24 @@ const Home = () => {
             </div>
             </div>
             {/* dark section 2*/}
-            <div className="w-full lg:h-[55rem] bg-gray-900 lg:pl-12" ref={ref2}>
-            <div className={`w-full h-full flex flex-col lg:flex-row lg:justify-start justify-center lg:pt-0 pt-12 ${cl.hidden2} ${inView2 ? cl.showed : ""}`}>
-            <div className='lg:h-full lg:w-10/12 flex flex-col justify-center'>
+            <div className="w-full lg:h-[55rem] bg-gray-900" ref={ref2}>
+            <div className={`w-full h-full flex flex-col lg:flex-row lg:justify-start justify-center lg:pt-0 pt-12`}>
+            <div className={`h-full lg:w-10/12 flex flex-col justify-center ${cl.hidden} ${inView2 ? cl.showed : ""}`}>
             <div class="flex lg:justify-end justify-center w-full items-end lg:h-1/2 ">
-                <div class="lg:h-[18.063rem] lg:w-[43.625rem] w-full lg:pr-24 flex flex-col lg:items-start md:text-left  items-center text-center lg:mb-8" >
+                <div class={`lg:h-[18.063rem] lg:w-[43.625rem] w-full lg:ml-20 flex flex-col lg:items-start md:text-left  items-center text-center lg:mb-8`} >
                     <div class=" lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-5 lg:mb-0 font-bold  text-white lg:h-[12.75rem] lg:w-[43.625rem] text-3xl">
                     Check out designs from other users 
                     </div>
                     <p class="mb-4 leading-relaxed lg:text-[1.238rem] text-[1.12rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal lg:px-0 px-10">
                     Not interested in creating designs? Then choose something made by our creative users in <a className='text-green-500 cursor-pointer ' onClick={()=>navigate("/catalog")} >collection !</a>
                     </p>
-                    <div class="flex justify-center">
-                    </div>
                 </div>
             </div>
-            <div class="flex lg:justify-center md:justify-center w-full items-center lg:h-1/2 h-0 lg:scale-100 scale-0 pb-20">
+            <div class="flex lg:pl-12 lg:pt-5 w-full items-center lg:h-1/2 h-[30rem] lg:pb-20 pb-4 justify-center lg:justify-start">
                <Deck/>
             </div>
             </div>
-            <div className='h-full w-full'>
+            <div className='lg:h-full lg:w-full h-0 scale-0 lg:scale-100'>
                 <div class="flex justify-center w-full items-end h-full">
                 <img  className='lg:max-h-[823.34px] lg:max-w-[700px] max-h-[458.72px] max-w-[390px]' alt="hero" src={homepicture3}></img>
                 </div>
@@ -104,12 +102,12 @@ const Home = () => {
             </div>
             {/* white section 2*/}
             <div className='flex justify-center w-full bg-white lg:h-[41.688rem] px-5 lg:mb-0 mb-20'>
-            <div class={`container mx-auto flex px-5 lg:flex-row flex-col items-center ${cl.hidden} ${inView3 ? cl.showed : ""}`} ref={ref3}>
+            <div class={`container mx-auto flex px-5 lg:flex-row flex-col items-center`} >
                 <div class="flex lg:justify-start md:justify-center w-full items-center h-full">
                         <img  className='max-h-[467.99px] max-w-[600px]' alt="hero" src={homepicture5}></img>
                 </div>
 
-                <div class="h-[384px] lg:w-[55%] lg:pl-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8 ">
+                <div class={`h-[384px] lg:w-[55%] lg:pl-24 flex flex-col lg:items-start md:text-left items-center text-center lg:mb-8 ${cl.hidden2} ${inView3 ? cl.showed : ""}`} ref={ref3}>
                 <div class="lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-4 lg:mb-0 font-bold lg:h-[12.375rem] lg:w-[43.625rem] text-3xl text-gray-900">
                 Experiments are free after signup !
                 </div>
@@ -117,8 +115,6 @@ const Home = () => {
                 For now project in its early version so we are giving you full access for free. We hope that this will help us to fix as mush issues as possible, so we would appreciate if you report every bug/problem you faced with while using our website.
                  <a className='text-green-500 cursor-pointer ' href="https://t.me/sashazhov" target="_blank"> Help the project!</a>
                 </p>
-                <div class="flex justify-center">
-                </div>
                 </div>
             </div>
             </div>
