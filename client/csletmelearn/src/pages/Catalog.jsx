@@ -67,11 +67,11 @@ const Catalog = () => {
     <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[150px]'>
     <section className="max-w-7xl mx-auto">
       <div>
-        <h1 className="font-extrabold text-white text-[32px]">Community Showcase</h1>
-        <p className="mt-2 text-[#b6c4cf] text-[14px] max-w-[500px]">Сollection of imaginative and stunning designs made by other users or generate by DALL-E</p>
+        <h1 className="font-extrabold text-white md:text-[2rem] text-[1.2rem] text-center lg:text-start pt-4 lg:pt-0">Community Showcase</h1>
+        <p className="mt-2 text-[#b6c4cf] md:text-[14px] lg:max-w-[500px] w-full text-[1rem] text-center lg:text-start">Сollection of imaginative and stunning designs made by other users or generate by DALL-E</p>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-10 px-2">
         <FormField
           type="text"
           name="text"
@@ -93,7 +93,7 @@ const Catalog = () => {
                 Showing Resuls for <span className="text-green-400 font-bolds">{searchText}</span>:
               </h2>
             )}
-            <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 px-2">
               {searchText ? (
                 <RenderCards
                   
