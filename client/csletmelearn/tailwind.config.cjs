@@ -6,7 +6,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        'calc-screen-88': 'calc(100vw - 256px)',
+      },
+    },
   },
   plugins: [],
 }

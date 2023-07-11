@@ -43,14 +43,13 @@ const Account = () => {
 
 
     return (
-        <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[100px]'>
+        <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[150px]'>
         <section className="max-w-7xl mx-auto">
         <div className='flex justify-center mb-6'>
-          <div className="w-[120px] h-[120px] rounded-full object-cover bg-green-500 flex justify-center items-center text-white text-5xl font-bold">
-          <svg width="50" height="56" viewBox="0 0 50 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.0625 0.671878C16.1406 1.40625 10.1719 6.4375 8.20312 13.2188C6.29688 19.8281 8.65625 27.375 13.9375 31.5156C14.5938 32.0313 15.1406 32.5 15.1406 32.5469C15.1562 32.5938 14.7812 32.7969 14.3438 33C12.8906 33.6563 10.75 35.0313 9.25 36.25C5.17188 39.5469 2.15625 44.2031 0.84375 49.2344C0.453125 50.7344 0 53.7813 0 54.8906V55.5H2.46875H4.9375L5.14062 53.6719C5.625 48.9375 7.375 45.0781 10.5469 41.7656C16.2031 35.8438 24.5938 33.9688 32.2969 36.9063C37.8125 39.0156 42.2031 43.7031 44.0469 49.4688C44.5469 51 44.9844 53.5625 45 54.8281V55.5H47.5H50V54.6719C50 53.4531 49.5781 50.7813 49.1406 49.125C47.3125 42.2656 42.2812 36.125 36.0625 33.1875C35.3906 32.8594 34.8594 32.5781 34.8594 32.5313C34.8594 32.4844 35.2812 32.1406 35.8125 31.75C37.7969 30.2813 40.0156 27.3906 41.0625 24.9531C45.6562 14.1406 38.5469 1.9375 26.9062 0.671878C25.1406 0.484378 24.8594 0.484378 23.0625 0.671878ZM26.8438 5.65625C33.3594 6.71875 37.8594 12.2813 37.4531 18.7813C37.1094 24.1875 33.5781 28.5469 28.3281 30.0625C26.7188 30.5313 23.4375 30.5625 21.875 30.1406C14.8125 28.1875 10.9062 20.9375 13.2031 13.9844C15.0625 8.35938 21.0312 4.71875 26.8438 5.65625Z" fill="#111827"/>
-          </svg>
-          </div>
+        <svg className='' width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => navigate(`/account/${userPosts?.data?.profileOwner._id}`)}>
+        <circle cx="50" cy="50" r="50" fill="#22C55E"/>
+        <path d="M48.0625 23.1407C41.1406 23.8755 35.1719 28.9096 33.2031 35.6947C31.2969 42.3078 33.6562 49.859 38.9375 54.002C39.5938 54.5179 40.1406 54.9869 40.1406 55.0338C40.1562 55.0807 39.7812 55.284 39.3438 55.4872C37.8906 56.1438 35.75 57.5196 34.25 58.7391C30.1719 62.0378 27.1562 66.6967 25.8438 71.7308C25.4531 73.2317 25 76.2803 25 77.3903V78H27.4688H29.9375L30.1406 76.1708C30.625 71.4338 32.375 67.5722 35.5469 64.2578C41.2031 58.3326 49.5938 56.4565 57.2969 59.3957C62.8125 61.5063 67.2031 66.1964 69.0469 71.9653C69.5469 73.4974 69.9844 76.0614 70 77.3277V78H72.5H75V77.1714C75 75.952 74.5781 73.2786 74.1406 71.6214C72.3125 64.7581 67.2812 58.614 61.0625 55.6748C60.3906 55.3465 59.8594 55.0651 59.8594 55.0182C59.8594 54.9713 60.2812 54.6273 60.8125 54.2365C62.7969 52.7669 65.0156 49.8746 66.0625 47.4358C70.6562 36.6171 63.5469 24.407 51.9062 23.1407C50.1406 22.9531 49.8594 22.9531 48.0625 23.1407ZM51.8438 28.1279C58.3594 29.191 62.8594 34.7567 62.4531 41.2604C62.1094 46.6697 58.5781 51.0316 53.3281 52.548C51.7188 53.0171 48.4375 53.0483 46.875 52.6262C39.8125 50.672 35.9062 43.4179 38.2031 36.4608C40.0625 30.8326 46.0312 27.1899 51.8438 28.1279Z" fill="#111827"/>
+        </svg>
         </div>
           <div>
             <h1 className=" text-white text-[32px] flex justify-center">{user?.email}</h1>
@@ -62,7 +61,7 @@ const Account = () => {
               <Tab.Panels>
                 <Tab.Panel>
                 {!isLoading ? <div className="mt-10">
-                  <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+                  <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 px-2">
                       <RenderCards data={allPosts} title={"No saved created yet"}/>
                   </div>
                 </div>
@@ -70,10 +69,10 @@ const Account = () => {
                   <div className='w-full h-full flex justify-center mt-20'><Loader></Loader></div>
                 }
                 </Tab.Panel>
-                <Tab.Panel>
+                <Tab.Panel >
                   {!isLoading ? 
-                  <div className="mt-10">
-                  <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
+                  <div className="mt-10 ">
+                  <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 px-2">
                         <RenderCards data={savedPosts} title={"No saved posts yet"}/>
                     </div>
                   </div>
