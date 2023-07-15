@@ -90,7 +90,7 @@ const DesignGenerator = () => {
           try {
             setGeneratingImg(true);
             const response = await api.post('/dalle',{
-              prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} , 4k , 1080p , tatoo , `,
+              prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} tatoo , `,
             },
              {
               headers: {
@@ -101,6 +101,7 @@ const DesignGenerator = () => {
               // }),
             });
             const data = await response.data;
+            console.log(data)
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
           } catch (err) {
             console.log(err);

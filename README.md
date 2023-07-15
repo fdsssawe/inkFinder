@@ -28,10 +28,6 @@ Azure Cosmos DB
 
 ![Architecture diagram](https://github.com/fdsssawe/inkfinder/assets/92380415/ea666f2e-2d67-4f59-9702-9587e21cbdda)
 
-### Infrastracture diagram
-
-![infrastracture](https://github.com/fdsssawe/inkfinder/assets/92380415/e0537730-7e18-458b-bd88-3121cab18f2f)
-
 # How to run a project on localhost 
 ### Dependencies recovery
 Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
@@ -79,7 +75,6 @@ build - to make a build of frontend from root directory
     - [x] New route for Dall-e features
     - [x] Frontend page for design generator using Dell-e
     - [x] Cloudinary 
-    - [x] FileReader API
     - [x] New api implementation
 
 3. ### Main functionality

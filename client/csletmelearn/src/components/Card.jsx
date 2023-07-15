@@ -12,7 +12,7 @@ const Card = ({ _id, name, prompt, photo , author }) => {
 
     const navigate = useNavigate()
     return(
-        <div className="rounded-xl group relative h-fit" >
+        <div className="rounded-xl group relative h-fit mb-3" >
             <img
             onClick={()=>navigate(`/post/${_id}`)}
             className="w-full h-auto object-cover rounded-xl"

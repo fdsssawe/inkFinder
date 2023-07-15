@@ -122,7 +122,7 @@ const Post = () => {
                 </div>
             </div>
             <p className='flex justify-center text-white text-xl title-font font-medium mb-2 mt-6'>More from the author</p>
-            <div className="grid lg:grid-cols-5 sm:grid-cols-4 grid-cols-3  gap-3 px-2 lg:px-4">
+            <div className="lg:columns-4 md:columns-3 columns-2 gap-y-40 px-2 lg:px-4">
                 {loading ? <div className='flex items-center justify-center'><Loader /></div> :
                     <RenderCards data={userPosts?.data?.posts} title={"No posts yet"} exception={postInfo._id} />}
             </div>

@@ -93,7 +93,7 @@ const Catalog = () => {
                 Showing Resuls for <span className="text-green-400 font-bolds">{searchText}</span>:
               </h2>
             )}
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 px-2">
+            <div className="lg:columns-4 md:columns-3 columns-2 gap-y-40 px-2">
               {searchText ? (
                 <RenderCards
                   
