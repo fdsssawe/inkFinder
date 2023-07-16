@@ -1,28 +1,16 @@
 # <a href="https://inkfinder2.azurewebsites.net/" target="_blank">InkFinder</a>
 ### Project for 'Web Technology' course in Ivan Franko National University of Lviv
-The main idea of the project is providing interesting designes for new tattoos and sharing your sketches.<br/>
-by Zhovanuk Oleksandr
-
-Contacts :<br/>
-<a href="mailto:zhovanukolexander@gmail.com">Email</a><br/>
-<a href="https://t.me/sashazhov" target="_blank">Telegram</a>
+The main idea of the project is to make it easy for avarage user to use a power of AI to create a good tattoo.<br/>
 
 # Stack
 
-Tech stack
+### Tech stack
 
-Node.js 18 - environment for working with serverside.<br/>
-Express.js - web-framework for creating api and web app in general.<br/>
-React.js - for UI/UX.<br/>
-MongoDB - NoSQL DataBase for saving tokens , users , designes , etc.<br/>
-Redux toolkit - state manager to hande token check and other states.<br/>
-Tailwind - CSS framework for comfortable work with styles.<br/>
-Jest - Testing Framework.<br/>
+Node.js 18, Express.js, React.js, MongoDB, Redux toolkit, Tailwind, Jest
 
-Resources
+### Resources
 
-Azure App Service
-Azure Cosmos DB
+Azure App Service, Azure Cosmos DB
 
 ### Architecture diagram
 
@@ -30,7 +18,7 @@ Azure Cosmos DB
 
 # How to run a project on localhost 
 ### Dependencies recovery
-Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm ci` in root and client/csletmelearn folders
+Since node_modules are not in repository , you need to recover node_module for both client and server. You can do it with `npm i` in root and client/csletmelearn folders
 ### To start server
 Start with `npm run start:dev`
 ### To start client
@@ -46,7 +34,6 @@ Open client folder `cd client` and then vite project directory `cd csletmelearn`
 * SMTP_PASSWORD : password for this email (if using gmail better turn on 2FA and use app password)
 * API_URL : full link for your server (for example http://localhost:5000)
 * CLIENT_URL : full link for your client
-* OPENAI_API_KEY : you api key for dalle(openai). You can get it in official openai webpage in api->api key->new api key. Copy it (you will not be able to see it after you close the window) , and past it to your .env file.
 * CLOUDINARY_API_KEY : key that you can find in cloudinary dashboard
 * CLOUDINARY_API_SECRET : secret string that you can find in cloudinary dashboard
 * CLOUDINARY_CLOUD_NAME : name of your cloudinary account
@@ -70,12 +57,8 @@ build - to make a build of frontend from root directory
 
 2.  ### API implementation
     
-    - [x] Backend OpenAI service setup
-    - [x] Dall-e functionality usage
-    - [x] New route for Dall-e features
-    - [x] Frontend page for design generator using Dell-e
+    - [x] DALL-E 2 (changed to pollinations AI due to lack of Open AI credits)
     - [x] Cloudinary 
-    - [x] New api implementation
 
 3. ### Main functionality
     
@@ -84,35 +67,25 @@ build - to make a build of frontend from root directory
     - [x] Cloudinary usage
     - [x] Upload page/functionality
     - [x] Favorite post page/functionality
-    - [ ] Interests form after registration
     - [x] Recomendation algorithm
     - [x] Tags
     - [x] Account page
 
-4. ### Frontend
+4. ### Database
     
-    - [x] Temporary design for pages
-    - [x] Home page design
-    - [ ] Collection page design
-    - [ ] Account page design
-    - [ ] Upload and Generator pages design
-    - [ ] Parallax for home page
-
-5. ### Database
-    
-    - [x] User schema
+    - [x] Mongoose schemas
     - [x] MongoDB Cluster for development
-    - [x] CosmosDB
-    - [x] Cloudinary SDK implementation
-    - [x] New schema for images 
+    - [x] CosmosDB deployment
     
-6. ### Tests
+5. ### Tests
     
     - [x] Jest
     - [x] Auth service tests
     - [x] Database connection tests
     - [x] Database request tests
-    - [x] OpenAI API tests
     - [x] Posts tests
 
+# Contacts :<br/>
+<a href="mailto:zhovanukolexander@gmail.com">Email</a><br/>
+<a href="https://t.me/sashazhov" target="_blank">Telegram</a>
 
