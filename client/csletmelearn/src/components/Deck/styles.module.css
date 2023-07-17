@@ -10,8 +10,8 @@
 
   .deck {
     position: absolute;
-    width: 600px;
-    height: 400px;
+    width: 37.5rem;
+    height: 25rem;
     will-change: transform;
     display: flex;
     align-items: center;
@@ -26,9 +26,9 @@
     background-position: center center;
     border: solid rgb(34 197 94) 2px ;
     width: 45vh;
-    max-width: 350px;
+    max-width: 21.875rem;
     height: 85vh;
-    max-height: 350px;
+    max-height: 21.875rem;
     will-change: transform;
     border-radius: 10px;
     box-shadow: 0 10px 100px -10px rgba(0, 0, 0, 0.4), 0 5px 3px -10px rgba(0, 0, 0, 0.3);

@@ -39,13 +39,13 @@ const Home = () => {
             <div class="container mx-auto flex px-5 lg:flex-row flex-col lg:h-[41.688rem] mb-12">
                 <div class="lg:w-[55%] lg:pl-20 flex items-center md:text-left text-center h-full lg:mb-0 mb-8">
                 <div className='flex flex-col pt-20'>
-                <div class="lg:mb-0 mb-4 lg:text-[5rem] md:text-[3rem] lg:leading-[5.313rem] md:leading-[3.313rem] font-bold  text-white lg:h-[11rem] lg:w-[37.5rem] text-3xl">
+                <div class="text-center lg:text-start lg:mb-0 mb-4 lg:text-[5rem] md:text-[3rem] lg:leading-[5.313rem] md:leading-[3.313rem] font-bold  text-white lg:h-[11rem] lg:w-[37.5rem] text-3xl">
                 Find best <br></br>tattoo designs
                 </div>
-                <p class="mb-8 sm:mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal">
+                <p class="text-center lg:text-start mb-8 sm:mb-4 leading-relaxed lg:text-[1.238rem] text-[1.05rem] lg:h-[6.563rem] lg:w-[37.688rem] font-normal">
                 Imagine a place where you can find any tattoo you can think of. A place where you can create most creative tattoo with out any design knowledge ...
                 </p>
-                <div class="flex justify-center md:w-fit w-full">
+                <div class="flex justify-center w-full lg:w-fit">
                 <button onClick={()=>navigate("/catalog")}
                 className="text-white lg:text-[1.438rem] leading-relaxed bg-green-500 border-0 py-2 px-4  focus:outline-none hover:bg-green-600 rounded text-[1.05rem] lg:w-[11.2rem] lg:h-[3.063rem] flex items-center">
                 Start Browsing
@@ -78,7 +78,7 @@ const Home = () => {
             {/* dark section 2*/}
             <div className="w-full lg:h-[55rem] bg-gray-900" ref={ref2}>
             <div className={`w-full h-full flex flex-col lg:flex-row lg:justify-start justify-center lg:pt-0 pt-12`}>
-            <div className={`h-full lg:w-10/12 flex flex-col justify-center ${cl.hidden} ${inView2 ? cl.showed : ""}`}>
+            <div className={`h-full lg:w-full flex flex-col justify-center  ${cl.hidden} ${inView2 ? cl.showed : ""}`}>
             <div class="flex lg:justify-end justify-center w-full items-end lg:h-1/2 ">
                 <div class={`lg:h-[18.063rem] lg:w-[43.625rem] w-full lg:ml-20 flex flex-col lg:items-start md:text-left  items-center text-center lg:mb-8`} >
                     <div class=" lg:text-[4.688rem] lg:leading-[5.313rem] leading-10 mb-5 lg:mb-0 font-bold  text-white lg:h-[12.75rem] lg:w-[43.625rem] text-3xl">
@@ -89,12 +89,12 @@ const Home = () => {
                     </p>
                 </div>
             </div>
-            <div class="flex lg:pl-12 lg:pt-5 w-full items-center lg:h-1/2 h-[30rem] lg:pb-20 pb-4 justify-center lg:justify-start">
+            <div class="flex lg:pr-[10rem] lg:pt-5 w-full items-center lg:h-1/2 h-[30rem] lg:pb-20 pb-4 justify-center lg:justify-end">
                <Deck/>
             </div>
             </div>
             <div className='lg:h-full lg:w-full h-0 scale-0 lg:scale-100'>
-                <div class="flex justify-center w-full items-end h-full">
+                <div class="flex justify-start w-full items-end h-full">
                 <img  className='lg:max-h-[823.34px] lg:max-w-[700px] max-h-[458.72px] max-w-[390px]' alt="hero" src={homepicture3}></img>
                 </div>
             </div>
