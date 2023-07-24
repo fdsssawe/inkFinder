@@ -21,7 +21,7 @@ const Header = () => {
     const userId = useSelector(state => state.prodAuth.user.id);
     // md:w-fit md:scale-100 w-0 scale-0
     return (
-        <header class="text-gray-400 bg-gray-900 body-font flex justify-center lg:px-[5rem]">
+        <header class="text-gray-400 bg-gray-900 body-font flex justify-center lg:px-[5rem] ">
         <div class="container flex flex-wrap p-5 pb-0 sm:pb-5 flex-row  items-center">
             <a class="flex title-font font-medium items-center text-white mb-4 sm:mb-0">
             <svg width="45" height="45" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={()=>navigate("/")} className='cursor-pointer '>

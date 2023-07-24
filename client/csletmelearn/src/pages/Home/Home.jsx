@@ -32,13 +32,13 @@ const Home = () => {
         threshold: 0.1, 
     });
 
-      
+      //lg:h-[41.688rem]
 
     return(
         <section class="text-white bg-gray-900 dark:[color-scheme:dark] min-h-screen pb-[100px] max-w-full overflow-hidden">
-            <div class="container mx-auto flex px-5 lg:flex-row flex-col lg:h-[41.688rem] mb-12">
+            <div class="container mx-auto flex px-5 lg:flex-row flex-col lg:h-[87vh] md:h-[73vh] h-[45rem] mb-12">
                 <div class="lg:w-[55%] lg:pl-20 flex items-center md:text-left text-center h-full lg:mb-0 mb-8">
-                <div className='flex flex-col pt-20'>
+                <div className='flex flex-col lg:pt-20'>
                 <div class="text-center lg:text-start lg:mb-0 mb-4 lg:text-[5rem] md:text-[3rem] lg:leading-[5.313rem] md:leading-[3.313rem] font-bold  text-white lg:h-[11rem] lg:w-[37.5rem] text-3xl">
                 Find best <br></br>tattoo designs
                 </div>

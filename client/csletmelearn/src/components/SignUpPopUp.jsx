@@ -63,7 +63,7 @@ const SignUpPopUp = ({ open, setActive }) => {
 
   return (
     <div className='h-[100vh] w-[100vw] bg-black fixed top-0 left-0 bg-opacity-30 flex items-center justify-center z-10'>
-      <div className='p-[4px] rounded-[12px]  lg:w-[23vw]' onClick={(e) => e.stopPropagation()}>
+      <div className='p-[4px] rounded-[12px]  lg:w-[361px]' onClick={(e) => e.stopPropagation()}>
         <div className="lg:w-full  bg-gray-800  rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           <div className='flex justify-between'>
             <h2 className="text-white text-lg font-medium title-font mb-5">Sign Up</h2>
@@ -144,7 +144,7 @@ const SignUpPopUp = ({ open, setActive }) => {
           </button>
           <button
             onClick={loginGoogle}
-            className={`text-white border-0 bg-green-500 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg flex`}
+            className={`text-white border-0 bg-green-500 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg flex justify-center`}
           >
             <img src={google} className="mr-3" alt="Google" />
             Continue with Google
