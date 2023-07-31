@@ -79,7 +79,7 @@ const Post = () => {
             <div className='flex w-full justify-center lg:pt-24 md:pt-12'>
                 <div className='lg:grid lg:h-[32rem] lg:w-[62.438rem] lg:rounded-[2.5rem] mb-4 lg:grid-rows-1 lg:grid-cols-2 flex flex-col '>
                     {loading ? <div className='flex items-center justify-center'><Loader /></div> :
-                        <div className='flex justify-center lg:justify-start'><img src={postInfo.photo} className='lg:rounded-l-[2.5rem] lg:h-[31.75rem] md:h-[35rem]'></img></div>}
+                        <div className='flex justify-center lg:justify-start mt-12 md:mt-0 mb-2 md:mb-0'><img src={postInfo.photo} className='lg:rounded-l-[2.5rem] md:rounded-[1.5rem] lg:h-[31.75rem] md:h-[35rem]'></img></div>}
                     <div className='lg:border-green-500 lg:border-2 lg:rounded-r-[2.5rem] lg:h-[31.75rem]'>
                         {loading ? <div className='flex items-center justify-center h-full'><Loader /></div> :
                             <div className='flex flex-col lg:h-full h-fit '>
@@ -110,7 +110,7 @@ const Post = () => {
                                             {saving ? "Saving..." : "Save"}
                                         </button>}
                                 </div>
-                                <div className='w-full mt-6 px-6 flex items-center text-center lg:text-xl text-lg lg:h-10 h-6 text-white '>
+                                <div className='w-full lg:mt-6 px-6 flex items-center text-center lg:text-xl text-lg lg:h-10 h-6 text-white '>
                                     {postInfo.prompt}
                                 </div>
                                 <div className='w-full flex items-center justify-center text-center text-xl lg:h-full text-gray-400 h-0 scale-0'>
@@ -121,8 +121,8 @@ const Post = () => {
                     </div>
                 </div>
             </div>
-            <p className='flex justify-center text-white text-xl title-font font-medium mb-2 mt-6'>More from the author</p>
-            <div className="lg:columns-4 md:columns-3 columns-2 gap-y-40 px-2 lg:px-4">
+            <p className='flex justify-center text-white text-xl title-font font-medium mb-4 mt-6'>More from the author</p>
+            <div className="lg:columns-5 md:columns-3 columns-2 gap-y-40 px-2 lg:px-4">
                 {loading ? <div className='flex items-center justify-center'><Loader /></div> :
                     <RenderCards data={userPosts?.data?.posts} title={"No posts yet"} exception={postInfo._id} />}
             </div>

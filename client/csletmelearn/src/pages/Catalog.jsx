@@ -65,7 +65,7 @@ const Catalog = () => {
 
   return (
     <div className=' flex-col items-center lg:pt-46 md:pt-20  bg-gray-900 min-h-screen pb-[150px]'>
-    <section className="max-w-7xl mx-auto">
+    <section className="lg:max-w-7xl xl:max-w-[93rem] mx-auto">
       <div>
         <h1 className="font-extrabold text-white md:text-[2rem] text-[1.2rem] text-center lg:text-start pt-4 lg:pt-0">Community Showcase</h1>
         <p className="mt-2 text-[#b6c4cf] md:text-[14px] lg:max-w-[500px] w-full text-[1rem] text-center lg:text-start">Сollection of imaginative and stunning designs made by other users or generate by DALL-E</p>
@@ -93,7 +93,7 @@ const Catalog = () => {
                 Showing Resuls for <span className="text-green-400 font-bolds">{searchText}</span>:
               </h2>
             )}
-            <div className="lg:columns-4 md:columns-3 columns-2 gap-y-40 px-2">
+            <div className="lg:columns-4 md:columns-3 columns-2 xl:columns-5 gap-y-40 px-2">
               {searchText ? (
                 <RenderCards
                   
