@@ -63,7 +63,7 @@ const Account = () => {
                 <Tab.Panel>
                 {!isLoading ? <div className="mt-10">
                   <div className={`${allPosts.length > 0 ? "lg:columns-4 md:columns-3 columns-2 gap-y-40 px-2 w-full" : "flex w-full justify-center"}`}>
-                      <RenderCards data={allPosts} title={"No saved created yet"}/>
+                      <RenderCards data={allPosts} title={"No posts created yet"}/>
                   </div>
                 </div>
                 :
