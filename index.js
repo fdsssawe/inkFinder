@@ -33,7 +33,7 @@ const options = {
           },
         servers : [
             {
-                url : "https://inkfinder2.azurewebsites.net/api/"
+                url : "https://inkfinder.vercel.app/api/"
             }
         ]
     },
@@ -66,7 +66,8 @@ const app = express();
 
 app.use(cors({
     credentials : true,
-    origin : [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.vercel.app/", "https://inkfinder.vercel.app", "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173/dalle" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
+    origin : "*",
+    // [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.vercel.app/", "https://inkfinder.vercel.app", "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173/dalle" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
 }))
 
 app.use(cookieParser())
