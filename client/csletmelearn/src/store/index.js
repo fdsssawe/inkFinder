@@ -18,7 +18,7 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
   localStorage.setItem('token', response.data.accessToken);
   setAuth(true)
   setUser(response.data.user)
-  window.location = 'https://inkfinder2.azurewebsites.net/' 
+  window.location = 'https://inkfinder.vercel.app/' 
   return response.data.user;
   }
   catch(e){
@@ -33,7 +33,7 @@ export const registration = createAsyncThunk('auth/registration', async ({ email
     localStorage.setItem('token', response.data.accessToken);
     setAuth(true)
     setUser(response.data.user)
-    window.location = 'https://inkfinder2.azurewebsites.net/'
+    window.location = 'https://inkfinder.vercel.app/'
     return response.data.user;
   }
   catch(e){
@@ -49,14 +49,14 @@ export const googleAuthHandle = createAsyncThunk('auth/googleAuthHandle', async 
       localStorage.setItem('token', response.response.data.accessToken);
       setAuth(true)
       setUser(response.response.data.user)
-      window.location = 'https://inkfinder2.azurewebsites.net/'
+      window.location = 'https://inkfinder.vercel.app/'
       return response.response.data.user;
     }
     else{
         localStorage.setItem('token', response.response.data.accessToken);
         setAuth(true)
         setUser(response.response.data.user)
-        window.location = 'https://inkfinder2.azurewebsites.net/' 
+        window.location = 'https://inkfinder.vercel.app/' 
         return response.response.data.user;
     }
   }

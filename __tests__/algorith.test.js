@@ -4,8 +4,8 @@ import postServiceContainer from "../services/PostsService"
 const postService = postServiceContainer.resolve("postService")
 
 test('Should return the posts sorted according to algorithm(based on save posts)', async () => {
-     const user = await axios.post("https://inkfinder2.azurewebsites.net/api/login",{email : "testUser@gmail.com" , password : "testpass1"})
-     const lastSavedPost = await axios.get(`https://inkfinder2.azurewebsites.net/api/post/${user.data.user.postsSaved[0]}`)
+     const user = await axios.post("https://inkfinder.vercel.app/api/login",{email : "testUser@gmail.com" , password : "testpass1"})
+     const lastSavedPost = await axios.get(`https://inkfinder.vercel.app/api/post/${user.data.user.postsSaved[0]}`)
      const setLoading = jest.fn();
      const setAllPosts = jest.fn();
      const setSortedPosts = jest.fn();

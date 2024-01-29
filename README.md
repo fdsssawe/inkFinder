@@ -1,4 +1,4 @@
-# <a href="https://inkfinder2.azurewebsites.net/" target="_blank">InkFinder</a>
+# <a href="https://inkfinder.vercel.app/" target="_blank">InkFinder</a>
 ### Project for 'Web Technology' course in Ivan Franko National University of Lviv
 The main idea of the project is to make it easy for avarage user to use a power of AI to create a good tattoo.<br/>
 

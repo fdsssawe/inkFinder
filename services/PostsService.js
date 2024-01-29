@@ -22,9 +22,9 @@ class PostService {
         try {
           if (isAuth && user) {
             if (user.postsSaved && user.postsSaved.length > 0) {
-              const lastSavedPost = await axios.get(`https://inkfinder2.azurewebsites.net/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
+              const lastSavedPost = await axios.get(`https://inkfinder.vercel.app/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
               const preference = lastSavedPost.data.prompt.split(',')[lastSavedPost.data.prompt.split(',').length - 1]?.trim();
-              const response = await axios.post('https://inkfinder2.azurewebsites.net/api/posts', {preference}, {
+              const response = await axios.post('https://inkfinder.vercel.app/api/posts', {preference}, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
@@ -36,7 +36,7 @@ class PostService {
               }
             }
             else{
-              const response = await axios.post('https://inkfinder2.azurewebsites.net/api/posts', { preference: '' }, {
+              const response = await axios.post('https://inkfinder.vercel.app/api/posts', { preference: '' }, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
