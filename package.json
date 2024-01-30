@@ -9,8 +9,8 @@
     "start": "node index.js",
     "start:dev": "nodemon index.js",
     "test": "echo \"No test specified\" ",
-    "build": "cd client/csletmelearn && npm install && npm run build",
-    "test1": "echo \"Test temporary removed\" "
+    "build": "echo \"Build script temporary removed since build is no longer needed for backend part\" ",
+    "test1": "echo \"Tests temporary removed\" "
   },
   "author": "",
   "license": "ISC",

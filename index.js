@@ -73,16 +73,16 @@ app.use(cookieParser())
 app.use(errorMiddleware);
 app.use(express.json({ limit: '50mb' }));
 app.use('/api',router)
-app.use(express.static('./client/csletmelearn/dist/'));
+// app.use(express.static('./client/csletmelearn/dist/'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/api-docs', swaggerui.serve , swaggerui.setup(swaggerSpec))
 
 
-
-app.get("/*", (req, res) => {
-    res.sendFile("/home/site/wwwroot/client/csletmelearn/dist/index.html");
- });
+// in package.json - "build": "cd client/csletmelearn && npm install && npm run build", if you wannt to to have both backend and frontend on one host
+// app.get("/*", (req, res) => {
+//     res.sendFile("/home/site/wwwroot/client/csletmelearn/dist/index.html");
+//  });
 
 app.listen(process.env.PORT, (err) => {
     if (err){
