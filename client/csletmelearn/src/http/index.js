@@ -1,8 +1,8 @@
 import axios from "axios"
 
 
-export const API_URL = `https://ifback.onrender.com/api`
-// export const API_URL = `http://localhost:5000/api`
+// export const API_URL = `https://ifback.onrender.com/api`
+export const API_URL = `http://localhost:5000/api`
     
 const api = axios.create({
     withCredentials: true,
@@ -18,6 +18,7 @@ api.interceptors.response.use((config)=>{
     return config
 },async (error)=>{
     const originalRequest = error.config
+    console.log(error)
     if(error.response.status == 401){
         try{
             const response = await axios.get(`${API_URL}/refresh`, { withCredentials: true });

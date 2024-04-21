@@ -39,7 +39,6 @@ const options = {
     },
     apis: ["./router/index.js"],
     requestInterceptor: (req) => {
-        console.log("fdfd")
         const cookies = document.cookie
         req.headers = {
           ...req.headers,

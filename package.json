@@ -8,7 +8,7 @@
   "scripts": {
     "start": "node index.js",
     "start:dev": "nodemon index.js",
-    "test": "echo \"No test specified\" ",
+    "test": "jest",
     "build": "echo \"Build script temporary removed since build is no longer needed for backend part\" ",
     "test1": "echo \"Tests temporary removed\" "
   },
