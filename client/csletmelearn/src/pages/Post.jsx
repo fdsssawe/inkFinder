@@ -20,7 +20,7 @@ const Post = () => {
     const [isSaved , setIsSaved] = useState(false)
 
     const navigate = useNavigate()
-
+    console.log(user)
     const fetchPostInfo = async () => {
         setLoading(true)
         try {

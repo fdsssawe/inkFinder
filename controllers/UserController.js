@@ -4,6 +4,7 @@ import { validationResult } from "express-validator"
 import { ApiError } from "../exceptions/apiError.js"
 import User from "../model/User.js"
 import userServiceContainer from "../services/UserService.js"
+import { createContainer , asValue } from "awilix"
 
 dotenv.config()
 
@@ -36,10 +37,7 @@ class UserController {
 
   async logout(req,res,next){
     try{
-      const {refreshToken} = req.cookies
-      const token = await userServiceContainer.resolve("userService").logout(refreshToken)
-      res.clearCookie('refreshToken')
-      return res.json(token)
+      return res.json("Logout is unavailable whithout authorization")
     }catch(e){
       next(e);
     }
@@ -97,7 +95,27 @@ async getUsersPosts(req, res, next) {
 
 }
 
-const userController = new UserController()
+class UserControllerWithLogging extends UserController {
 
-export default userController
+  async logout(req,res,next){
+    try{
+      const {refreshToken} = req.cookies
+      const token = await userServiceContainer.resolve("userService").logout(refreshToken)
+      res.clearCookie('refreshToken')
+      return res.json(token)
+    }catch(e){
+      next(e);
+    }
+  }
+}
+
+const userController = new UserController()
+const userControllerAuthed = new UserControllerWithLogging()
+
+const userControllerContainer = createContainer()
+
+userControllerContainer.register({userController: asValue(userController)});
+userControllerContainer.register({userControllerAuthed: asValue(userControllerAuthed)});
+
+export default userControllerContainer
 

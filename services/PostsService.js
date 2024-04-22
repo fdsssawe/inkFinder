@@ -162,7 +162,6 @@ class PostService {
               return null;
             }
           }));
-          console.log(posts)
           const validPosts = posts.filter((post) => post !== null);;
           return validPosts
         } catch (error) {

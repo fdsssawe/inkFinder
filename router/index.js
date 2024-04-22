@@ -1,20 +1,22 @@
 import { Router } from "express";
-import userController from "../controllers/UserController.js";
 import { body } from "express-validator";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import dalleService from "../services/DalleService.js";
 import postServiceContainer from "../services/PostsService.js";
 import postController from "../controllers/PostController.js";
+import userControllerContainer from "../controllers/UserController.js";
 export const router = new Router();
 
 const postService = postServiceContainer.resolve("postService")
+const userControllerLogged = userControllerContainer.resolve("userControllerAuthed")
 
-router.post("/registration", body('email').isEmail(), body('password').isLength({ min: 4, max: 30 }), userController.registration)
-router.post("/login", userController.login)
-router.post("/logout", userController.logout)
-router.get("/activate/:link", userController.activate)
-router.get("/refresh", userController.refresh)
-router.get("/users", authMiddleware, userController.getUsers)
+
+router.post("/registration", body('email').isEmail(), body('password').isLength({ min: 4, max: 30 }), userControllerContainer.resolve("userController").registration)
+router.post("/login", userControllerContainer.resolve("userController").login)
+router.post("/logout", authMiddleware, userControllerLogged.logout )
+router.get("/activate/:link", userControllerContainer.resolve("userController").activate)
+router.get("/refresh", userControllerContainer.resolve("userController").refresh)
+router.get("/users", authMiddleware, userControllerContainer.resolve("userController").getUsers)
 router.post("/dalle", authMiddleware, dalleService.getGeneratedImage)
 
 /**
@@ -47,7 +49,7 @@ router.post("/newposts" , authMiddleware ,postService.createPost)
  *           description: You will get user info
  */
 
-router.get("/user/:id"  , userController.getUsersPosts)
+router.get("/user/:id"  , userControllerContainer.resolve("userController").getUsersPosts)
 
 /**
  * @swagger
@@ -87,4 +89,4 @@ router.post("/post/:id/save"  , postController.savePost)
  */
 
 router.get("/user/:id/saved"  , postController.getSavedPosts)
-router.post("/isuser"  , userController.getUser)
+router.post("/isuser"  , userControllerContainer.resolve("userController").getUser)
