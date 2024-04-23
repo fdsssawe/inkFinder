@@ -11,9 +11,11 @@ const initialState = {
   isOpen : false
 };
 
+const authServices = new AuthService()
+
 export const login = createAsyncThunk('auth/login', async ({ email, password }) => {
   try{
-  const response = await AuthService.login(email, password);
+  const response = await authServices.executeCommand('login', email, password);;
 
   localStorage.setItem('token', response.data.accessToken);
   setAuth(true)
@@ -28,7 +30,8 @@ export const login = createAsyncThunk('auth/login', async ({ email, password }) 
 
 export const registration = createAsyncThunk('auth/registration', async ({ email, password }) => {
   try{
-    const response = await AuthService.registration(email, password);
+    const response = await authServices.executeCommand('registration', email, password);
+    // AuthService.registration(email, password)
 
     localStorage.setItem('token', response.data.accessToken);
     setAuth(true)
@@ -43,7 +46,7 @@ export const registration = createAsyncThunk('auth/registration', async ({ email
 
 export const googleAuthHandle = createAsyncThunk('auth/googleAuthHandle', async ({ email, password }) => {
   try{
-    const response = await AuthService.googleAuthHandle(email, password);
+    const response = await authServices.executeCommand('googleAuthHandle', email, password);
 
     if(response.job == "registration"){
       localStorage.setItem('token', response.response.data.accessToken);
@@ -66,7 +69,7 @@ export const googleAuthHandle = createAsyncThunk('auth/googleAuthHandle', async 
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-  await AuthService.logout();
+  await authServices.executeCommand('logout');;
   localStorage.removeItem('token');
   setAuth(false)
   setUser({})

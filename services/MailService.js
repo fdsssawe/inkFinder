@@ -4,6 +4,7 @@ import { createContainer , asValue } from "awilix"
 
 dotenv.config()
 
+//Factory pattern implemented here in order to simplify the process of creating different types of mails using one interface class
 class MailService{
 
     constructor(){
@@ -29,8 +30,8 @@ class MailService{
     }
 
 }
-
-class ActivationMailService extends MailService {
+//Child classes representing different types of mails
+export class ActivationMailService extends MailService {
     constructor(to, link) {
         super();
         this.to = to;
@@ -45,7 +46,7 @@ class ActivationMailService extends MailService {
     }
 }
 
-class ResetPasswordMailService extends MailService {
+export class ResetPasswordMailService extends MailService {
     constructor(to, link) {
         super();
         this.to = to;
@@ -59,8 +60,8 @@ class ResetPasswordMailService extends MailService {
         `;
     }
 }
-
-class MailFactory {
+//Factory class that will be used to create different types of mails (interface)
+export class MailFactory {
     createMail(type, to, link) {
         switch (type) {
             case 'activation':

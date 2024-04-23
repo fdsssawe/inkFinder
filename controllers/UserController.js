@@ -8,7 +8,9 @@ import { createContainer , asValue } from "awilix"
 
 dotenv.config()
 
-class UserController {
+
+//Decorator pattern implementated here in order to simplify working with different types of users (authorized and unauthorized)
+export class UserController {
   async registration(req,res,next){
     try{
       const errors = validationResult(req)
@@ -95,7 +97,8 @@ async getUsersPosts(req, res, next) {
 
 }
 
-class UserControllerWithLogging extends UserController {
+//Class that extends UserController and adds logging functionality (decorator pattern)
+export class UserControllerWithLogging extends UserController {
 
   async logout(req,res,next){
     try{
@@ -113,7 +116,7 @@ const userController = new UserController()
 const userControllerAuthed = new UserControllerWithLogging()
 
 const userControllerContainer = createContainer()
-
+//Registering the controllers in the containers for dependency injection
 userControllerContainer.register({userController: asValue(userController)});
 userControllerContainer.register({userControllerAuthed: asValue(userControllerAuthed)});
 
