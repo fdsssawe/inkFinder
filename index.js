@@ -90,3 +90,5 @@ app.listen(process.env.PORT, (err) => {
 
     console.log("Server ok");
 })
+
+export default app;
