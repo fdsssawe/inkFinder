@@ -1,8 +1,8 @@
 import axios from "axios"
 
 
-// export const API_URL = `https://ifback.onrender.com/api`
-export const API_URL = `http://localhost:5000/api`
+export const API_URL = `https://inkfinder-five.vercel.app/api`
+// export const API_URL = `http://localhost:5000/api`
     
 const api = axios.create({
     withCredentials: true,

@@ -22,9 +22,9 @@ class PostService {
         try {
           if (isAuth && user) {
             if (user.postsSaved && user.postsSaved.length > 0) {
-              const lastSavedPost = await axios.get(`https://ifback.onrender.com/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
+              const lastSavedPost = await axios.get(`inkfinder-five.vercel.app/api/post/${user.postsSaved[user.postsSaved.length-1]}`);
               const preference = lastSavedPost.data.prompt.split(',')[lastSavedPost.data.prompt.split(',').length - 1]?.trim();
-              const response = await axios.post('https://ifback.onrender.com/api/posts', {preference}, {
+              const response = await axios.post('inkfinder-five.vercel.app/api/posts', {preference}, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
@@ -36,7 +36,7 @@ class PostService {
               }
             }
             else{
-              const response = await axios.post('https://ifback.onrender.com/api/posts', { preference: '' }, {
+              const response = await axios.post('inkfinder-five.vercel.app/api/posts', { preference: '' }, {
                 headers: {
                   'Content-Type': 'application/json'
                 }
