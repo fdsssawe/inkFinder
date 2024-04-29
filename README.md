@@ -10,7 +10,7 @@ Node.js 18, Express.js, React.js, MongoDB, Redux toolkit, Tailwind, Jest
 
 ### Resources
 
-Azure App Service, Azure Cosmos DB
+Vercel, Mongo Cluster
 
 ### Architecture diagram
 
