@@ -33,7 +33,7 @@ const options = {
           },
         servers : [
             {
-                url : "https://inkfinder.vercel.app/api/"
+                url : "https://inkfinder-five.vercel.app/api/"
             }
         ]
     },

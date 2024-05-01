@@ -23,10 +23,11 @@ router.post("/dalle", authMiddleware, dalleService.getGeneratedImage)
  * @swagger
  * /posts:
  *  post:
- *      summary: This api is used to get all posts
- *      description : This api is used to get all posts
+ *      summary: Get posts endpoint
+ *      description : You will recive array of posts
  *      requestBody:
  *          required: true
+ *          description: You can pass preference as a parameter to get posts based on their tags, for example by setting preferences to "Tribal" you will get array where posts with tags "Tribal" will be in front
  *          content:
  *              application/json:
  *                  schema:
