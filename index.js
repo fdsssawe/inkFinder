@@ -13,7 +13,7 @@ import swaggerui from "swagger-ui-express"
 
 dotenv.config()
 
-
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 const options = {
     withCredentials: true, // enable cookies
     definition : {
@@ -65,7 +65,7 @@ const app = express();
 
 app.use(cors({
     credentials : true,
-    origin : [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.vercel.app/", "https://inkfinder.vercel.app", "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173/dalle" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/" , process.env.CLIENT_URL]
+    origin : [ "https://inkfinder2.azurewebsites.net","http://localhost:17579","http://localhost:4444","http://localhost:4000","http://localhost:3000","http://localhost:8080" ,"http://localhost:8181" ,"http://localhost:5000", "http://localhost:5000/" , "https://inkfinder.azurewebsites.net/" , "https://inkfinder.vercel.app/", "https://inkfinder.vercel.app", "https://inkfinder.azurewebsites.net" , "http://localhost:5173/" , "http://localhost:5173/dalle" , "http://localhost:5173", "http://localhost:5001", "http://localhost:5001/", "https://inkfinder-five.vercel.app" , process.env.CLIENT_URL]
 }))
 
 app.use(cookieParser())
@@ -75,7 +75,7 @@ app.use('/api',router)
 // app.use(express.static('./client/csletmelearn/dist/'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use('/api-docs', swaggerui.serve , swaggerui.setup(swaggerSpec))
+app.use('/api-docs', swaggerui.serve , swaggerui.setup(swaggerSpec, { customCssUrl: CSS_URL }))
 
 
 // in package.json - "build": "cd client/csletmelearn && npm install && npm run build", if you wannt to to have both backend and frontend on one host

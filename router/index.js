@@ -25,9 +25,18 @@ router.post("/dalle", authMiddleware, dalleService.getGeneratedImage)
  *  post:
  *      summary: This api is used to get all posts
  *      description : This api is used to get all posts
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          preference:
+ *                              type: string
  *      responses:
  *          200: 
- *             description: You will get posts
+ *              description: You will get posts
  */
 router.post("/posts", postController.getPosts)
 router.post("/newposts" , authMiddleware ,postService.createPost)
