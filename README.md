@@ -39,6 +39,7 @@ Open client folder `cd client` and then vite project directory `cd csletmelearn`
 * CLOUDINARY_CLOUD_NAME : name of your cloudinary account
 ### Scripts availible
 build - to make a build of frontend from root directory
+### <a href="https://inkfinder-five.vercel.app/api-docs/" target="_blank">Swagger UI for some of the end points</a>
 # Project decomposition
 1.  ### Authorization
     
