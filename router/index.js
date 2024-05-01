@@ -21,9 +21,13 @@ router.post("/dalle", authMiddleware, dalleService.getGeneratedImage)
 
 /**
  * @swagger
+ * tags:
+ *   name: Posts
+ *   description: The posts managing API
  * /posts:
  *  post:
- *      summary: Get posts endpoint
+ *      tags: [Posts]
+ *      summary: Get posts api call
  *      description : You will recive array of posts
  *      requestBody:
  *          required: true
@@ -44,8 +48,14 @@ router.post("/newposts" , authMiddleware ,postService.createPost)
 
 /**
  * @swagger
+ * tags:
+ *   name: Users
+ *   description: The users managing API
  * /user/{id}:
  *  get:
+ *    tags: [Users]
+ *    summary: Get user api call
+ *    description : You will recive user info and his posts
  *    parameters:
  *      - in: path
  *        name: id
@@ -53,7 +63,7 @@ router.post("/newposts" , authMiddleware ,postService.createPost)
  *        schema:
  *          type: string
  *          minimum: 1
- *        description: The user ID
+ *        description: ID of the user (test user - 645c90abffe12d9d811a3141)
  *    responses:
  *        200: 
  *           description: You will get user info
@@ -63,8 +73,14 @@ router.get("/user/:id"  , userControllerContainer.resolve("userController").getU
 
 /**
  * @swagger
+ * tags:
+ *   name: Posts
+ *   description: The posts managing API
  * /post/{id}:
  *  get:
+ *    tags: [Posts]
+ *    summary: Get specific post api call
+ *    description : You will recive post info
  *    parameters:
  *      - in: path
  *        name: id
@@ -72,10 +88,10 @@ router.get("/user/:id"  , userControllerContainer.resolve("userController").getU
  *        schema:
  *          type: string
  *          minimum: 1
- *        description: The post ID
+ *        description: The post ID (example post id - 64458acd10ecfc116c88c46a)
  *    responses:
  *        200: 
- *           description: You will get post info
+ *           description: You will get post info (if test user used, you will get array with 1 post with the following prompt - "headphones made of glass")
  */
 
 router.get("/post/:id"  , postController.getPostById)
@@ -83,8 +99,14 @@ router.post("/post/:id/save"  , postController.savePost)
 
 /**
  * @swagger
+ * tags:
+ *   name: Users
+ *   description: The users managing API
  * /user/{id}/saved:
  *  get:
+ *    tags: [Users]
+ *    summary: Get user`s saved post api call
+ *    description : You will recive posts that user saved
  *    parameters:
  *      - in: path
  *        name: id
@@ -92,10 +114,10 @@ router.post("/post/:id/save"  , postController.savePost)
  *        schema:
  *          type: string
  *          minimum: 1
- *        description: The user ID
+ *        description: ID of the user (test user - 65b7ab61a1fc8c9b3559961b)
  *    responses:
  *        200: 
- *           description: You will get user`s saved posts
+ *           description: You will get user`s saved posts (if test user used, you will get array with 1 post with the following prompt - "big doritos chip with dip , Tribal")
  */
 
 router.get("/user/:id/saved"  , postController.getSavedPosts)
