@@ -12,6 +12,35 @@ const userControllerLogged = userControllerContainer.resolve("userControllerAuth
 
 
 router.post("/registration", body('email').isEmail(), body('password').isLength({ min: 4, max: 30 }), userControllerContainer.resolve("userController").registration)
+
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: The auth managing API
+ * /login:
+ *  post:
+ *      tags: [Auth]
+ *      summary: Login api call
+ *      description : You will recive tockens and user info
+ *      requestBody:
+ *          required: true
+ *          description: Enter proper email and password to login and get tockens and user info (Test user - "testing2024@gmail.com","12345678")
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          email:
+ *                              type: string
+ *                          password:
+ *                              type: string
+ *      responses:
+ *          200: 
+ *              description: You will recive tockens and user info
+ *          400:
+ *              description: Provide proper email and password
+ */
 router.post("/login", userControllerContainer.resolve("userController").login)
 router.post("/logout", authMiddleware, userControllerLogged.logout )
 router.get("/activate/:link", userControllerContainer.resolve("userController").activate)
