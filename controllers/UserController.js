@@ -19,7 +19,7 @@ export class UserController {
       }
       const {email, password} = req.body
       const userData = await userServiceContainer.resolve("userService").registration(email,password)
-      res.cookie('refreshToken',userData.refreshToken, {maxAge: 30*24*60*1000 , httpOnly : true})
+      res.cookie('refreshToken',userData.refreshToken, {maxAge: 30*24*60*1000 , httpOnly : false})
       return res.json(userData)
     }catch(e){
       next(e);
@@ -30,7 +30,7 @@ export class UserController {
         try {
             const {email, password} = req.body;
             const userData = await userServiceContainer.resolve("userService").login(email, password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
+            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: false})
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -63,6 +63,7 @@ export class UserController {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         sameSite: 'None', // set SameSite to None
         secure: true, // set Secure to true
+        httpOnly: false,
     });
       return res.json(userData);
     }catch(e){
