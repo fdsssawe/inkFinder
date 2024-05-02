@@ -19,7 +19,12 @@ export class UserController {
       }
       const {email, password} = req.body
       const userData = await userServiceContainer.resolve("userService").registration(email,password)
-      res.cookie('refreshToken',userData.refreshToken, {maxAge: 30*24*60*1000 , httpOnly : false})
+      res.cookie('refreshToken', userData.refreshToken, {
+        maxAge: 30 * 24 * 60 * 1000,
+        sameSite: 'none', 
+        secure: true, 
+        httpOnly: false,
+    });
       return res.json(userData)
     }catch(e){
       next(e);
@@ -30,7 +35,12 @@ export class UserController {
         try {
             const {email, password} = req.body;
             const userData = await userServiceContainer.resolve("userService").login(email, password);
-            res.cookie('refreshToken', userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: false})
+            res.cookie('refreshToken', userData.refreshToken, {
+              maxAge: 30 * 24 * 60 * 1000,
+              sameSite: 'none', 
+              secure: true, 
+              httpOnly: false,
+          });
             return res.json(userData);
         } catch (e) {
             next(e);
@@ -61,10 +71,9 @@ export class UserController {
       const userData = await userServiceContainer.resolve("userService").refresh(refreshToken);
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        sameSite: 'none', // set SameSite to None
-        secure: true, // set Secure to true
+        sameSite: 'none', 
+        secure: true, 
         httpOnly: false,
-        same_site: 'none',
     });
       return res.json(userData);
     }catch(e){
