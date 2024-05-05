@@ -42,6 +42,21 @@ router.post("/registration", body('email').isEmail(), body('password').isLength(
  *              description: Provide proper email and password
  */
 router.post("/login", userControllerContainer.resolve("userController").login)
+
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: API for logout
+ * /logout:
+ *  post:
+ *      tags: [Auth]
+ *      summary: Logout api call
+ *      description : You will logout from your account
+ *      responses:
+ *          401: 
+ *              description: You will be unable to logout without authorization
+ */
 router.post("/logout", authMiddleware, userControllerLogged.logout )
 router.get("/activate/:link", userControllerContainer.resolve("userController").activate)
 router.get("/refresh", userControllerContainer.resolve("userController").refresh)
