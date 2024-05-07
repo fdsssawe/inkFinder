@@ -26,7 +26,6 @@ const SignUpPopUp = ({ open, setActive }) => {
   };
 
   const handleLogin = (data) => {
-    console.log(data)
     dispatch(login({ email: data.email, password: data.password }))
       .then((response) => {
         setLoginError('');
@@ -41,7 +40,6 @@ const SignUpPopUp = ({ open, setActive }) => {
 
   const loginGoogle = useGoogleLogin({
     onSuccess: (user) => {
-      console.log(user);
       axios
         .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
           headers: {

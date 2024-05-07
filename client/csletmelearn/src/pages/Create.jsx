@@ -64,7 +64,6 @@ const Create = () => {
             }
             else{
                 try{  
-                    console.log("fdd")
                     const response = await api.post('/newposts', form , {
                         headers: {
                         'Content-Type': 'application/json'

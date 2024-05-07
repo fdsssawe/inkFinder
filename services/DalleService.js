@@ -7,9 +7,6 @@ dotenv.config()
 
 class DalleService{
 
-    constructor(){
-
-    }
 
     async getGeneratedImage(req,res){
         try{
