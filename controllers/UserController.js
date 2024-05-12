@@ -125,6 +125,7 @@ export class UserControllerWithLogging extends UserController {
       next(e);
     }
   }
+  
 }
 
 const userController = new UserController()
