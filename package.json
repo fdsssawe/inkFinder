@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "type": "module",
-  "engines": {"node" : "18.x"},
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "start": "node index.js",
     "start:dev": "nodemon index.js",
@@ -26,6 +28,7 @@
     "express-validator": "^6.15.0",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
+    "lottie-react": "^2.4.0",
     "mongoose": "^6.9.2",
     "nodemailer": "^6.9.1",
     "nodemailer-smtp-transport": "^2.7.4",

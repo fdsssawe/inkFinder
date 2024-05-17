@@ -40,7 +40,7 @@ const DesignGenerator = () => {
       if(form.prompt && form.photo){
           setLoading(true);
           if(selected){
-              // setForm({...form , prompt : `${form.prompt} , ${selected}`})
+              console.log(selected)
               const confirmedForm = {
                   author : form.author,
                   name : form.name,
@@ -88,21 +88,33 @@ const DesignGenerator = () => {
     const generateImage = async () => {
         if (form.prompt) {
           try {
+            if(selected){
+              console.log(selected)
+              setGeneratingImg(true);
+              const response = await api.post('/dalle',{
+                prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} tatoo in ${selected} style , 50mm`,
+              },
+              {
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+              const data = await response.data;
+              setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+          }
+          else{
             setGeneratingImg(true);
             const response = await api.post('/dalle',{
-              prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} tatoo , `,
+              prompt: `Generate a unique , colorful , centered with paddings and visually appealing tattoo design incorporating ${form.prompt} tatoo, 50mm`,
             },
-             {
+            {
               headers: {
                 'Content-Type': 'application/json',
               },
-              // body: JSON.stringify({
-              //   prompt: `${form.prompt} , tattoo , tattoo style , 50mm`,
-              // }),
             });
             const data = await response.data;
-            console.log(data)
             setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+          }
           } catch (err) {
             console.log(err);
             alert("Author runed out of DALL-E credits");
