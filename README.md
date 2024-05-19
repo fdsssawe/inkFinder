@@ -14,7 +14,7 @@ Vercel, Mongo Cluster
 
 ### Architecture diagram
 
-![Architecture diagram](https://github.com/fdsssawe/inkfinder/assets/92380415/ea666f2e-2d67-4f59-9702-9587e21cbdda)
+![Architecture diagram](https://github.com/fdsssawe/inkfinder/assets/92380415/5d40f760-7e0f-4a8d-b780-3f510c8ba9d3)
 
 # How to run a project on localhost 
 ### Dependencies recovery
