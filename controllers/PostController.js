@@ -21,6 +21,7 @@ class PostController {
   async getPostById(req, res, next) {
     try {
       const id = req.params.id;
+      id ? id : next(ApiError.BadRequest("Id is not provided"));
       const posts = await postServiceContainer.resolve("postService").getPostById(id);
       return res.json(posts);
     } catch (e) {
@@ -54,10 +55,7 @@ class PostController {
   }
 }
 
-// Resolve the postService instance from the container
-// const postService = postServiceContainer.resolve("postService");
-
-// Create a new instance of PostController with the resolved postService
+//Unnecessary comments removed
 const postController = new PostController();
 
 
